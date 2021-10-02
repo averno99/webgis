@@ -1,0 +1,117 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class M_poktan extends CI_Model {
+    
+    public function getAllPoktan()
+    {
+        $query = $this->db->select('poktan.*, poktan.nama as namaPoktan, gapoktan.nama as namaGapoktan, gapoktan.id as idGapoktan')
+            ->from('poktan')
+            ->join('gapoktan', 'poktan.id_gapoktan = gapoktan.id')
+            ->get()->result_array();
+        return $query;
+    }
+
+    public function getIdPoktan($id = NULL)
+    {
+
+        $query = $this->db->select('poktan.*, poktan.nama as namaPoktan, gapoktan.nama as namaGapoktan, gapoktan.id as idGapoktan')
+            ->from('poktan')
+            ->join('gapoktan', 'poktan.id_gapoktan = gapoktan.id')
+            ->where('poktan.id', $id)
+            ->get()->row_array();
+        return $query;
+    }
+
+    public function getPengurus($id = NULL)
+    {
+
+        $query = $this->db->select('petani.nama as namaPetani, petani.*, poktan.*')
+            ->from('petani')
+            ->join('poktan', 'petani.id_poktan = poktan.id')
+            ->where('id_poktan', $id)
+            ->get()->result_array();
+        return $query;
+    }
+
+    public function getAdminis($id = NULL)
+    {
+
+        $query = $this->db->select('*')
+            ->from('keleng_adminis')
+            ->join('poktan', 'keleng_adminis.id_poktan = poktan.id')
+            ->where('id_poktan', $id)
+            ->get()->result_array();
+        return $query;
+    }
+
+    public function getInfras($id = NULL)
+    {
+
+        $query = $this->db->select('*')
+            ->from('infrastruktur')
+            ->join('poktan', 'infrastruktur.id_poktan = poktan.id')
+            ->where('id_poktan', $id)
+            ->get()->result_array();
+        return $query;
+    }
+
+    public function tambahPoktan($upload_geojson)
+    {
+        $data = [
+            "id_gapoktan" => htmlspecialchars($this->input->post('gapoktan', true)),
+            "nama" => htmlspecialchars($this->input->post('poktan', true)),
+            "nama_ketua" => htmlspecialchars($this->input->post('ketua', true)),
+            "status" => htmlspecialchars($this->input->post('status', true)),
+            "pengukuhan" => htmlspecialchars($this->input->post('pengukuhan', true)),
+            "kecamatan" => htmlspecialchars($this->input->post('kecamatan', true)),
+            "desa" => htmlspecialchars($this->input->post('desa', true)),
+            "dusun" => htmlspecialchars($this->input->post('dusun', true)),
+            "rt" => htmlspecialchars($this->input->post('rt', true)),
+            "rw" => htmlspecialchars($this->input->post('rw', true)),
+            "luas_lahan" => htmlspecialchars($this->input->post('luas_lahan', true)),
+            "komoditas_unggul" => htmlspecialchars($this->input->post('komoditas_unggul', true)),
+            "geojson" => htmlspecialchars($upload_geojson)
+        ];
+
+        $this->db->insert('poktan', $data);
+    }
+
+    public function ubahPoktan()
+    {
+        $data = [
+            "id_gapoktan" => htmlspecialchars($this->input->post('gapoktan', true)),
+            "nama" => htmlspecialchars($this->input->post('poktan', true)),
+            "nama_ketua" => htmlspecialchars($this->input->post('ketua', true)),
+            "status" => htmlspecialchars($this->input->post('status', true)),
+            "pengukuhan" => htmlspecialchars($this->input->post('pengukuhan', true)),
+            "kecamatan" => htmlspecialchars($this->input->post('kecamatan', true)),
+            "desa" => htmlspecialchars($this->input->post('desa', true)),
+            "dusun" => htmlspecialchars($this->input->post('dusun', true)),
+            "rt" => htmlspecialchars($this->input->post('rt', true)),
+            "rw" => htmlspecialchars($this->input->post('rw', true)),
+            "luas_lahan" => htmlspecialchars($this->input->post('luas_lahan', true)),
+            "komoditas_unggul" => htmlspecialchars($this->input->post('komoditas_unggul', true))
+        ];
+
+        $this->db->where('id', $this->input->post('id'));
+        $this->db->update('poktan', $data);
+    }
+
+    public function tambahAdminis($data)
+    {
+      return $this->db->insert_batch('keleng_adminis', $data);
+    }
+
+    public function ubahAdminis($data)
+    {
+       
+        $this->db->update_batch('keleng_adminis', $data);
+    }
+
+    public function tambahInfras($data)
+    {
+      return $this->db->insert_batch('infrastruktur', $data);
+    }
+	
+}
