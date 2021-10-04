@@ -16,6 +16,8 @@
 		<!-- Make sure you put this AFTER Leaflet's CSS -->
  		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 		<script src="<?= base_url()?>assets/js/leaflet.ajax.js"></script>
+		<script src="<?= base_url()?>assets/js/leaflet-panel-layers-master/src/leaflet-panel-layers.js"></script>
+		<script src="<?= base_url()?>assets/js/Leaflet.GoogleMutant.js"></script>
 		<!--begin::Page Scripts(used by this page)-->
 		<script src="<?= base_url()?>assets/js/pages/widgets.js"></script>
 		<!--end::Page Scripts-->

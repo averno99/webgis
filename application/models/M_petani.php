@@ -128,5 +128,14 @@ class M_petani extends CI_Model {
         $this->db->where('id', $this->input->post('id'));
         $this->db->update('petani', $data);
     }
+
+     public function tambahPrasarana()
+    {
+        $data = [
+            "id_petani" => htmlspecialchars($this->input->post('id_petani', true)),
+            "status_pemilik" => htmlspecialchars($this->input->post('status_pemilik', true))
+        ];
+        $this->db->insert('prasarana_petani', $data);
+    }
 	
 }

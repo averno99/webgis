@@ -183,4 +183,34 @@ class Petani extends CI_Controller {
             redirect('petani');
         }
     }
+
+    public function tambah_prasarana($id = NULL)
+    {
+        $data['judul'] = 'Tambah Data Prasarana';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+		$data['status'] = ['Pemilik', 'Penggarap'];
+        $data['petani'] = $this->M_petani->getIdPetani($id);
+		
+        $this->form_validation->set_rules(
+            'status_pemilik',
+            'Status Pemilik',
+            'required|trim',
+            array('required' => 'Nama Gapoktan tidak boleh kosong')
+        );
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('backend/template/head', $data);
+			$this->load->view('backend/template/aside');
+			$this->load->view('backend/template/topbar', $data);
+			$this->load->view('backend/petani/tambah_prasarana', $data);
+			$this->load->view('backend/template/footer');
+			$this->load->view('backend/template/user_panel', $data);
+			$this->load->view('backend/template/js');
+        } else {
+
+            $this->M_petani->tambahPrasarana();
+            // $this->session->set_flashdata('flash', 'Ditambahkan');
+            redirect('petani');
+        }
+    }
 }

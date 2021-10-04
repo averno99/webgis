@@ -85,7 +85,10 @@
 										<div class="tab-content pt-5">
 											<!--begin::Tab Content-->
 											<div class="tab-pane active" role="tabpanel">
-												<form class="form">
+												<?php if (empty($prasarana)) : ?>
+											<a type="button" href="<?= site_url(); ?>petani/tambah_prasarana/<?= $petani['id'] ?>">Tambah Data</a>
+										<?php else :?>
+										<form class="form">
 													<div class="form-group row">
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Status Pemilik</label>
 														<div class="col-lg-9 col-xl-6">
@@ -93,6 +96,9 @@
 														</div>
 													</div>
 												</form>
+										<!--end: Datatable-->
+										<?php endif; ?>
+												
 											</div>
 											<!--end::Tab Content-->
 										</div>
@@ -149,8 +155,8 @@
 									</div>
 									<div class="card-body">
                                         <?php if (empty($sarana)) : ?>
-													<a type="button" href="<?= site_url(); ?>poktan/tambah_sarana/<?= $petani['id'] ?>">Tambah Data</a>
-												<?php else :?>
+											<a type="button" href="<?= site_url(); ?>poktan/tambah_sarana/<?= $petani['id'] ?>">Tambah Data</a>
+										<?php else :?>
 										<table class="table table-separate table-head-custom collapsed" id="kt_datatable">
 											<thead>
 												<tr>

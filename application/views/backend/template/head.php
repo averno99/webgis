@@ -39,10 +39,22 @@ License: You must have a valid license purchased only from themeforest(the above
 		<link href="<?= base_url()?>assets/css/themes/layout/aside/light.css" rel="stylesheet" type="text/css" />
 		<!--end::Layout Themes-->
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+		<link rel="stylesheet" href="<?=base_url()?>assets/js/leaflet-panel-layers-master/src/leaflet-panel-layers.css" />
+    
 		<link rel="shortcut icon" href="<?= base_url()?>assets/media/logos/favicon.ico" />
 
 		<style type="text/css">
         	#mapid { height: 450px; width: 1200px}
+			.icon {
+      			display: inline-block;
+      			margin: 2px;
+      			height: 16px;
+      			width: 16px;
+      			background-color: #ccc;
+      		}
+      		.icon-bar {
+        		background: url('assets/js/leaflet-panel-layers-master/examples/images/icons/bar.png') center center no-repeat;
+    		}
     	</style>
 	</head>
 	<!--end::Head-->

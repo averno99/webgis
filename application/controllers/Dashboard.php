@@ -9,12 +9,14 @@ class Dashboard extends CI_Controller {
         if (!$this->session->userdata('username')) {
             redirect('auth');
         }
+		$this->load->model('M_poktan');
     }
 
 	public function index()
 	{
 		$data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 		$data['judul'] = 'Dashboard';
+		$data['poktan'] = $this->M_poktan->getAllPoktan();
 
 		$this->load->view('backend/template/head', $data);
 		$this->load->view('backend/template/aside');
