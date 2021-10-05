@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 02 Okt 2021 pada 19.33
+-- Waktu pembuatan: 04 Okt 2021 pada 14.59
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 7.3.28
 
@@ -239,11 +239,11 @@ CREATE TABLE `poktan` (
 --
 
 INSERT INTO `poktan` (`id`, `id_gapoktan`, `nama`, `nama_ketua`, `status`, `pengukuhan`, `kecamatan`, `desa`, `dusun`, `rt`, `rw`, `luas_lahan`, `komoditas_unggul`, `geojson`, `warna`) VALUES
-(1, 2, 'Jaya Abadi', '', 'Belum Terdaftar', '', 'Sambas', 'Tebas', 'Tekarang', '001', '002', 432, 'Padi, Jeruk', '', ''),
-(2, 2, 'Sejati', '', 'Terdaftar', '', 'Sambas', 'Polosa', 'Sui Jawi', '002', '002', 552, 'Cabe Hijau', '', ''),
-(3, 1, 'Konjak Purnama', '', 'Terdaftar', '', 'Karang Anyar', 'Sui Awan', 'Kalton', '004', '001', 331, 'Jagung', '', ''),
-(4, 2, 'Sungai Raya', 'Arif', 'Belum Terdaftar', 'Tidak Ada', 'Kubu', 'Sukamaju', 'Kebelakang', '002', '003', 523, 'Jagung, Padi, Jeruk Nipis', 'teluk_batang.geojson', ''),
-(5, 1, 'Baru Muncul', 'Naruto', 'Belum Terdaftar', 'Tidak Ada', 'Karang Anyar', 'Sui Awan', 'Kalton', '004', '001', 21, 'Jagung, Apel', 'poktan_pal_9_barumuncul.geojson', '');
+(1, 2, 'Tunas Baru', 'Anna', 'Belum Terdaftar', 'Ada', 'Sambas', 'Tebas', 'Tekarang', '001', '002', 432, 'Padi, Jeruk', 'poktan_pal_9_tunasbaru3.geojson', '#0000FF'),
+(2, 2, 'Tunas Mekar', 'Naruto', 'Terdaftar', 'Ada', 'Sambas', 'Polosa', 'Sui Jawi', '002', '002', 552, 'Cabe Hijau', 'poktan_pal_9_tunasmekar2.geojson', '#FF0000'),
+(3, 1, 'Barsatu Karyatani', 'Alex', 'Terdaftar', 'Ada', 'Karang Anyar', 'Sui Awan', 'Kalton', '004', '001', 331, 'Jagung', 'poktan_pal_9_barsatu_karyatani1.geojson', '#00ff00'),
+(4, 2, 'Tunas Muda', 'Arif', 'Belum Terdaftar', 'Tidak Ada', 'Kubu', 'Sukamaju', 'Kebelakang', '002', '003', 523, 'Jagung, Padi, Jeruk Nipis', 'poktan_pal_9_tunasmuda1.geojson', '#ffff00'),
+(5, 1, 'Baru Muncul', 'Naruto', 'Belum Terdaftar', 'Tidak Ada', 'Karang Anyar', 'Sui Awan', 'Kalton', '004', '001', 21, 'Jagung, Apel', 'poktan_pal_9_barumuncul.geojson', '#ff00ff');
 
 -- --------------------------------------------------------
 
@@ -262,7 +262,8 @@ CREATE TABLE `prasarana_petani` (
 --
 
 INSERT INTO `prasarana_petani` (`id`, `id_petani`, `status_pemilik`) VALUES
-(1, 1, 'Pemilik');
+(1, 1, 'Pemilik'),
+(2, 5, 'Penggarap');
 
 -- --------------------------------------------------------
 
@@ -483,7 +484,7 @@ ALTER TABLE `poktan`
 -- AUTO_INCREMENT untuk tabel `prasarana_petani`
 --
 ALTER TABLE `prasarana_petani`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `produksi_pertanian`
