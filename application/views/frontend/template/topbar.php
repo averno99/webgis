@@ -17,7 +17,7 @@
 									<div class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
 										<!-- <span class="text-dark-50 font-weight-bold font-size-base d-none d-md-inline mr-1">Login,</span> -->
 										
-										<a href="#" class="btn btn-primary btn-sm font-weight-bold">
+										<a href="<?= site_url('auth'); ?>" class="btn btn-primary btn-sm font-weight-bold">
 											<i class="flaticon-profile-1 mr-2"></i> Login
 										</a>
 										<!-- <span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3"></span> -->
