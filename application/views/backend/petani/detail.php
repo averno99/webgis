@@ -241,15 +241,17 @@
                                     					</div>
                               						</div>
 												
-
+												<?php if ($user['role'] == 'Admin') : ?>
 													<div class="d-flex justify-content-between border-top pt-10">
 														<div class="mr-2">
 															<a type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url('petani')?>">Kembali</a>
 														</div>
 														<div>
-															<button type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4">Ubah Data</button>
+															<a type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url(); ?>petani/ubah_petani/<?= $petani['id'] ?>">Ubah Data</a>
 														</div>
 													</div>
+												<?php endif; ?>
+													
 												</form>
                                     </div>
 								</div>

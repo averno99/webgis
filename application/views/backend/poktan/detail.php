@@ -153,6 +153,7 @@
 															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $poktan['komoditas_unggul']?>" disabled/>
 														</div>
 													</div>
+													<?php if ($user['role'] == 'Admin') : ?>
 													<div class="d-flex justify-content-between border-top pt-10">
 														<div class="mr-2">
 															<a type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url('poktan')?>">Kembali</a>
@@ -161,6 +162,7 @@
 															<a type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url(); ?>poktan/ubah_poktan/<?= $poktan['id'] ?>">Ubah Data</a>
 														</div>
 													</div>
+													<?php endif; ?>
 												</form>
 											</div>
 											<!--end::Tab Content-->

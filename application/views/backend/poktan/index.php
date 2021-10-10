@@ -24,6 +24,8 @@
 										<div class="card-title">
 											<h3 class="card-label">Data Kapoktan</h3>
 										</div>
+										<?php if ($user['role'] == 'Admin') : ?>
+                                                                                                                    
 										<div class="card-toolbar">
 											<!--begin::Button-->
 											<a href="<?= site_url('poktan/tambah_poktan')?>" class="btn btn-primary font-weight-bolder">
@@ -36,6 +38,7 @@
 											</svg><!--end::Svg Icon--></span>Tambah Data</a>
 											<!--end::Button-->
 										</div>
+										<?php endif; ?>
 									</div>
 									<div class="card-body">
 										<!--begin: Datatable-->
@@ -48,6 +51,7 @@
 													<th>Alamat</th>
 													<th>Total Luas Lahan</th>
 													<th>Komoditas Unggulan</th>
+													<th>Status Post</th>
 													<th>Aksi</th>
 												</tr>
 											</thead>
@@ -62,7 +66,23 @@
 													<td><?= $pkt['dusun']?>, <?= $pkt['desa']?>, <?= $pkt['kecamatan']?></td>
 													<td><?= $pkt['luas_lahan']?> Ha</td>
 													<td><?= $pkt['komoditas_unggul']?></td>
-													<td><a href="<?= site_url(); ?>poktan/detail/<?= $pkt['id'] ?>"><small>Detail</small></a></td>
+													<td>
+														<?php if ($pkt['status_post'] == 'Sudah Di Post') : ?>
+                                                            <span class="badge badge-success"><?= $pkt['status_post']; ?></span>
+                                                        <?php else : ?>
+                                                            <span class="badge badge-danger"><?= $pkt['status_post']; ?></span>
+                                                        <?php endif; ?>
+													</td>
+													<td>
+														<?php if ($user['role'] == 'Super Admin') : ?>
+                                                            <a href="<?= site_url(); ?>poktan/updatesudah/<?= $pkt['id'] ?>"><small>Setuju</small></a> |
+															<a href="<?= site_url(); ?>poktan/updatebelum/<?= $pkt['id'] ?>"><small>Batal</small></a> |
+															<a href="<?= site_url(); ?>poktan/detail/<?= $pkt['id'] ?>"><small>Detail</small></a>
+                                                        <?php else : ?>
+                                                           <a href="<?= site_url(); ?>poktan/detail/<?= $pkt['id'] ?>"><small>Detail</small></a>
+                                                        <?php endif; ?>
+														
+													</td>
 												</tr>
 											<?php endforeach; ?>
 											</tbody>

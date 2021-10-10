@@ -121,7 +121,7 @@
 													<td><?= $no++; ?></td>
 													<td><?= $ptn['namaPetani']?></td>
 													<td><?= $ptn['jabatan']?></td>
-													<td>Lihat</td>
+													<td><a href="<?= site_url(); ?>petani/detail/<?= $ptn['id'] ?>"><small>Lihat</small></a></td>
 												</tr>
 											<?php endforeach; ?>
 											</tbody>

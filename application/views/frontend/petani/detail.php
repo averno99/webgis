@@ -23,7 +23,7 @@
 										<div class="card-toolbar">
 											<ul class="nav nav-tabs nav-tabs-space-lg nav-tabs-line nav-tabs-bold nav-tabs-line-3x" role="tablist">
 												<li class="nav-item mr-3">
-													<a class="nav-link" href="<?= site_url(); ?>petani/detail/<?= $petani['id'] ?>">
+													<a class="nav-link active" href="<?= site_url(); ?>FrontPetani/detail/<?= $petani['id'] ?>">
 														<span class="nav-icon mr-2">
 															<span class="svg-icon mr-3">
 																<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Chat-check.svg-->
@@ -41,7 +41,7 @@
 													</a>
 												</li>
                                                 <li class="nav-item mr-3">
-													<a class="nav-link" href="<?= site_url(); ?>petani/prasarana/<?= $petani['id'] ?>">
+													<a class="nav-link" href="<?= site_url(); ?>FrontPetani/prasarana/<?= $petani['id'] ?>">
 														<span class="nav-icon mr-2">
 															<span class="svg-icon mr-3">
 																<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Chat-check.svg-->
@@ -59,7 +59,7 @@
 													</a>
 												</li>
                                                 <li class="nav-item mr-3">
-													<a class="nav-link active" href="<?= site_url(); ?>petani/produksi/<?= $petani['id'] ?>">
+													<a class="nav-link" href="<?= site_url(); ?>FrontPetani/produksi/<?= $petani['id'] ?>">
 														<span class="nav-icon mr-2">
 															<span class="svg-icon mr-3">
 																<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Chat-check.svg-->
@@ -85,67 +85,66 @@
 										<div class="tab-content pt-5">
 											<!--begin::Tab Content-->
 											<div class="tab-pane active" role="tabpanel">
-												<?php if (empty($produksi)) : ?>
-											<a type="button" href="<?= site_url(); ?>petani/tambah_produksi/<?= $petani['id'] ?>">Tambah Data</a>
-										<?php else :?>
 												<form class="form">
 													<div class="form-group row">
-														<label class="col-xl-3 col-lg-3 text-right col-form-label">Bidang Usaha/Jenis Usaha</label>
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">Status Anggota</label>
 														<div class="col-lg-9 col-xl-6">
-															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $produksi['jenis_usaha']?>" disabled/>
+															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $petani['status_anggota']?>" disabled/>
 														</div>
 													</div>
                                                     <div class="form-group row">
-														<label class="col-xl-3 col-lg-3 text-right col-form-label">Jenis Lahan</label>
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">Nama Gapoktan</label>
 														<div class="col-lg-9 col-xl-6">
-															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $produksi['jenis_lahan']?>" disabled/>
+															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $petani['namaGapoktan']?>" disabled/>
 														</div>
 													</div>
                                                     <div class="form-group row">
-														<label class="col-xl-3 col-lg-3 text-right col-form-label">Sistem Pertanian</label>
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">Nama Poktan</label>
 														<div class="col-lg-9 col-xl-6">
-															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $produksi['sistem_pertanian']?>" disabled/>
+															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $petani['namaPoktan']?>" disabled/>
 														</div>
 													</div>
                                                     <div class="form-group row">
-														<label class="col-xl-3 col-lg-3 text-right col-form-label">Jenis Komoditas</label>
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">Jabatan Dalam Kelompok Tani</label>
 														<div class="col-lg-9 col-xl-6">
-															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $produksi['jenis_komoditas']?>" disabled/>
+															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $petani['jabatan']?>" disabled/>
 														</div>
 													</div>
                                                     <div class="form-group row">
-														<label class="col-xl-3 col-lg-3 text-right col-form-label">Indeks Pertanaman (IP) Dalam 1 Tahun</label>
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">Pekerjaan Utama</label>
 														<div class="col-lg-9 col-xl-6">
-															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $produksi['ip']?>" disabled/>
+															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $petani['pekerjaan_utama']?>" disabled/>
 														</div>
 													</div>
                                                     <div class="form-group row">
-														<label class="col-xl-3 col-lg-3 text-right col-form-label">Jadwal Tanam Dalam 1 Tahun</label>
+														<label class="col-xl-3 col-lg-3 text-right col-form-label"><b>Jumlah Buruh Tani :</b></label>
+														<div class="col-lg-9 col-xl-6"></div>
+													</div>
+                                                    <div class="form-group row">
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">Pengolahan Lahan</label>
 														<div class="col-lg-9 col-xl-6">
-															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $produksi['jadwal_tanam']?>" disabled/>
+															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $petani['pengolah_lahan']?> Orang" disabled/>
 														</div>
 													</div>
                                                     <div class="form-group row">
-														<label class="col-xl-3 col-lg-3 text-right col-form-label">Jadwal Panen Dalam 1 Tahun</label>
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">Tanam</label>
 														<div class="col-lg-9 col-xl-6">
-															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $produksi['jadwal_panen']?>" disabled/>
+															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $petani['tanam']?> Orang" disabled/>
 														</div>
 													</div>
                                                     <div class="form-group row">
-														<label class="col-xl-3 col-lg-3 text-right col-form-label">Sistem Pengairan</label>
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">Pemeliharaan</label>
 														<div class="col-lg-9 col-xl-6">
-															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $produksi['sistem_pengairan']?>" disabled/>
+															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $petani['pemeliharaan']?> Orang" disabled/>
+														</div>
+													</div>
+                                                    <div class="form-group row">
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">Panen/Pasca Panen</label>
+														<div class="col-lg-9 col-xl-6">
+															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $petani['panen']?> Orang" disabled/>
 														</div>
 													</div>
 												</form>
-												<?php if ($user['role'] == 'Admin') : ?>
-											<div class="d-flex justify-content-between border-top pt-10">
-												<div>
-													<a type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url(); ?>petani/ubah_produksi/<?= $petani['id'] ?>">Ubah Data</a>
-												</div>
-											</div>
-										<?php endif; ?>
-												<?php endif; ?>
 											</div>
 											<!--end::Tab Content-->
 										</div>
@@ -153,54 +152,80 @@
 									<!--end::Body-->
 								</div>
 								<!--end::Card-->
-                                <div class="card card-custom mt-5">
+
+                                <!--begin::Card-->
+								<div class="card card-custom mt-5">
 									<div class="card-header">
 										<div class="card-title">
-											<h3 class="card-label">Data Produksi Komoditas Pertanian</h3>
+											<h3 class="card-label">Biodata Personal</h3>
 										</div>
 									</div>
 									<div class="card-body">
-                                        <?php if (empty($data_produksi)) : ?>
-													<a type="button" href="<?= site_url(); ?>petani/tambah_data_produksi/<?= $petani['id'] ?>">Tambah Data</a>
-												<?php else :?>
-										<table class="table table-separate table-head-custom collapsed" id="kt_datatable">
-											<thead>
-												<tr>
-													<th>No</th>
-													<th>Komoditas</th>
-													<th>Luas (Ha)</th>
-													<th>Panen (Kg)</th>
-                                                    <th>Harga Per Kg</th>
-												</tr>
-											</thead>
-											<tbody>
-											<?php 
-											$no = 1;
-											foreach ($data_produksi as $dp) : ?>
-												<tr>
-													<td><?= $no++; ?></td>
-													<td><?= $dp['komoditas']?></td>
-													<td><?= $dp['luas']?></td>
-													<td><?= $dp['panen_kg']?></td>
-                                                    <td><?= $dp['harga']?></td>
-												</tr>
-											<?php endforeach; ?>
-											</tbody>
-										</table>
-										<?php if ($user['role'] == 'Admin') : ?>
-											<div class="d-flex justify-content-between border-top pt-10">
-												<div class="mr-2">
-													<a type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url('petani')?>">Kembali</a>
-												</div>
-												<div>
-													<a type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url(); ?>petani/ubah_data_produksi/<?= $petani['id'] ?>">Ubah Data</a>
-												</div>
-											</div>
-										<?php endif; ?>
-										<!--end: Datatable-->
-										<?php endif; ?>
+                                        <form class="form">
+													<div class="form-group row">
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">Nama</label>
+														<div class="col-lg-9 col-xl-6">
+															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $petani['nama']?>" disabled/>
+														</div>
+													</div>
+                                                    <div class="form-group row">
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">Jenis Kelamin</label>
+														<div class="col-lg-9 col-xl-6">
+															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $petani['jenis_kelamin']?>" disabled/>
+														</div>
+													</div>
+                                                    <div class="form-group row">
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">Status Dalam Keluarga</label>
+														<div class="col-lg-9 col-xl-6">
+															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $petani['status_keluarga']?>" disabled/>
+														</div>
+													</div>
+                                                    <div class="form-group row">
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">Jumlah Anggota Keluarga (di KK)</label>
+														<div class="col-lg-9 col-xl-6">
+															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $petani['jml_anggota_keluarga']?> Orang" disabled/>
+														</div>
+													</div>
+                                                    <div class="form-group row">
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">Jumlah Tanggungan (Situasi Saat Ini)</label>
+														<div class="col-lg-9 col-xl-6">
+															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $petani['jml_tanggungan']?> Orang" disabled/>
+														</div>
+													</div>
+                                                    <div class="form-group row">
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">Pendidikan Terakhir</label>
+														<div class="col-lg-9 col-xl-6">
+															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $petani['pendidikan']?>" disabled/>
+														</div>
+													</div>
+                                                    <div class="form-group row">
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">Riwayat Pelatihan</label>
+														<div class="col-lg-9 col-xl-6">
+                                                            <?php if ($petani['riwayat_pelatihan'] < 1) : ?>
+                                                                <input class="form-control form-control-lg form-control-solid" type="text" value="Tidak Pernah Ikut Pelatihan" disabled/>
+                                                            <?php else : ?>
+                                                                <input class="form-control form-control-lg form-control-solid" type="text" value="Pernah Ikut Pelatihan <?= $petani['riwayat_pelatihan']?> Kali" disabled/>
+                                                            <?php endif; ?>
+															
+														</div>
+													</div>
+                                                    <div class="form-group row">
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">Kontak Person (Nomor HP/Telp)</label>
+														<div class="col-lg-9 col-xl-6">
+															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $petani['no_hp']?>" disabled/>
+														</div>
+													</div>
+													<div class="form-group row">
+                                  						<label class="col-xl-3 col-lg-3 text-right col-form-label">Foto</label>
+                                    					<div class="col-lg-9 col-xl-6">
+                                        					<img src="<?= base_url('assets/gambar/petani/') . $petani['foto']; ?>" class="img-thumbnail" width="200">
+                                    					</div>
+                              						</div>
+													
+												</form>
                                     </div>
 								</div>
+										<!--end::Card-->
 					
 							</div>
 						</div>

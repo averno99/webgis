@@ -9,7 +9,7 @@ class FrontPoktan extends CI_Controller {
         $this->load->model('M_poktan');
 		// $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 		$data['judul'] = 'Poktan';
-		$data['poktan'] = $this->M_poktan->getAllPoktan();
+		$data['poktan'] = $this->M_poktan->getAllPoktanUmum();
 
 		$this->load->view('frontend/template/head', $data);
 		$this->load->view('frontend/template/aside');
@@ -64,7 +64,7 @@ class FrontPoktan extends CI_Controller {
 		$data['poktan'] = $this->M_poktan->getIdPoktan($id);
 		$data['adminis'] = $this->M_poktan->getAdminis($id);
 		$data['infras'] = $this->M_poktan->getInfras($id);
-		$data['petani'] = $this->M_poktan->getPengurus($id);
+		$data['petani'] = $this->M_poktan->getPengurusUmum($id);
 
 		$this->load->view('frontend/template/head', $data);
 		$this->load->view('frontend/template/aside');

@@ -12,6 +12,16 @@ class M_poktan extends CI_Model {
         return $query;
     }
 
+    public function getAllPoktanUmum()
+    {
+        $query = $this->db->select('poktan.*, poktan.nama as namaPoktan, gapoktan.nama as namaGapoktan, gapoktan.id as idGapoktan')
+            ->from('poktan')
+            ->join('gapoktan', 'poktan.id_gapoktan = gapoktan.id')
+            ->where('poktan.status_post', 'Sudah di Post')
+            ->get()->result_array();
+        return $query;
+    }
+
     public function getIdPoktan($id = NULL)
     {
 
@@ -30,6 +40,17 @@ class M_poktan extends CI_Model {
             ->from('petani')
             ->join('poktan', 'petani.id_poktan = poktan.id')
             ->where('id_poktan', $id)
+            ->get()->result_array();
+        return $query;
+    }
+
+    public function getPengurusUmum($id = NULL)
+    {
+        $query = $this->db->select('petani.nama as namaPetani, petani.*, poktan.*')
+            ->from('petani')
+            ->join('poktan', 'petani.id_poktan = poktan.id')
+            ->where('id_poktan', $id)
+            ->where('petani.status_post', 'Sudah di Post')
             ->get()->result_array();
         return $query;
     }
@@ -71,7 +92,8 @@ class M_poktan extends CI_Model {
             "rw" => htmlspecialchars($this->input->post('rw', true)),
             "luas_lahan" => htmlspecialchars($this->input->post('luas_lahan', true)),
             "komoditas_unggul" => htmlspecialchars($this->input->post('komoditas_unggul', true)),
-            "geojson" => htmlspecialchars($upload_geojson)
+            "geojson" => htmlspecialchars($upload_geojson),
+            "status_post" => "Belum Di Post"
         ];
 
         $this->db->insert('poktan', $data);
@@ -91,7 +113,8 @@ class M_poktan extends CI_Model {
             "rt" => htmlspecialchars($this->input->post('rt', true)),
             "rw" => htmlspecialchars($this->input->post('rw', true)),
             "luas_lahan" => htmlspecialchars($this->input->post('luas_lahan', true)),
-            "komoditas_unggul" => htmlspecialchars($this->input->post('komoditas_unggul', true))
+            "komoditas_unggul" => htmlspecialchars($this->input->post('komoditas_unggul', true)),
+            "status_post" => "Belum Di Post"
         ];
 
         $this->db->where('id', $this->input->post('id'));
@@ -112,6 +135,26 @@ class M_poktan extends CI_Model {
     public function tambahInfras($data)
     {
       return $this->db->insert_batch('infrastruktur', $data);
+    }
+
+    public function updateSudah($id)
+    {
+        $data = [
+            "status_post" => "Sudah Di Post"
+        ];
+
+        $this->db->where('id', $id);
+        $this->db->update('poktan', $data);
+    }
+
+    public function updateBelum($id)
+    {
+        $data = [
+            "status_post" => "Belum Di Post"
+        ];
+
+        $this->db->where('id', $id);
+        $this->db->update('poktan', $data);
     }
 	
 }

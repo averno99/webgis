@@ -31,11 +31,17 @@
         		let fileName = $(this).val().split('\\').pop();
         		$(this).next('.custom-file-label').addClass("selected").html(fileName);
     		});
+
+			
 		</script>
 <!-- End File Input -->
 		
 
 		<?php include 'map.php'; ?>
+
+<script>
+  	
+</script>
 
 	</body>
 	<!--end::Body-->

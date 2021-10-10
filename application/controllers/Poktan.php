@@ -99,6 +99,10 @@ class Poktan extends CI_Controller {
 
 	public function tambah_poktan()
     {
+		if ($this->session->userdata('role') !== 'Admin') {
+            redirect('poktan/blokir');
+        }
+		
         $data['judul'] = 'Tambah Data Poktan';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 		$data['gapoktan'] = $this->db->get('gapoktan')->result_array();
@@ -153,6 +157,10 @@ class Poktan extends CI_Controller {
 
 	public function ubah_poktan($id = NULL)
     {
+		if ($this->session->userdata('role') !== 'Admin') {
+            redirect('poktan/blokir');
+        }
+
         $data['judul'] = 'Tambah Data Poktan';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 		$data['poktan'] = $this->M_poktan->getIdPoktan($id);
@@ -213,6 +221,10 @@ class Poktan extends CI_Controller {
 
 	public function tambah_adminis($id = NULL)
     {
+		if ($this->session->userdata('role') !== 'Admin') {
+            redirect('poktan/blokir');
+        }
+
         $data['judul'] = 'Tambah Data Administrasi';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 		$data['poktan'] = $this->M_poktan->getIdPoktan($id);
@@ -256,6 +268,10 @@ class Poktan extends CI_Controller {
 
 	public function ubah_adminis($id = NULL)
     {
+		if ($this->session->userdata('role') !== 'Admin') {
+            redirect('blokir');
+        }
+		
         $data['judul'] = 'Ubah Data Administrasi';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 		$data['poktan'] = $this->M_poktan->getIdPoktan($id);
@@ -300,6 +316,10 @@ class Poktan extends CI_Controller {
 
 	public function tambah_infras($id = NULL)
     {
+		if ($this->session->userdata('role') !== 'Admin') {
+            redirect('blokir');
+        }
+
         $data['judul'] = 'Tambah Data Infrastruktur';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 		$data['poktan'] = $this->M_poktan->getIdPoktan($id);
@@ -343,6 +363,10 @@ class Poktan extends CI_Controller {
 
 	public function ubah_infras($id = NULL)
     {
+		if ($this->session->userdata('role') !== 'Admin') {
+            redirect('blokir');
+        }
+
         $data['judul'] = 'Tambah Data Infrastruktur';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 		$data['poktan'] = $this->M_poktan->getIdPoktan($id);
@@ -383,5 +407,29 @@ class Poktan extends CI_Controller {
 			redirect('poktan');
 			
 		}
+	}
+
+	public function updatesudah($id = NULL)
+    {
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+		$data['poktan'] = $this->M_poktan->getAllPoktan();
+
+        $this->M_poktan->updateSudah($id);
+            // $this->session->set_flashdata('flash', 'Ditambahkan');
+        redirect('poktan');
+    }
+
+	public function updatebelum($id = NULL)
+    {
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+		$data['poktan'] = $this->M_poktan->getAllPoktan();
+
+        $this->M_poktan->updateBelum($id);
+            // $this->session->set_flashdata('flash', 'Ditambahkan');
+        redirect('poktan');
+    }
+	
+	public function blokir(){
+		echo "Anda Bukan Hendri";
 	}
 }

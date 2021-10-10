@@ -80,6 +80,10 @@ class Petani extends CI_Controller {
 
 	public function tambah_petani()
     {
+		if ($this->session->userdata('role') !== 'Admin') {
+            redirect('blokir');
+        }
+
         $data['judul'] = 'Tambah Data Petani';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 		$data['status'] = ['Anggota Kelompok Tani', 'Non Anggota'];
@@ -130,6 +134,10 @@ class Petani extends CI_Controller {
 
 	public function ubah_petani($id = NULL)
     {
+		if ($this->session->userdata('role') !== 'Admin') {
+            redirect('blokir');
+        }
+
         $data['judul'] = 'Ubah Data Petani';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 		$data['petani'] = $this->M_petani->getIdPetani($id);
@@ -180,12 +188,16 @@ class Petani extends CI_Controller {
 
             $this->M_petani->ubahPetani();
             // $this->session->set_flashdata('flash', 'Ditambahkan');
-            redirect('petani');
+            redirect('petani/detail/'. $id);
         }
     }
 
     public function tambah_prasarana($id = NULL)
     {
+		if ($this->session->userdata('role') !== 'Admin') {
+            redirect('blokir');
+        }
+
         $data['judul'] = 'Tambah Data Prasarana';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 		$data['status'] = ['Pemilik', 'Penggarap'];
@@ -210,7 +222,443 @@ class Petani extends CI_Controller {
 
             $this->M_petani->tambahPrasarana();
             // $this->session->set_flashdata('flash', 'Ditambahkan');
-            redirect('petani');
+            redirect('petani/prasarana/'. $id);
         }
     }
+
+	public function ubah_prasarana($id = NULL)
+    {
+		if ($this->session->userdata('role') !== 'Admin') {
+            redirect('blokir');
+        }
+
+        $data['judul'] = 'Ubah Data Sarana Pertanian';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+		$data['petani'] = $this->M_petani->getIdPetani($id);
+		$data['status'] = ['Pemilik', 'Penggarap'];
+		$data['prasarana'] = $this->db->get_where('prasarana_petani', ['id_petani' => $id])->row_array();
+		
+        $this->form_validation->set_rules(
+            'status_pemilik',
+            'Jumlah',
+            'required|trim'
+        );
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('backend/template/head', $data);
+			$this->load->view('backend/template/aside');
+			$this->load->view('backend/template/topbar', $data);
+			$this->load->view('backend/petani/ubah_prasarana', $data);
+			$this->load->view('backend/template/footer');
+			$this->load->view('backend/template/user_panel', $data);
+			$this->load->view('backend/template/js');
+        } else {
+			$data = [
+            "status_pemilik" => htmlspecialchars($this->input->post('status_pemilik', true))
+        ];
+
+        	$this->db->where('id', $this->input->post('id'));
+      		$this->db->update('prasarana_petani', $data);
+            // $this->session->set_flashdata('flash', 'Ditambahkan');
+            redirect('petani/prasarana/'. $id);
+			
+		}
+	}
+
+    public function tambah_sarana($id = NULL)
+    {
+		if ($this->session->userdata('role') !== 'Admin') {
+            redirect('blokir');
+        }
+
+        $data['judul'] = 'Tambah Data Sarana Pertanian';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+		$data['petani'] = $this->M_petani->getIdPetani($id);
+		
+        $this->form_validation->set_rules(
+            'jumlah[]',
+            'Jumlah',
+            'numeric|trim'
+        );
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('backend/template/head', $data);
+			$this->load->view('backend/template/aside');
+			$this->load->view('backend/template/topbar', $data);
+			$this->load->view('backend/petani/tambah_sarana', $data);
+			$this->load->view('backend/template/footer');
+			$this->load->view('backend/template/user_panel', $data);
+			$this->load->view('backend/template/js');
+        } else {
+			$idd = $_POST['id']; // Ambil data nis dan masukkan ke variabel nis
+    		$sarana = $_POST['sarana']; // Ambil data nama dan masukkan ke variabel nama
+    		$jumlah = $_POST['jumlah']; // Ambil data telp dan masukkan ke variabel telp
+    		$satuan = $_POST['satuan']; // Ambil data alamat dan masukkan ke variabel alamat
+    		$data = array();
+    
+    		$index = 0; // Set index array awal dengan 0
+    		foreach($idd as $dataid){ // Kita buat perulangan berdasarkan nis sampai data terakhir
+      			array_push($data, array(
+        			'id_petani'=>$dataid,
+        			'sarana'=>$sarana[$index],  // Ambil dan set data nama sesuai index array dari $index
+        			'jumlah'=>$jumlah[$index],  // Ambil dan set data telepon sesuai index array dari $index
+        			'satuan'=>$satuan[$index],  // Ambil dan set data alamat sesuai index array dari $index
+      			));
+      			$index++;
+    		}    
+      		$this->M_petani->tambahSarana($data);
+			redirect('petani/prasarana/'.$id);
+			
+		}
+	}
+
+    public function ubah_sarana($id = NULL)
+    {
+		if ($this->session->userdata('role') !== 'Admin') {
+            redirect('blokir');
+        }
+
+        $data['judul'] = 'Ubah Data Sarana Pertanian';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+		$data['petani'] = $this->M_petani->getIdPetani($id);
+		$data['sarana'] = $this->db->get_where('sarana_pertanian', ['id_petani' => $id])->result_array();
+		
+        $this->form_validation->set_rules(
+            'jumlah[]',
+            'Jumlah',
+            'numeric|trim'
+        );
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('backend/template/head', $data);
+			$this->load->view('backend/template/aside');
+			$this->load->view('backend/template/topbar', $data);
+			$this->load->view('backend/petani/ubah_sarana', $data);
+			$this->load->view('backend/template/footer');
+			$this->load->view('backend/template/user_panel', $data);
+			$this->load->view('backend/template/js');
+        } else {
+			$idd = $_POST['id']; // Ambil data nis dan masukkan ke variabel nis
+    		$sarana = $_POST['sarana']; // Ambil data nama dan masukkan ke variabel nama
+    		$jumlah = $_POST['jumlah']; // Ambil data telp dan masukkan ke variabel telp
+    		$satuan = $_POST['satuan']; // Ambil data alamat dan masukkan ke variabel alamat
+    		$data = array();
+    
+    		$index = 0; // Set index array awal dengan 0
+    		foreach($idd as $dataid){ // Kita buat perulangan berdasarkan nis sampai data terakhir
+      			array_push($data, array(
+        			'id'=>$dataid,
+        			'sarana'=>$sarana[$index],  // Ambil dan set data nama sesuai index array dari $index
+        			'jumlah'=>$jumlah[$index],  // Ambil dan set data telepon sesuai index array dari $index
+        			'satuan'=>$satuan[$index],  // Ambil dan set data alamat sesuai index array dari $index
+      			));
+      			$index++;
+    		}    
+      		$this->db->update_batch('sarana_pertanian',$data, 'id');
+			redirect('petani/prasarana/'. $id);
+			
+		}
+	}
+
+	public function tambah_produksi($id = NULL)
+    {
+		if ($this->session->userdata('role') !== 'Admin') {
+            redirect('blokir');
+        }
+
+        $data['judul'] = 'Tambah Data Petani';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+		$data['petani'] = $this->M_petani->getIdPetani($id);
+		$data['bidang'] = ['Tanaman Pangan', 'Tanaman Hortikultura', 'Tanaman Perkebunan'];
+		$data['lahan'] = ['Sawah', 'Non Sawah'];
+		$data['sistem'] = ['Monokultur', 'Multikultur'];
+		$data['indeks'] = ['1 Kali (IP 100%)', '2 Kali (IP 200%)', '3 Kali (IP 300%)', '4 Kali (IP 400%)'];
+
+        $this->form_validation->set_rules(
+            'jenis_usaha',
+            'Nama',
+            'required|trim',
+            array('required' => 'Nama Gapoktan tidak boleh kosong')
+        );
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('backend/template/head', $data);
+			$this->load->view('backend/template/aside');
+			$this->load->view('backend/template/topbar', $data);
+			$this->load->view('backend/petani/tambah_produksi', $data);
+			$this->load->view('backend/template/footer');
+			$this->load->view('backend/template/user_panel', $data);
+			$this->load->view('backend/template/js');
+        } else {
+
+            $this->M_petani->tambahProduksi();
+            // $this->session->set_flashdata('flash', 'Ditambahkan');
+            redirect('petani/produksi/'.$id);
+        }
+    }
+
+	public function ubah_produksi($id = NULL)
+    {
+		if ($this->session->userdata('role') !== 'Admin') {
+            redirect('blokir');
+        }
+
+        $data['judul'] = 'Tambah Data Petani';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+		$data['petani'] = $this->M_petani->getIdPetani($id);
+		$data['produksi'] = $this->db->get_where('produksi_pertanian', ['id_petani' => $id])->row_array();
+		$data['bidang'] = ['Tanaman Pangan', 'Tanaman Hortikultura', 'Tanaman Perkebunan'];
+		$data['lahan'] = ['Sawah', 'Non Sawah'];
+		$data['sistem'] = ['Monokultur', 'Multikultur'];
+		$data['indeks'] = ['1 Kali (IP 100%)', '2 Kali (IP 200%)', '3 Kali (IP 300%)', '4 Kali (IP 400%)'];
+
+        $this->form_validation->set_rules(
+            'jenis_usaha',
+            'Nama',
+            'required|trim',
+            array('required' => 'Nama Gapoktan tidak boleh kosong')
+        );
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('backend/template/head', $data);
+			$this->load->view('backend/template/aside');
+			$this->load->view('backend/template/topbar', $data);
+			$this->load->view('backend/petani/ubah_produksi', $data);
+			$this->load->view('backend/template/footer');
+			$this->load->view('backend/template/user_panel', $data);
+			$this->load->view('backend/template/js');
+        } else {
+
+            $this->M_petani->ubahProduksi();
+            // $this->session->set_flashdata('flash', 'Ditambahkan');
+            redirect('petani/produksi/'. $id);
+        }
+    }
+
+	public function tambah_lokasi($id = NULL)
+    {
+		if ($this->session->userdata('role') !== 'Admin') {
+            redirect('blokir');
+        }
+
+        $data['judul'] = 'Tambah Data Lokasi Pertanian';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+		$data['petani'] = $this->M_petani->getIdPetani($id);
+		
+        $this->form_validation->set_rules(
+            'luas_lahan_sendiri[]',
+            'Jumlah',
+            'numeric|trim'
+        );
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('backend/template/head', $data);
+			$this->load->view('backend/template/aside');
+			$this->load->view('backend/template/topbar', $data);
+			$this->load->view('backend/petani/tambah_lokasi', $data);
+			$this->load->view('backend/template/footer');
+			$this->load->view('backend/template/user_panel', $data);
+			$this->load->view('backend/template/js');
+        } else {
+			$idd = $_POST['id']; // Ambil data nis dan masukkan ke variabel nis
+    		$luas_lahan_sendiri = $_POST['luas_lahan_sendiri']; // Ambil data nama dan masukkan ke variabel nama
+    		$luas_lahan_sewa = $_POST['luas_lahan_sewa'];
+			$keterangan = $_POST['keterangan']; // Ambil data telp dan masukkan ke variabel telp
+    		$latitude = $_POST['latitude'];
+			$longitude = $_POST['longitude']; // Ambil data alamat dan masukkan ke variabel alamat
+    		$data = array();
+    
+    		$index = 0; // Set index array awal dengan 0
+    		foreach($idd as $dataid){ // Kita buat perulangan berdasarkan nis sampai data terakhir
+      			array_push($data, array(
+        			'id_petani'=>$dataid,
+        			'luas_lahan_sendiri'=>$luas_lahan_sendiri[$index],  // Ambil dan set data nama sesuai index array dari $index
+        			'luas_lahan_sewa'=>$luas_lahan_sewa[$index],
+					'keterangan'=>$keterangan[$index],  // Ambil dan set data telepon sesuai index array dari $index
+        			'latitude'=>$latitude[$index],
+					'longitude'=>$longitude[$index],  // Ambil dan set data alamat sesuai index array dari $index
+      			));
+      			$index++;
+    		} 
+      		$this->M_petani->tambahLokasi($data);
+			redirect('petani/prasarana/'.$id);
+			
+		}
+	}
+
+	public function ubah_lokasi($id = NULL)
+    {
+		if ($this->session->userdata('role') !== 'Admin') {
+            redirect('blokir');
+        }
+
+        $data['judul'] = 'Ubah Data Lokasi Pertanian';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+		$data['petani'] = $this->M_petani->getIdPetani($id);
+		$data['lokasi'] = $this->db->get_where('lokasi_pertanian', ['id_petani' => $id])->result_array();
+		
+        $this->form_validation->set_rules(
+            'luas_lahan_sendiri[]',
+            'Jumlah',
+            'numeric|trim'
+        );
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('backend/template/head', $data);
+			$this->load->view('backend/template/aside');
+			$this->load->view('backend/template/topbar', $data);
+			$this->load->view('backend/petani/ubah_lokasi', $data);
+			$this->load->view('backend/template/footer');
+			$this->load->view('backend/template/user_panel', $data);
+			$this->load->view('backend/template/js');
+        } else {
+			
+			$idd = $_POST['id']; // Ambil data nis dan masukkan ke variabel nis
+    		$luas_lahan_sendiri = $_POST['luas_lahan_sendiri']; // Ambil data nama dan masukkan ke variabel nama
+    		$luas_lahan_sewa = $_POST['luas_lahan_sewa'];
+			$keterangan = $_POST['keterangan']; // Ambil data telp dan masukkan ke variabel telp
+    		$latitude = $_POST['latitude'];
+			$longitude = $_POST['longitude']; // Ambil data alamat dan masukkan ke variabel alamat
+    		$data = array();
+    
+    		$index = 0; // Set index array awal dengan 0
+    		foreach($idd as $dataid){ // Kita buat perulangan berdasarkan nis sampai data terakhir
+      			array_push($data, array(
+        			'id'=>$dataid,
+        			'luas_lahan_sendiri'=>$luas_lahan_sendiri[$index],  // Ambil dan set data nama sesuai index array dari $index
+        			'luas_lahan_sewa'=>$luas_lahan_sewa[$index],
+					'keterangan'=>$keterangan[$index],  // Ambil dan set data telepon sesuai index array dari $index
+        			'latitude'=>$latitude[$index],
+					'longitude'=>$longitude[$index],  // Ambil dan set data alamat sesuai index array dari $index
+      			));
+      			$index++;
+    		}
+      		$this->db->update_batch('lokasi_pertanian',$data, 'id');
+			redirect('petani/prasarana/'. $id);
+			
+		}
+	}
+
+	public function tambah_data_produksi($id = NULL)
+    {
+		if ($this->session->userdata('role') !== 'Admin') {
+            redirect('blokir');
+        }
+
+        $data['judul'] = 'Tambah Data Produksi Pertanian';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+		$data['petani'] = $this->M_petani->getIdPetani($id);
+		
+        $this->form_validation->set_rules(
+            'luas[]',
+            'Jumlah',
+            'required|trim'
+        );
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('backend/template/head', $data);
+			$this->load->view('backend/template/aside');
+			$this->load->view('backend/template/topbar', $data);
+			$this->load->view('backend/petani/tambah_data_produksi', $data);
+			$this->load->view('backend/template/footer');
+			$this->load->view('backend/template/user_panel', $data);
+			$this->load->view('backend/template/js');
+        } else {
+			$idd = $_POST['id']; // Ambil data nis dan masukkan ke variabel nis
+    		$komoditas = $_POST['komoditas']; // Ambil data nama dan masukkan ke variabel nama
+    		$luas = $_POST['luas'];
+			$panen_kg = $_POST['panen_kg']; // Ambil data telp dan masukkan ke variabel telp
+    		$harga = $_POST['harga'];
+    		$data = array();
+    
+    		$index = 0; // Set index array awal dengan 0
+    		foreach($idd as $dataid){ // Kita buat perulangan berdasarkan nis sampai data terakhir
+      			array_push($data, array(
+        			'id_petani'=>$dataid,
+        			'komoditas'=>$komoditas[$index],  // Ambil dan set data nama sesuai index array dari $index
+        			'luas'=>$luas[$index],
+					'panen_kg'=>$panen_kg[$index],  // Ambil dan set data telepon sesuai index array dari $index
+        			'harga'=>$harga[$index],
+				));
+      			$index++;
+    		} 
+      		$this->M_petani->tambahDataProduksi($data);
+			redirect('petani/produksi/'.$id);
+			
+		}
+	}
+
+	public function ubah_data_produksi($id = NULL)
+    {
+		if ($this->session->userdata('role') !== 'Admin') {
+            redirect('blokir');
+        }
+
+        $data['judul'] = 'Ubah Data Produksi Pertanian';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+		$data['petani'] = $this->M_petani->getIdPetani($id);
+		$data['data_produksi'] = $this->db->get_where('data_produksi', ['id_petani' => $id])->result_array();
+		
+        $this->form_validation->set_rules(
+            'luas[]',
+            'Jumlah',
+            'required|trim'
+        );
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('backend/template/head', $data);
+			$this->load->view('backend/template/aside');
+			$this->load->view('backend/template/topbar', $data);
+			$this->load->view('backend/petani/ubah_data_produksi', $data);
+			$this->load->view('backend/template/footer');
+			$this->load->view('backend/template/user_panel', $data);
+			$this->load->view('backend/template/js');
+        } else {
+			$idd = $_POST['id']; // Ambil data nis dan masukkan ke variabel nis
+    		$komoditas = $_POST['komoditas']; // Ambil data nama dan masukkan ke variabel nama
+    		$luas = $_POST['luas'];
+			$panen_kg = $_POST['panen_kg']; // Ambil data telp dan masukkan ke variabel telp
+    		$harga = $_POST['harga'];
+    		$data = array();
+    
+    		$index = 0; // Set index array awal dengan 0
+    		foreach($idd as $dataid){ // Kita buat perulangan berdasarkan nis sampai data terakhir
+      			array_push($data, array(
+        			'id'=>$dataid,
+        			'komoditas'=>$komoditas[$index],  // Ambil dan set data nama sesuai index array dari $index
+        			'luas'=>$luas[$index],
+					'panen_kg'=>$panen_kg[$index],  // Ambil dan set data telepon sesuai index array dari $index
+        			'harga'=>$harga[$index],
+				));
+      			$index++;
+    		} 
+      		$this->db->update_batch('data_produksi',$data, 'id');
+			redirect('petani/produksi/'.$id);
+			
+		}
+	}
+
+	public function updatesudah($id = NULL)
+    {
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+		$data['petani'] = $this->M_petani->getAllPetani();
+
+        $this->M_petani->updateSudah($id);
+            // $this->session->set_flashdata('flash', 'Ditambahkan');
+        redirect('petani');
+    }
+
+	public function updatebelum($id = NULL)
+    {
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+		$data['petani'] = $this->M_petani->getAllPetani();
+
+        $this->M_petani->updateBelum($id);
+            // $this->session->set_flashdata('flash', 'Ditambahkan');
+        redirect('petani');
+    }
+	
+	public function blokir(){
+		echo "Anda Bukan Hendri";
+	}
 }

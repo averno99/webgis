@@ -23,7 +23,7 @@
 										<div class="card-toolbar">
 											<ul class="nav nav-tabs nav-tabs-space-lg nav-tabs-line nav-tabs-bold nav-tabs-line-3x" role="tablist">
 												<li class="nav-item mr-3">
-													<a class="nav-link" href="<?= site_url(); ?>petani/detail/<?= $petani['id'] ?>">
+													<a class="nav-link" href="<?= site_url(); ?>FrontPetani/detail/<?= $petani['id'] ?>">
 														<span class="nav-icon mr-2">
 															<span class="svg-icon mr-3">
 																<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Chat-check.svg-->
@@ -41,7 +41,7 @@
 													</a>
 												</li>
                                                 <li class="nav-item mr-3">
-													<a class="nav-link active" href="<?= site_url(); ?>petani/prasarana/<?= $petani['id'] ?>">
+													<a class="nav-link" href="<?= site_url(); ?>FrontPetani/prasarana/<?= $petani['id'] ?>">
 														<span class="nav-icon mr-2">
 															<span class="svg-icon mr-3">
 																<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Chat-check.svg-->
@@ -59,7 +59,7 @@
 													</a>
 												</li>
                                                 <li class="nav-item mr-3">
-													<a class="nav-link" href="<?= site_url(); ?>petani/produksi/<?= $petani['id'] ?>">
+													<a class="nav-link active" href="<?= site_url(); ?>FrontPetani/produksi/<?= $petani['id'] ?>">
 														<span class="nav-icon mr-2">
 															<span class="svg-icon mr-3">
 																<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Chat-check.svg-->
@@ -85,27 +85,63 @@
 										<div class="tab-content pt-5">
 											<!--begin::Tab Content-->
 											<div class="tab-pane active" role="tabpanel">
-												<?php if (empty($prasarana)) : ?>
-											<a type="button" href="<?= site_url(); ?>petani/tambah_prasarana/<?= $petani['id'] ?>">Tambah Data</a>
-										<?php else :?>
-										<form class="form">
+										    <?php if (empty($produksi)) : ?>
+                                                <div class="alert alert-custom alert-light-danger" role="alert">
+                                                    Data Tidak Ditemukan!
+                                                </div>
+                                            <?php else :?>
+												<form class="form">
 													<div class="form-group row">
-														<label class="col-xl-3 col-lg-3 text-right col-form-label">Status Pemilik</label>
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">Bidang Usaha/Jenis Usaha</label>
 														<div class="col-lg-9 col-xl-6">
-															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $prasarana['status_pemilik']?>" disabled/>
+															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $produksi['jenis_usaha']?>" disabled/>
+														</div>
+													</div>
+                                                    <div class="form-group row">
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">Jenis Lahan</label>
+														<div class="col-lg-9 col-xl-6">
+															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $produksi['jenis_lahan']?>" disabled/>
+														</div>
+													</div>
+                                                    <div class="form-group row">
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">Sistem Pertanian</label>
+														<div class="col-lg-9 col-xl-6">
+															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $produksi['sistem_pertanian']?>" disabled/>
+														</div>
+													</div>
+                                                    <div class="form-group row">
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">Jenis Komoditas</label>
+														<div class="col-lg-9 col-xl-6">
+															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $produksi['jenis_komoditas']?>" disabled/>
+														</div>
+													</div>
+                                                    <div class="form-group row">
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">Indeks Pertanaman (IP) Dalam 1 Tahun</label>
+														<div class="col-lg-9 col-xl-6">
+															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $produksi['ip']?>" disabled/>
+														</div>
+													</div>
+                                                    <div class="form-group row">
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">Jadwal Tanam Dalam 1 Tahun</label>
+														<div class="col-lg-9 col-xl-6">
+															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $produksi['jadwal_tanam']?>" disabled/>
+														</div>
+													</div>
+                                                    <div class="form-group row">
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">Jadwal Panen Dalam 1 Tahun</label>
+														<div class="col-lg-9 col-xl-6">
+															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $produksi['jadwal_panen']?>" disabled/>
+														</div>
+													</div>
+                                                    <div class="form-group row">
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">Sistem Pengairan</label>
+														<div class="col-lg-9 col-xl-6">
+															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $produksi['sistem_pengairan']?>" disabled/>
 														</div>
 													</div>
 												</form>
-												<?php if ($user['role'] == 'Admin') : ?>
-											<div class="d-flex justify-content-between border-top pt-10">
-												<div>
-													<a type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url(); ?>petani/ubah_prasarana/<?= $petani['id'] ?>">Ubah Data</a>
-												</div>
-											</div>
-										<?php endif; ?>
-										<!--end: Datatable-->
-										<?php endif; ?>
 												
+												<?php endif; ?>
 											</div>
 											<!--end::Tab Content-->
 										</div>
@@ -116,95 +152,41 @@
                                 <div class="card card-custom mt-5">
 									<div class="card-header">
 										<div class="card-title">
-											<h3 class="card-label">Lokasi Pertanian</h3>
+											<h3 class="card-label">Data Produksi Komoditas Pertanian</h3>
 										</div>
 									</div>
 									<div class="card-body">
-                                        <?php if (empty($lokasi)) : ?>
-													<a type="button" href="<?= site_url(); ?>petani/tambah_lokasi/<?= $petani['id'] ?>">Tambah Data</a>
-												<?php else :?>
+                                            <?php if (empty($data_produksi)) : ?>
+												<div class="alert alert-custom alert-light-danger" role="alert">
+                                                    Data Tidak Ditemukan!
+                                                </div>
+                                            <?php else :?>
 										<table class="table table-separate table-head-custom collapsed" id="kt_datatable">
 											<thead>
 												<tr>
 													<th>No</th>
-													<th>Luas Lahan Milik Sendiri + Digarap (Ha)</th>
-													<th>Luas Lahan Sewa + Digarap (Ha)</th>
-													<th>Keterangan</th>
-                                                    <th>Latitude</th>
-                                                    <th>Longitude</th>
+													<th>Komoditas</th>
+													<th>Luas (Ha)</th>
+													<th>Panen (Kg)</th>
+                                                    <th>Harga Per Kg</th>
 												</tr>
 											</thead>
 											<tbody>
 											<?php 
 											$no = 1;
-											foreach ($lokasi as $lks) : ?>
+											foreach ($data_produksi as $dp) : ?>
 												<tr>
 													<td><?= $no++; ?></td>
-													<td><?= $lks['luas_lahan_sendiri']?> Ha</td>
-													<td><?= $lks['luas_lahan_sewa']?> Ha</td>
-													<td><?= $lks['keterangan']?></td>
-                                                    <td><?= $lks['latitude']?></td>
-                                                    <td><?= $lks['longitude']?></td>
+													<td><?= $dp['komoditas']?></td>
+													<td><?= $dp['luas']?></td>
+													<td><?= $dp['panen_kg']?></td>
+                                                    <td><?= $dp['harga']?></td>
 												</tr>
 											<?php endforeach; ?>
 											</tbody>
 										</table>
+									
 										<!--end: Datatable-->
-										<?php if ($user['role'] == 'Admin') : ?>
-											<div class="d-flex justify-content-between border-top pt-10">
-												<div>
-													<a type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url(); ?>petani/ubah_lokasi/<?= $petani['id'] ?>">Ubah Data</a>
-												</div>
-											</div>
-										<?php endif; ?>
-										<?php endif; ?>
-                                    </div>
-								</div>
-
-                                <div class="card card-custom mt-5">
-									<div class="card-header">
-										<div class="card-title">
-											<h3 class="card-label">Sarana Pertanian (Milik Perorangan)</h3>
-										</div>
-									</div>
-									<div class="card-body">
-                                        <?php if (empty($sarana)) : ?>
-											<a type="button" href="<?= site_url(); ?>petani/tambah_sarana/<?= $petani['id'] ?>">Tambah Data</a>
-										<?php else :?>
-										<table class="table table-separate table-head-custom collapsed" id="kt_datatable">
-											<thead>
-												<tr>
-													<th>No</th>
-													<th>Sarana Pertanian</th>
-													<th>Jumalh</th>
-													<th>Satuan</th>
-												</tr>
-											</thead>
-											<tbody>
-											<?php 
-											$no = 1;
-											foreach ($sarana as $srn) : ?>
-												<tr>
-													<td><?= $no++; ?></td>
-													<td><?= $srn['sarana']?></td>
-													<td><?= $srn['jumlah']?></td>
-													<td><?= $srn['satuan']?></td>
-												</tr>
-											<?php endforeach; ?>
-											</tbody>
-										</table>
-										<!--end: Datatable-->
-										<?php if ($user['role'] == 'Admin') : ?>
-											<div class="d-flex justify-content-between border-top pt-10">
-												<div class="mr-2">
-													<a type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url('petani')?>">Kembali</a>
-												</div>
-												<div>
-													<a type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url(); ?>petani/ubah_sarana/<?= $petani['id'] ?>">Ubah Data</a>
-												</div>
-											</div>
-										<?php endif; ?>
-										
 										<?php endif; ?>
                                     </div>
 								</div>

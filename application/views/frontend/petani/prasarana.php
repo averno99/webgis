@@ -23,7 +23,7 @@
 										<div class="card-toolbar">
 											<ul class="nav nav-tabs nav-tabs-space-lg nav-tabs-line nav-tabs-bold nav-tabs-line-3x" role="tablist">
 												<li class="nav-item mr-3">
-													<a class="nav-link" href="<?= site_url(); ?>petani/detail/<?= $petani['id'] ?>">
+													<a class="nav-link" href="<?= site_url(); ?>FrontPetani/detail/<?= $petani['id'] ?>">
 														<span class="nav-icon mr-2">
 															<span class="svg-icon mr-3">
 																<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Chat-check.svg-->
@@ -41,7 +41,7 @@
 													</a>
 												</li>
                                                 <li class="nav-item mr-3">
-													<a class="nav-link active" href="<?= site_url(); ?>petani/prasarana/<?= $petani['id'] ?>">
+													<a class="nav-link active" href="<?= site_url(); ?>FrontPetani/prasarana/<?= $petani['id'] ?>">
 														<span class="nav-icon mr-2">
 															<span class="svg-icon mr-3">
 																<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Chat-check.svg-->
@@ -59,7 +59,7 @@
 													</a>
 												</li>
                                                 <li class="nav-item mr-3">
-													<a class="nav-link" href="<?= site_url(); ?>petani/produksi/<?= $petani['id'] ?>">
+													<a class="nav-link" href="<?= site_url(); ?>FrontPetani/produksi/<?= $petani['id'] ?>">
 														<span class="nav-icon mr-2">
 															<span class="svg-icon mr-3">
 																<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Chat-check.svg-->
@@ -85,9 +85,11 @@
 										<div class="tab-content pt-5">
 											<!--begin::Tab Content-->
 											<div class="tab-pane active" role="tabpanel">
-												<?php if (empty($prasarana)) : ?>
-											<a type="button" href="<?= site_url(); ?>petani/tambah_prasarana/<?= $petani['id'] ?>">Tambah Data</a>
-										<?php else :?>
+										<?php if (empty($prasarana)) : ?>
+										    <div class="alert alert-custom alert-light-danger" role="alert">
+                                                Data Tidak Ditemukan!
+                                            </div>
+                                        <?php else :?>
 										<form class="form">
 													<div class="form-group row">
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Status Pemilik</label>
@@ -96,13 +98,6 @@
 														</div>
 													</div>
 												</form>
-												<?php if ($user['role'] == 'Admin') : ?>
-											<div class="d-flex justify-content-between border-top pt-10">
-												<div>
-													<a type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url(); ?>petani/ubah_prasarana/<?= $petani['id'] ?>">Ubah Data</a>
-												</div>
-											</div>
-										<?php endif; ?>
 										<!--end: Datatable-->
 										<?php endif; ?>
 												
@@ -121,8 +116,10 @@
 									</div>
 									<div class="card-body">
                                         <?php if (empty($lokasi)) : ?>
-													<a type="button" href="<?= site_url(); ?>petani/tambah_lokasi/<?= $petani['id'] ?>">Tambah Data</a>
-												<?php else :?>
+										    <div class="alert alert-custom alert-light-danger" role="alert">
+                                                Data Tidak Ditemukan!
+                                            </div>
+                                        <?php else :?>
 										<table class="table table-separate table-head-custom collapsed" id="kt_datatable">
 											<thead>
 												<tr>
@@ -150,13 +147,6 @@
 											</tbody>
 										</table>
 										<!--end: Datatable-->
-										<?php if ($user['role'] == 'Admin') : ?>
-											<div class="d-flex justify-content-between border-top pt-10">
-												<div>
-													<a type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url(); ?>petani/ubah_lokasi/<?= $petani['id'] ?>">Ubah Data</a>
-												</div>
-											</div>
-										<?php endif; ?>
 										<?php endif; ?>
                                     </div>
 								</div>
@@ -169,7 +159,9 @@
 									</div>
 									<div class="card-body">
                                         <?php if (empty($sarana)) : ?>
-											<a type="button" href="<?= site_url(); ?>petani/tambah_sarana/<?= $petani['id'] ?>">Tambah Data</a>
+											<div class="alert alert-custom alert-light-danger" role="alert">
+                                                Data Tidak Ditemukan!
+                                            </div>
 										<?php else :?>
 										<table class="table table-separate table-head-custom collapsed" id="kt_datatable">
 											<thead>
@@ -194,16 +186,6 @@
 											</tbody>
 										</table>
 										<!--end: Datatable-->
-										<?php if ($user['role'] == 'Admin') : ?>
-											<div class="d-flex justify-content-between border-top pt-10">
-												<div class="mr-2">
-													<a type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url('petani')?>">Kembali</a>
-												</div>
-												<div>
-													<a type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url(); ?>petani/ubah_sarana/<?= $petani['id'] ?>">Ubah Data</a>
-												</div>
-											</div>
-										<?php endif; ?>
 										
 										<?php endif; ?>
                                     </div>

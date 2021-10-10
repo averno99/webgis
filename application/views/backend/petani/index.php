@@ -24,7 +24,8 @@
 										<div class="card-title">
 											<h3 class="card-label">Data Petani</h3>
 										</div>
-										<div class="card-toolbar">
+										<?php if ($user['role'] == 'Admin') : ?>
+											<div class="card-toolbar">
 											<!--begin::Button-->
 											<a href="<?= site_url('petani/tambah_petani')?>" class="btn btn-primary font-weight-bolder">
 											<span class="svg-icon svg-icon-outline-primary svg-icon-2x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Plus.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -36,6 +37,8 @@
 											</svg><!--end::Svg Icon--></span>Tambah Data</a>
 											<!--end::Button-->
 										</div>
+										<?php endif; ?>
+										
 									</div>
 									<div class="card-body">
 										<!--begin: Datatable-->
@@ -47,6 +50,7 @@
                                                     <th>Jabatan Dalam Kelompok</th>
                                                     <th>Kelompok Tani</th>
                                                     <th>Status Anggota</th>
+													<th>Status Post</th>
 													<th>Aksi</th>
 												</tr>
 											</thead>
@@ -61,8 +65,22 @@
                                                     <td><?= $ptn['namaPoktan']?></td>
                                                     <td><?= $ptn['status_anggota']?></td>
 													<td>
-														<a href="<?= site_url(); ?>petani/detail/<?= $ptn['id'] ?>"><small>Detail</small></a> | 
-														<a href="<?= site_url(); ?>petani/ubah_petani/<?= $ptn['id'] ?>"><small>Ubah</small></a> 
+														<?php if ($ptn['status_post'] == 'Sudah Di Post') : ?>
+                                                            <span class="badge badge-success"><?= $ptn['status_post']; ?></span>
+                                                        <?php else : ?>
+                                                            <span class="badge badge-danger"><?= $ptn['status_post']; ?></span>
+                                                        <?php endif; ?>
+													</td>
+													<td>
+														<?php if ($user['role'] == 'Super Admin') : ?>
+															<a href="<?= site_url(); ?>petani/updatesudah/<?= $ptn['id'] ?>"><small>Setuju</small></a> |
+															<a href="<?= site_url(); ?>petani/updatebelum/<?= $ptn['id'] ?>"><small>Batal</small></a> |
+															<a href="<?= site_url(); ?>petani/detail/<?= $ptn['id'] ?>"><small>Detail</small></a> |
+														<?php else : ?>
+															<a href="<?= site_url(); ?>petani/detail/<?= $ptn['id'] ?>"><small>Detail</small></a> | 
+															<a href="<?= site_url(); ?>petani/ubah_petani/<?= $ptn['id'] ?>"><small>Ubah</small></a> 
+														<?php endif; ?>
+														
 													</td>
                                                 </tr>
 											<?php endforeach; ?>
