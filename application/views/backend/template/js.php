@@ -36,8 +36,10 @@
 		</script>
 <!-- End File Input -->
 		
-
-		<?php include 'map.php'; ?>
+<?php if ($this->uri->segment(1) == 'dashboard') : ?>
+    <?php include 'map.php'; ?>
+<?php endif; ?>
+		
 
 <script>
   	

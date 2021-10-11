@@ -34,8 +34,9 @@
 		</script>
 <!-- End File Input -->
 		
-
-		<?php include 'map.php'; ?>
+<?php if ($this->uri->segment(1) == 'home') : ?>
+    <?php include 'map.php'; ?>
+<?php endif; ?>
 
 	</body>
 	<!--end::Body-->
