@@ -121,11 +121,7 @@
 													<td><?= $no++; ?></td>
 													<td><?= $ptn['namaPetani']?></td>
 													<td><?= $ptn['jabatan']?></td>
-<<<<<<< Updated upstream
 													<td><a href="<?= site_url(); ?>FrontPetani/detail/<?= $ptn['idPetani'] ?>"><small>Lihat</small></a></td>
-=======
-													<td><a href="<?= site_url(); ?>FrontPetani/detail/<?= $ptn['id'] ?>" class="btn btn-outline-info btn-sm">Lihat</a></td>
->>>>>>> Stashed changes
 												</tr>
 											<?php endforeach; ?>
 											</tbody>
