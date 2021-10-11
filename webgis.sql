@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Okt 2021 pada 19.22
+-- Waktu pembuatan: 11 Okt 2021 pada 08.27
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 7.3.28
 
@@ -247,7 +247,8 @@ INSERT INTO `poktan` (`id`, `id_gapoktan`, `nama`, `nama_ketua`, `status`, `peng
 (2, 2, 'Tunas Mekar', 'Naruto', 'Terdaftar', 'Ada', 'Sambas', 'Polosa', 'Sui Jawi', '002', '002', 552, 'Cabe Hijau', 'poktan_pal_9_tunasmekar2.geojson', '#FF0000', 'Belum Di Post'),
 (3, 1, 'Barsatu Karyatani', 'Alex', 'Terdaftar', 'Ada', 'Karang Anyar', 'Sui Awan', 'Kalton', '004', '001', 331, 'Jagung', 'poktan_pal_9_barsatu_karyatani1.geojson', '#00ff00', 'Sudah Di Post'),
 (4, 2, 'Tunas Muda', 'Arif', 'Belum Terdaftar', 'Tidak Ada', 'Kubu', 'Sukamaju', 'Kebelakang', '002', '003', 523, 'Jagung, Padi, Jeruk Nipis', 'poktan_pal_9_tunasmuda1.geojson', '#ffff00', 'Sudah Di Post'),
-(5, 1, 'Baru Muncul', 'Naruto', 'Belum Terdaftar', 'Tidak Ada', 'Karang Anyar', 'Sui Awan', 'Kalton', '004', '001', 21, 'Jagung, Apel', 'poktan_pal_9_barumuncul.geojson', '#ff00ff', 'Belum Di Post');
+(5, 1, 'Baru Muncul', 'Naruto', 'Belum Terdaftar', 'Tidak Ada', 'Karang Anyar', 'Sui Awan', 'Kalton', '004', '001', 21, 'Jagung, Apel', 'poktan_pal_9_barumuncul.geojson', '#ff00ff', 'Belum Di Post'),
+(6, 1, 'Cafe Mhs', 'Iqbal Fernanda', 'Belum Terdaftar', 'Tidak Ada', 'Pontianak', 'Reformasi', 'Sepakat', '004', '012', 4300, 'Kopi', 'kayong_utara.geojson', '#c15d44', 'Belum Di Post');
 
 -- --------------------------------------------------------
 
@@ -350,16 +351,18 @@ CREATE TABLE `user` (
   `nama` varchar(255) NOT NULL,
   `role` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL,
-  `date_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `gambar` varchar(255) NOT NULL,
+  `tgl_dibuat` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `nama`, `role`, `status`, `date_created`) VALUES
-(1, 'admin', '$2y$10$5K7CjCPX12R3vcX2q/LO5OYySO3W4ZUHlusTkM8DzTMnwsV75XhIW', 'Admin WEBGIS', 'Admin', 'Aktif', '2021-09-20 06:27:42'),
-(2, 'superadmin', '$2y$10$5K7CjCPX12R3vcX2q/LO5OYySO3W4ZUHlusTkM8DzTMnwsV75XhIW', 'Super Admin', 'Super Admin', 'Aktif', '2021-10-09 11:02:33');
+INSERT INTO `user` (`id`, `username`, `password`, `nama`, `role`, `status`, `gambar`, `tgl_dibuat`) VALUES
+(1, 'admin', '$2y$10$5K7CjCPX12R3vcX2q/LO5OYySO3W4ZUHlusTkM8DzTMnwsV75XhIW', 'Admin WEBGIS', 'Admin', 'Aktif', '100_1.jpg', 0),
+(2, 'superadmin', '$2y$10$5K7CjCPX12R3vcX2q/LO5OYySO3W4ZUHlusTkM8DzTMnwsV75XhIW', 'Super Admin', 'Super Admin', 'Aktif', '100_2.jpg', 0),
+(4, 'iqbal', '$2y$10$afMmjQOPXMwZ8zF0bLc87ePnnxh4klhxpwWzYejxTUKY1b94Ju2B2', 'Iqbal Fernanda', 'Admin', 'Aktif', 'unnamed.jpg', 1633927543);
 
 --
 -- Indexes for dumped tables
@@ -461,7 +464,7 @@ ALTER TABLE `data_produksi`
 -- AUTO_INCREMENT untuk tabel `gapoktan`
 --
 ALTER TABLE `gapoktan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `infrastruktur`
@@ -491,7 +494,7 @@ ALTER TABLE `petani`
 -- AUTO_INCREMENT untuk tabel `poktan`
 --
 ALTER TABLE `poktan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `prasarana_petani`
@@ -521,7 +524,7 @@ ALTER TABLE `susun_kelompok`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
