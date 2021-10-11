@@ -3,6 +3,7 @@
 			<!--begin::Logo-->
 			<a href="index.html">
 				<img alt="Logo" src="<?= base_url()?>assets/frontend/media/logos/logo-dark.png" />
+				<h4>WEBGIS</h4>
 			</a>
 			<!--end::Logo-->
 			<!--begin::Toolbar-->
@@ -44,8 +45,9 @@
 					<!--begin::Brand-->
 					<div class="brand flex-column-auto" id="kt_brand">
 						<!--begin::Logo-->
-						<a href="index.html" class="brand-logo">
-							<img alt="Logo" src="<?= base_url()?>assets/frontend/media/logos/logo-dark.png" />
+						<a href="#" class="brand-logo">
+							<!-- <img alt="Logo" src="<?= base_url()?>assets/frontend/media/logos/logo-dark.png" /> -->
+							<h4>WEBGIS</h4>
 						</a>
 						<!--end::Logo-->
 						<!--begin::Toggle-->
