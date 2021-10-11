@@ -36,7 +36,7 @@ class M_poktan extends CI_Model {
     public function getPengurus($id = NULL)
     {
 
-        $query = $this->db->select('petani.nama as namaPetani, petani.*, poktan.*')
+        $query = $this->db->select('petani.nama as namaPetani, petani.id as idPetani, petani.*, poktan.*')
             ->from('petani')
             ->join('poktan', 'petani.id_poktan = poktan.id')
             ->where('id_poktan', $id)
@@ -46,7 +46,7 @@ class M_poktan extends CI_Model {
 
     public function getPengurusUmum($id = NULL)
     {
-        $query = $this->db->select('petani.nama as namaPetani, petani.*, poktan.*')
+        $query = $this->db->select('petani.nama as namaPetani, petani.id as idPetani, petani.*, poktan.*')
             ->from('petani')
             ->join('poktan', 'petani.id_poktan = poktan.id')
             ->where('id_poktan', $id)
