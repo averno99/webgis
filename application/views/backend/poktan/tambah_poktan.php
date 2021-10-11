@@ -155,6 +155,13 @@
                                                             </div>
 														</div>
 													</div>
+													<div class="form-group row">
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">Warna</label>
+														<div class="col-lg-9 col-xl-6">
+															<input class="form-control form-control-lg form-control-solid" type="color" name="warna" value="<?= set_value('warna'); ?>"/>
+                                                            <?= form_error('warna', ' <small class="text-danger">', '</small>'); ?>
+                                                        </div>
+													</div>
 													<div class="d-flex justify-content-between border-top pt-10">
 															<div class="mr-2">
 																<a type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url('poktan')?>">Kembali</a>
