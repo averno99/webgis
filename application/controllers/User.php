@@ -169,6 +169,10 @@ class User extends CI_Controller {
 
     public function reset_password($id = NULL)
     {
+        if ($this->session->userdata('role') !== 'Super Admin') {
+            redirect('blokir');
+        }
+
         $data['judul'] = 'Reset Password User';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['users'] = $this->M_user->getIdUser($id);
@@ -208,6 +212,10 @@ class User extends CI_Controller {
 
     public function detail_user($id = NULL)
     {
+        if ($this->session->userdata('role') !== 'Super Admin') {
+            redirect('blokir');
+        }
+        
         $data['judul'] = 'Detail Data User';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['users'] = $this->M_user->getIdUser($id);
@@ -234,4 +242,8 @@ class User extends CI_Controller {
         // $this->session->set_flashdata('flash', 'Dihapus');
         redirect('user');
     }
+
+    public function blokir(){
+		echo "Anda Tidak Memilik Hak Akses";
+	}
 }

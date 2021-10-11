@@ -158,5 +158,11 @@ class M_poktan extends CI_Model {
         $this->db->where('id', $id);
         $this->db->update('poktan', $data);
     }
+
+    public function hapusPoktan($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('poktan');
+    }
 	
 }

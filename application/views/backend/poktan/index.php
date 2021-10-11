@@ -77,9 +77,11 @@
 														<?php if ($user['role'] == 'Super Admin') : ?>
                                                             <a href="<?= site_url(); ?>poktan/updatesudah/<?= $pkt['id'] ?>"><small>Setuju</small></a> |
 															<a href="<?= site_url(); ?>poktan/updatebelum/<?= $pkt['id'] ?>"><small>Batal</small></a> |
-															<a href="<?= site_url(); ?>poktan/detail/<?= $pkt['id'] ?>"><small>Detail</small></a>
+															<a href="<?= site_url(); ?>poktan/detail/<?= $pkt['id'] ?>"><small>Detail</small></a> | 
+															<a href="<?= site_url(); ?>poktan/hapus_poktan/<?= $pkt['id'] ?>"><small>Hapus</small></a>
                                                         <?php else : ?>
-                                                           <a href="<?= site_url(); ?>poktan/detail/<?= $pkt['id'] ?>"><small>Detail</small></a>
+                                                           <a href="<?= site_url(); ?>poktan/detail/<?= $pkt['id'] ?>"><small>Detail</small></a> | 
+														   <a href="<?= site_url(); ?>poktan/hapus_poktan/<?= $pkt['id'] ?>"><small>Hapus</small></a>
                                                         <?php endif; ?>
 														
 													</td>

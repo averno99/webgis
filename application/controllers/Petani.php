@@ -659,6 +659,20 @@ class Petani extends CI_Controller {
     }
 	
 	public function blokir(){
-		echo "Anda Bukan Hendri";
+		echo "Anda Tidak Memiliki Hak Akses";
 	}
+
+	public function hapus_petani($id = NULL)
+    {
+		$data['petani'] = $this->M_petani->getIdPetani($id);
+
+        $gambar_lama = $data['petani']['foto'];
+        if ($gambar_lama != 'default.png') {
+            unlink(FCPATH . 'assets/gambar/petani/' . $gambar_lama);
+        }
+
+        $this->M_petani->hapusPetani($id);
+        // $this->session->set_flashdata('flash', 'Dihapus');
+        redirect('petani');
+    }
 }

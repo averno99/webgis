@@ -208,5 +208,11 @@ class M_petani extends CI_Model {
         $this->db->where('id', $id);
         $this->db->update('petani', $data);
     }
+
+    public function hapusPetani($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('petani');
+    }
 	
 }

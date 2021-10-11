@@ -215,7 +215,7 @@ class Poktan extends CI_Controller {
 
             $this->M_poktan->ubahPoktan();
             // $this->session->set_flashdata('flash', 'Ditambahkan');
-            redirect('poktan');
+            redirect('poktan/detail/'. $id);
         }
     }
 
@@ -244,14 +244,14 @@ class Poktan extends CI_Controller {
 			$this->load->view('backend/template/user_panel', $data);
 			$this->load->view('backend/template/js');
         } else {
-			$id = $_POST['id']; // Ambil data nis dan masukkan ke variabel nis
+			$idd = $_POST['id']; // Ambil data nis dan masukkan ke variabel nis
     		$adminis_kelompok = $_POST['adminis_kelompok']; // Ambil data nama dan masukkan ke variabel nama
     		$jumlah = $_POST['jumlah']; // Ambil data telp dan masukkan ke variabel telp
     		$satuan = $_POST['satuan']; // Ambil data alamat dan masukkan ke variabel alamat
     		$data = array();
     
     		$index = 0; // Set index array awal dengan 0
-    		foreach($id as $dataid){ // Kita buat perulangan berdasarkan nis sampai data terakhir
+    		foreach($idd as $dataid){ // Kita buat perulangan berdasarkan nis sampai data terakhir
       			array_push($data, array(
         			'id_poktan'=>$dataid,
         			'adminis_kelompok'=>$adminis_kelompok[$index],  // Ambil dan set data nama sesuai index array dari $index
@@ -261,7 +261,7 @@ class Poktan extends CI_Controller {
       			$index++;
     		}    
       		$this->M_poktan->tambahAdminis($data);
-			redirect('poktan');
+			redirect('poktan/adminis/'.$id);
 			
 		}
 	}
@@ -292,14 +292,14 @@ class Poktan extends CI_Controller {
 			$this->load->view('backend/template/user_panel', $data);
 			$this->load->view('backend/template/js');
         } else {
-			$id = $_POST['id']; // Ambil data nis dan masukkan ke variabel nis
+			$idd = $_POST['id']; // Ambil data nis dan masukkan ke variabel nis
     		$adminis_kelompok = $_POST['adminis_kelompok']; // Ambil data nama dan masukkan ke variabel nama
     		$jumlah = $_POST['jumlah']; // Ambil data telp dan masukkan ke variabel telp
     		$satuan = $_POST['satuan']; // Ambil data alamat dan masukkan ke variabel alamat
     		$data = array();
     
     		$index = 0; // Set index array awal dengan 0
-    		foreach($id as $dataid){ // Kita buat perulangan berdasarkan nis sampai data terakhir
+    		foreach($idd as $dataid){ // Kita buat perulangan berdasarkan nis sampai data terakhir
       			array_push($data, array(
         			'id'=>$dataid,
         			'adminis_kelompok'=>$adminis_kelompok[$index],  // Ambil dan set data nama sesuai index array dari $index
@@ -309,7 +309,7 @@ class Poktan extends CI_Controller {
       			$index++;
     		}    
       		$this->db->update_batch('keleng_adminis',$data, 'id');
-			redirect('poktan');
+			redirect('poktan/adminis/'.$id);
 			
 		}
 	}
@@ -339,14 +339,14 @@ class Poktan extends CI_Controller {
 			$this->load->view('backend/template/user_panel', $data);
 			$this->load->view('backend/template/js');
         } else {
-			$id = $_POST['id']; // Ambil data nis dan masukkan ke variabel nis
+			$idd = $_POST['id']; // Ambil data nis dan masukkan ke variabel nis
     		$infra_pertanian = $_POST['infra_pertanian']; // Ambil data nama dan masukkan ke variabel nama
     		$jumlah = $_POST['jumlah']; // Ambil data telp dan masukkan ke variabel telp
     		$satuan = $_POST['satuan']; // Ambil data alamat dan masukkan ke variabel alamat
     		$data = array();
     
     		$index = 0; // Set index array awal dengan 0
-    		foreach($id as $dataid){ // Kita buat perulangan berdasarkan nis sampai data terakhir
+    		foreach($idd as $dataid){ // Kita buat perulangan berdasarkan nis sampai data terakhir
       			array_push($data, array(
         			'id_poktan'=>$dataid,
         			'infra_pertanian'=>$infra_pertanian[$index],  // Ambil dan set data nama sesuai index array dari $index
@@ -356,7 +356,7 @@ class Poktan extends CI_Controller {
       			$index++;
     		}    
       		$this->M_poktan->tambahInfras($data);
-			redirect('poktan');
+			redirect('poktan/infras/'.$id);
 			
 		}
 	}
@@ -387,14 +387,14 @@ class Poktan extends CI_Controller {
 			$this->load->view('backend/template/user_panel', $data);
 			$this->load->view('backend/template/js');
         } else {
-			$id = $_POST['id']; // Ambil data nis dan masukkan ke variabel nis
+			$idd = $_POST['id']; // Ambil data nis dan masukkan ke variabel nis
     		$infra_pertanian = $_POST['infra_pertanian']; // Ambil data nama dan masukkan ke variabel nama
     		$jumlah = $_POST['jumlah']; // Ambil data telp dan masukkan ke variabel telp
     		$satuan = $_POST['satuan']; // Ambil data alamat dan masukkan ke variabel alamat
     		$data = array();
     
     		$index = 0; // Set index array awal dengan 0
-    		foreach($id as $dataid){ // Kita buat perulangan berdasarkan nis sampai data terakhir
+    		foreach($idd as $dataid){ // Kita buat perulangan berdasarkan nis sampai data terakhir
       			array_push($data, array(
         			'id'=>$dataid,
         			'infra_pertanian'=>$infra_pertanian[$index],  // Ambil dan set data nama sesuai index array dari $index
@@ -404,7 +404,7 @@ class Poktan extends CI_Controller {
       			$index++;
     		}    
       		$this->db->update_batch('infrastruktur', $data, 'id');
-			redirect('poktan');
+			redirect('poktan/infras/'.$id);
 			
 		}
 	}
@@ -430,6 +430,20 @@ class Poktan extends CI_Controller {
     }
 	
 	public function blokir(){
-		echo "Anda Bukan Hendri";
+		echo "Anda Tidak Memilik Hak Akses";
 	}
+
+	public function hapus_poktan($id = NULL)
+    {
+		$data['poktan'] = $this->M_poktan->getIdPoktan($id);
+
+        $geojson_lama = $data['poktan']['geojson'];
+        if ($geojson_lama != 'default.geojson') {
+            unlink(FCPATH . 'assets/geojson/' . $geojson_lama);
+        }
+
+        $this->M_poktan->hapusPoktan($id);
+        // $this->session->set_flashdata('flash', 'Dihapus');
+        redirect('poktan');
+    }
 }
