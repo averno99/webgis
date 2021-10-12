@@ -93,10 +93,82 @@ class Petani extends CI_Controller {
 		
 
         $this->form_validation->set_rules(
+            'jabatan',
+            'Jabatan',
+            'required|trim',
+            array('required' => 'Jabatan tidak boleh kosong')
+        );
+		$this->form_validation->set_rules(
+            'pekerjaan_utama',
+            'Pekerjaan_Utama',
+            'required|trim',
+            array('required' => 'Pekerjaan tidak boleh kosong')
+        );
+		$this->form_validation->set_rules(
+            'pengolah_lahan',
+            'Pengolah_Lahan',
+            'required|trim',
+            array('required' => 'Pengolahan Lahan tidak boleh kosong')
+        );
+		$this->form_validation->set_rules(
+            'pekerjaan_utama',
+            'Pekerjaan_Utama',
+            'required|trim',
+            array('required' => 'Pekerjaan tidak boleh kosong')
+        );
+		$this->form_validation->set_rules(
+            'tanam',
+            'Tanam',
+            'required|trim',
+            array('required' => 'Data Tanam tidak boleh kosong')
+        );
+		$this->form_validation->set_rules(
+            'pemeliharaan',
+            'Pemeliharaan',
+            'required|trim',
+            array('required' => 'Data Pemeliharaan tidak boleh kosong')
+        );
+		$this->form_validation->set_rules(
+            'panen',
+            'Panen',
+            'required|trim',
+            array('required' => 'Data Panen tidak boleh kosong')
+        );
+		$this->form_validation->set_rules(
             'nama',
             'Nama',
             'required|trim',
-            array('required' => 'Nama Gapoktan tidak boleh kosong')
+            array('required' => 'Nama tidak boleh kosong')
+        );
+		$this->form_validation->set_rules(
+            'status_keluarga',
+            'Status Keluarga',
+            'required|trim',
+            array('required' => 'Status Keluarga tidak boleh kosong')
+        );
+		$this->form_validation->set_rules(
+            'jml_anggota_keluarga',
+            'Jumlah',
+            'required|trim',
+            array('required' => 'Jumlah Anggota Keluarga tidak boleh kosong')
+        );
+		$this->form_validation->set_rules(
+            'jml_tanggungan',
+            'Tanggungan',
+            'required|trim',
+            array('required' => 'Jumlah Tanggungan tidak boleh kosong')
+        );
+		$this->form_validation->set_rules(
+            'riwayat_pelatihan',
+            'Pelatihan',
+            'required|trim',
+            array('required' => 'Riwayat Pelatihan tidak boleh kosong')
+        );
+		$this->form_validation->set_rules(
+            'no_hp',
+            'No hp',
+            'required|trim',
+            array('required' => 'Nomor Hp tidak boleh kosong')
         );
 
         if ($this->form_validation->run() == FALSE) {
@@ -146,9 +218,80 @@ class Petani extends CI_Controller {
 		$data['jenis_kelamin'] = ['Laki-Laki', 'Perempuan'];
 		$data['pendidikan'] = ['Sarjana', 'SMU/SMK', 'SLTP', 'SD', 'Tidak Tamat SD', 'Tidak Sekolah'];
 		
-
-        $this->form_validation->set_rules(
+		$this->form_validation->set_rules(
+            'jabatan',
+            'Jabatan',
+            'required|trim',
+            array('required' => 'Jabatan tidak boleh kosong')
+        );
+		$this->form_validation->set_rules(
+            'pekerjaan_utama',
+            'Pekerjaan_Utama',
+            'required|trim',
+            array('required' => 'Pekerjaan tidak boleh kosong')
+        );
+		$this->form_validation->set_rules(
+            'pengolah_lahan',
+            'Pengolah_Lahan',
+            'required|trim',
+            array('required' => 'Pengolahan Lahan tidak boleh kosong')
+        );
+		$this->form_validation->set_rules(
+            'pekerjaan_utama',
+            'Pekerjaan_Utama',
+            'required|trim',
+            array('required' => 'Pekerjaan tidak boleh kosong')
+        );
+		$this->form_validation->set_rules(
+            'tanam',
+            'Tanam',
+            'required|trim',
+            array('required' => 'Data Tanam tidak boleh kosong')
+        );
+		$this->form_validation->set_rules(
+            'pemeliharaan',
+            'Pemeliharaan',
+            'required|trim',
+            array('required' => 'Data Pemeliharaan tidak boleh kosong')
+        );
+		$this->form_validation->set_rules(
+            'panen',
+            'Panen',
+            'required|trim',
+            array('required' => 'Data Panen tidak boleh kosong')
+        );
+		$this->form_validation->set_rules(
             'nama',
+            'Nama',
+            'required|trim',
+            array('required' => 'Nama tidak boleh kosong')
+        );
+		$this->form_validation->set_rules(
+            'status_keluarga',
+            'Status Keluarga',
+            'required|trim',
+            array('required' => 'Status Keluarga tidak boleh kosong')
+        );
+		$this->form_validation->set_rules(
+            'jml_anggota_keluarga',
+            'Jumlah',
+            'required|trim',
+            array('required' => 'Jumlah Anggota Keluarga tidak boleh kosong')
+        );
+		$this->form_validation->set_rules(
+            'jml_tanggungan',
+            'Tanggungan',
+            'required|trim',
+            array('required' => 'Jumlah Tanggungan tidak boleh kosong')
+        );
+		$this->form_validation->set_rules(
+            'riwayat_pelatihan',
+            'Pelatihan',
+            'required|trim',
+            array('required' => 'Riwayat Pelatihan tidak boleh kosong')
+        );
+        $this->form_validation->set_rules(
+            'no_hp',
             'Nama',
             'required|trim',
             array('required' => 'Nama Gapoktan tidak boleh kosong')
@@ -375,10 +518,10 @@ class Petani extends CI_Controller {
 		$data['indeks'] = ['1 Kali (IP 100%)', '2 Kali (IP 200%)', '3 Kali (IP 300%)', '4 Kali (IP 400%)'];
 
         $this->form_validation->set_rules(
-            'jenis_usaha',
-            'Nama',
+            'jenis_komoditas',
+            'Komoditas',
             'required|trim',
-            array('required' => 'Nama Gapoktan tidak boleh kosong')
+            array('required' => 'Jenis Komoditas tidak boleh kosong')
         );
 
         if ($this->form_validation->run() == FALSE) {

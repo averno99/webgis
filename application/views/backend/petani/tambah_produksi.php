@@ -88,6 +88,7 @@
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Jenis Komoditas</label>
 														<div class="col-lg-9 col-xl-6">
 															<input class="form-control form-control-lg form-control-solid" type="text" name="jenis_komoditas" value="<?= set_value('jenis_komoditas')?>" placeholder="Jenis Komoditas"/>
+															<?= form_error('jenis_komoditas', ' <small class="text-danger">', '</small>'); ?>
 														</div>
 													</div>
                                                     <div class="form-group row">
@@ -105,18 +106,21 @@
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Jadwal Tanam Dalam 1 Tahun</label>
 														<div class="col-lg-9 col-xl-6">
 															<input class="form-control form-control-lg form-control-solid" type="text" name="jadwal_tanam" value="<?= set_value('jadwal_tanam')?>" placeholder="Jadwal Tanam Dalam 1 Tahun"/>
+															<?= form_error('jadwal_tanam', ' <small class="text-danger">', '</small>'); ?>
 														</div>
 													</div>
                                                     <div class="form-group row">
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Jadwal Panen Dalam 1 Tahun</label>
 														<div class="col-lg-9 col-xl-6">
 															<input class="form-control form-control-lg form-control-solid" type="text" name="jadwal_panen" value="<?= set_value('jadwal_panen')?>" placeholder="Jadwal Panen Dalam 1 Tahun"/>
+															<?= form_error('jadwal_panen', ' <small class="text-danger">', '</small>'); ?>
 														</div>
 													</div>
                                                     <div class="form-group row">
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Sistem Pengairan</label>
 														<div class="col-lg-9 col-xl-6">
 															<input class="form-control form-control-lg form-control-solid" type="text" name="sistem_pengairan" value="<?= set_value('sistem_pengairan')?>" placeholder="Sistem Pengairan"/>
+															<?= form_error('sistem_pengairan', ' <small class="text-danger">', '</small>'); ?>
 														</div>
 													</div>
 

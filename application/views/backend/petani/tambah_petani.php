@@ -76,12 +76,14 @@
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Jabatan</label>
 														<div class="col-lg-9 col-xl-6">
 															<input class="form-control form-control-lg form-control-solid" type="text" name="jabatan" value="<?= set_value('jabatan')?>" placeholder="Jabatan Dalam Kelompok Tani"/>
+															<?= form_error('jabatan', ' <small class="text-danger">', '</small>'); ?>
 														</div>
 													</div>
                                                     <div class="form-group row">
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Pekerjaan</label>
 														<div class="col-lg-9 col-xl-6">
 															<input class="form-control form-control-lg form-control-solid" type="text" name="pekerjaan_utama" value="<?= set_value('pekerjaan_utama')?>" placeholder="Pekerjaan Utama"/>
+															<?= form_error('pekerjaan_utama', ' <small class="text-danger">', '</small>'); ?>
 														</div>
 													</div>
                                                     <div class="form-group row">
@@ -92,24 +94,28 @@
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Pengolahan Lahan</label>
 														<div class="col-lg-9 col-xl-6">
 															<input class="form-control form-control-lg form-control-solid" type="text" name="pengolah_lahan" value="<?= set_value('pengolah_lahan')?>" placeholder="Jumlah Orang.."/>
+															<?= form_error('pengolah_lahan', ' <small class="text-danger">', '</small>'); ?>
 														</div>
 													</div>
                                                     <div class="form-group row">
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Tanam</label>
 														<div class="col-lg-9 col-xl-6">
 															<input class="form-control form-control-lg form-control-solid" type="text" name="tanam" value="<?= set_value('tanam')?>" placeholder="Jumlah Orang.."/>
+															<?= form_error('tanam', ' <small class="text-danger">', '</small>'); ?>
 														</div>
 													</div>
                                                     <div class="form-group row">
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Pemeliharaan</label>
 														<div class="col-lg-9 col-xl-6">
 															<input class="form-control form-control-lg form-control-solid" type="text" name="pemeliharaan" value="<?= set_value('pemeliharaan')?>" placeholder="Jumlah Orang.."/>
+															<?= form_error('pemeliharaan', ' <small class="text-danger">', '</small>'); ?>
 														</div>
 													</div>
                                                     <div class="form-group row">
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Panen/Pasca Panen</label>
 														<div class="col-lg-9 col-xl-6">
 															<input class="form-control form-control-lg form-control-solid" type="text" name="panen" value="<?= set_value('panen')?>" placeholder="Jumlah Orang.."/>
+															<?= form_error('panen', ' <small class="text-danger">', '</small>'); ?>
 														</div>
 													</div>
 											</div>
@@ -141,6 +147,7 @@
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Nama</label>
 														<div class="col-lg-9 col-xl-6">
 															<input class="form-control form-control-lg form-control-solid" type="text" name="nama" value="<?= set_value('nama')?>" placeholder="Nama Petani"/>
+															<?= form_error('nama', ' <small class="text-danger">', '</small>'); ?>
 														</div>
 													</div>
                                                     <div class="form-group row">
@@ -158,18 +165,21 @@
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Status Dalam Keluarga</label>
 														<div class="col-lg-9 col-xl-6">
 															<input class="form-control form-control-lg form-control-solid" type="text" name="status_keluarga" value="<?= set_value('status_keluarga')?>" placeholder="Status Dalam Keluarga"/>
+															<?= form_error('status_keluarga', ' <small class="text-danger">', '</small>'); ?>
 														</div>
 													</div>
                                                     <div class="form-group row">
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Jumlah Anggota Keluarga</label>
 														<div class="col-lg-9 col-xl-6">
 															<input class="form-control form-control-lg form-control-solid" type="text" name="jml_anggota_keluarga" value="<?= set_value('jml_anggota_keluarga')?>" placeholder="Jumlah Anggota Keluarga (di KK)"/>
+															<?= form_error('jml_anggota_keluarga', ' <small class="text-danger">', '</small>'); ?>
 														</div>
 													</div>
                                                     <div class="form-group row">
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Jumlah Tanggungan</label>
 														<div class="col-lg-9 col-xl-6">
 															<input class="form-control form-control-lg form-control-solid" type="text" name="jml_tanggungan" value="<?= set_value('jml_tanggungan')?>" placeholder="Jumlah Tanggungan (Situasi Saat Ini)"/>
+															<?= form_error('jml_tanggungan', ' <small class="text-danger">', '</small>'); ?>
 														</div>
 													</div>
 													<div class="form-group row">
@@ -188,12 +198,14 @@
 														<div class="col-lg-9 col-xl-6">
 															<input class="form-control form-control-lg form-control-solid" type="text" name="riwayat_pelatihan" value="<?= set_value('riwayat_pelatihan')?>" placeholder="Riwayat Pelatihan"/>
 															<span class="form-text text-muted">Tulis 0 jika tidak pernah ikut pelatihan</span>
+															<?= form_error('riwayat_pelatihan', ' <small class="text-danger">', '</small>'); ?>
 														</div>
 													</div>
                                                     <div class="form-group row">
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Kontak Person</label>
 														<div class="col-lg-9 col-xl-6">
 															<input class="form-control form-control-lg form-control-solid" type="text" name="no_hp" value="<?= set_value('no_hp')?>" placeholder="Kontak Person (Nomor HP/Telp)"/>
+															<?= form_error('no_hp', ' <small class="text-danger">', '</small>'); ?>
 														</div>
 													</div>
 												

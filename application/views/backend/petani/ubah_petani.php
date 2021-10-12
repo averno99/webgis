@@ -83,12 +83,14 @@
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Jabatan</label>
 														<div class="col-lg-9 col-xl-6">
 															<input class="form-control form-control-lg form-control-solid" type="text" name="jabatan" value="<?= $petani['jabatan']?>" placeholder="Jabatan Dalam Kelompok Tani"/>
+															<?= form_error('jabatan', ' <small class="text-danger">', '</small>'); ?>
 														</div>
 													</div>
                                                     <div class="form-group row">
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Pekerjaan</label>
 														<div class="col-lg-9 col-xl-6">
 															<input class="form-control form-control-lg form-control-solid" type="text" name="pekerjaan_utama" value="<?= $petani['pekerjaan_utama']?>" placeholder="Pekerjaan Utama"/>
+															<?= form_error('pekerjaan_utama', ' <small class="text-danger">', '</small>'); ?>
 														</div>
 													</div>
                                                     <div class="form-group row">
@@ -100,24 +102,28 @@
 														<div class="col-lg-9 col-xl-6">
 															<input class="form-control form-control-lg form-control-solid" type="text" name="pengolah_lahan" value="<?= $petani['pengolah_lahan']?>" placeholder="Jumlah Orang.."/>
 														</div>
+														<?= form_error('pengolah_lahan', ' <small class="text-danger">', '</small>'); ?>
 													</div>
                                                     <div class="form-group row">
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Tanam</label>
 														<div class="col-lg-9 col-xl-6">
 															<input class="form-control form-control-lg form-control-solid" type="text" name="tanam" value="<?= $petani['tanam']?>" placeholder="Jumlah Orang.."/>
 														</div>
+														<?= form_error('tanam', ' <small class="text-danger">', '</small>'); ?>
 													</div>
                                                     <div class="form-group row">
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Pemeliharaan</label>
 														<div class="col-lg-9 col-xl-6">
 															<input class="form-control form-control-lg form-control-solid" type="text" name="pemeliharaan" value="<?= $petani['pemeliharaan']?>" placeholder="Jumlah Orang.."/>
 														</div>
+														<?= form_error('pemeliharaan', ' <small class="text-danger">', '</small>'); ?>
 													</div>
                                                     <div class="form-group row">
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Panen/Pasca Panen</label>
 														<div class="col-lg-9 col-xl-6">
 															<input class="form-control form-control-lg form-control-solid" type="text" name="panen" value="<?= $petani['panen']?>" placeholder="Jumlah Orang.."/>
 														</div>
+														<?= form_error('panen', ' <small class="text-danger">', '</small>'); ?>
 													</div>
 											</div>
 											<!--end::Tab Content-->
@@ -158,6 +164,7 @@
 														<div class="col-lg-9 col-xl-6">
 															<input class="form-control form-control-lg form-control-solid" type="text" name="nama" value="<?= $petani['nama']?>" placeholder="Nama Petani"/>
 														</div>
+														<?= form_error('nama', ' <small class="text-danger">', '</small>'); ?>
 													</div>
                                                     <div class="form-group row">
 														<label class="col-form-label col-3 text-lg-right text-left">Jenis Kelamin</label>
@@ -184,12 +191,14 @@
 														<div class="col-lg-9 col-xl-6">
 															<input class="form-control form-control-lg form-control-solid" type="text" name="jml_anggota_keluarga" value="<?= $petani['jml_anggota_keluarga']?>" placeholder="Jumlah Anggota Keluarga (di KK)"/>
 														</div>
+														<?= form_error('status_keluarga', ' <small class="text-danger">', '</small>'); ?>
 													</div>
                                                     <div class="form-group row">
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Jumlah Tanggungan</label>
 														<div class="col-lg-9 col-xl-6">
 															<input class="form-control form-control-lg form-control-solid" type="text" name="jml_tanggungan" value="<?= $petani['jml_tanggungan']?>" placeholder="Jumlah Tanggungan (Situasi Saat Ini)"/>
 														</div>
+														<?= form_error('jml_tanggungan', ' <small class="text-danger">', '</small>'); ?>
 													</div>
 													<div class="form-group row">
 														<label class="col-form-label col-3 text-lg-right text-left">Pendidikan Terakhir</label>
@@ -211,12 +220,14 @@
 															<input class="form-control form-control-lg form-control-solid" type="text" name="riwayat_pelatihan" value="<?= $petani['riwayat_pelatihan']?>" placeholder="Riwayat Pelatihan"/>
 															<span class="form-text text-muted">Tulis 0 jika tidak pernah ikut pelatihan</span>
 														</div>
+														<?= form_error('riwayat_pelatihan', ' <small class="text-danger">', '</small>'); ?>
 													</div>
                                                     <div class="form-group row">
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Kontak Person</label>
 														<div class="col-lg-9 col-xl-6">
 															<input class="form-control form-control-lg form-control-solid" type="text" name="no_hp" value="<?= $petani['no_hp']?>" placeholder="Kontak Person (Nomor HP/Telp)"/>
 														</div>
+														<?= form_error('no_hp', ' <small class="text-danger">', '</small>'); ?>
 													</div>
 												
 

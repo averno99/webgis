@@ -104,7 +104,7 @@
 											<!--begin::Tab Content-->
 											<div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
 												<!--begin: Datatable-->
-																					<table class="table table-separate table-head-custom collapsed" id="kt_datatable">
+												<table class="table table-separate table-head-custom collapsed" id="kt_datatable">
 											<thead>
 												<tr>
 													<th>No</th>
