@@ -152,7 +152,12 @@
 										<!--end: Datatable-->
 										<?php if ($user['role'] == 'Admin') : ?>
 											<div class="d-flex justify-content-between border-top pt-10">
-												<div>
+												
+											<div class="mr-2">
+											<a type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url(); ?>petani/tambah_lokasi/<?= $petani['id'] ?>">Tambah Data</a>
+													
+										</div>
+													<div>
 													<a type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url(); ?>petani/ubah_lokasi/<?= $petani['id'] ?>">Ubah Data</a>
 												</div>
 											</div>

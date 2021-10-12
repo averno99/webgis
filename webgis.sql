@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 11 Okt 2021 pada 08.27
--- Versi server: 10.4.19-MariaDB
--- Versi PHP: 7.3.28
+-- Generation Time: Oct 11, 2021 at 12:26 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `data_produksi`
+-- Table structure for table `data_produksi`
 --
 
 CREATE TABLE `data_produksi` (
@@ -37,18 +38,20 @@ CREATE TABLE `data_produksi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `data_produksi`
+-- Dumping data for table `data_produksi`
 --
 
 INSERT INTO `data_produksi` (`id`, `id_petani`, `komoditas`, `luas`, `panen_kg`, `harga`) VALUES
 (1, 1, 'Padi', '4.1', '200', '4.233'),
 (2, 1, 'Jeruk', '1.1', '62', '2.500'),
-(3, 6, 'Mangga', '4', '210', '213000');
+(4, 6, 'Jagung', '21', '90', '2000'),
+(5, 6, 'Padi', '90', '89', '72200'),
+(6, 6, 'Jeruk Nipis', '21', '44', '90000');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `gapoktan`
+-- Table structure for table `gapoktan`
 --
 
 CREATE TABLE `gapoktan` (
@@ -57,17 +60,18 @@ CREATE TABLE `gapoktan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `gapoktan`
+-- Dumping data for table `gapoktan`
 --
 
 INSERT INTO `gapoktan` (`id`, `nama`) VALUES
 (1, 'Pangkalan Kongsi'),
-(2, 'Mekar Bersatu');
+(2, 'Mekar Bersatu'),
+(5, 'Mekar Jaya');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `infrastruktur`
+-- Table structure for table `infrastruktur`
 --
 
 CREATE TABLE `infrastruktur` (
@@ -79,11 +83,10 @@ CREATE TABLE `infrastruktur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `infrastruktur`
+-- Dumping data for table `infrastruktur`
 --
 
 INSERT INTO `infrastruktur` (`id`, `id_poktan`, `infra_pertanian`, `jumlah`, `satuan`) VALUES
-(1, 1, 'Pintu air', 2, 'Meter'),
 (2, 3, 'Jalan Usaha Tani', 1, 'Meter'),
 (3, 3, 'Parit (Non Kontruksi Beton)', 12, 'Meter'),
 (4, 3, 'Jaringan Irigasi (Kontruksi Beton)', 1, 'Meter'),
@@ -114,7 +117,7 @@ INSERT INTO `infrastruktur` (`id`, `id_poktan`, `infra_pertanian`, `jumlah`, `sa
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `keleng_adminis`
+-- Table structure for table `keleng_adminis`
 --
 
 CREATE TABLE `keleng_adminis` (
@@ -126,12 +129,10 @@ CREATE TABLE `keleng_adminis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `keleng_adminis`
+-- Dumping data for table `keleng_adminis`
 --
 
 INSERT INTO `keleng_adminis` (`id`, `id_poktan`, `adminis_kelompok`, `jumlah`, `satuan`) VALUES
-(1, 1, 'Kelengkapan Ketua', '1', 'Buah'),
-(2, 1, 'Kelengkapan Sekretaris', '2', 'Buah'),
 (3, 3, 'Pendaftaran', '1', 'Buah'),
 (32, 2, 'Buku Agenda Surat Masuk', '1', 'Buah'),
 (33, 2, 'Buku Agenda Surat Keluar', '3', 'Buah'),
@@ -153,7 +154,7 @@ INSERT INTO `keleng_adminis` (`id`, `id_poktan`, `adminis_kelompok`, `jumlah`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `lokasi_pertanian`
+-- Table structure for table `lokasi_pertanian`
 --
 
 CREATE TABLE `lokasi_pertanian` (
@@ -167,16 +168,18 @@ CREATE TABLE `lokasi_pertanian` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `lokasi_pertanian`
+-- Dumping data for table `lokasi_pertanian`
 --
 
 INSERT INTO `lokasi_pertanian` (`id`, `id_petani`, `luas_lahan_sendiri`, `luas_lahan_sewa`, `keterangan`, `latitude`, `longitude`) VALUES
-(1, 1, '3', '22', 'Ini Coba', '1.1867233', '109.1522');
+(1, 1, '3', '22', 'Ini Coba', '1.1867233', '109.1522'),
+(15, 6, '2', '4', '6', '7', '8'),
+(16, 6, '5', '2', '3', '4', '5');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `petani`
+-- Table structure for table `petani`
 --
 
 CREATE TABLE `petani` (
@@ -202,13 +205,12 @@ CREATE TABLE `petani` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `petani`
+-- Dumping data for table `petani`
 --
 
 INSERT INTO `petani` (`id`, `nama`, `jabatan`, `status_anggota`, `pekerjaan_utama`, `pengolah_lahan`, `tanam`, `pemeliharaan`, `panen`, `jenis_kelamin`, `status_keluarga`, `jml_anggota_keluarga`, `jml_tanggungan`, `pendidikan`, `riwayat_pelatihan`, `no_hp`, `foto`, `id_poktan`, `status_post`) VALUES
 (1, 'Alex Nada', 'Ketua', 'Anggota Kelompok Tani', 'Petani', 3, 2, 1, 0, 'Laki-Laki', 'Kepala Keluarga', 1, 1, 'Sarjana', 1, '01233444444', 'jane_doe.png', 1, 'Sudah Di Post'),
 (2, 'Mikael', 'Ketua', 'Anggota Kelompok Tani', 'Penggarap', 1, 2, 3, 4, 'Laki-Laki', 'Bapak', 3, 1, 'Sarjana', 4, '111111111111111111111', 'tes.jpg', 5, 'Sudah Di Post'),
-(3, 'Muanjir', 'Anggota', 'Non Anggota', 'Penanam', 11, 2, 33, 4, 'Perempuan', '', 5, 6, 'SMU/SMK', 1, '', 'dadsadsa.PNG', 3, 'Belum Di Post'),
 (4, 'Misbahul', 'Bendahara', 'Anggota Kelompok Tani', 'BKD', 9, 8, 7, 6, 'Perempuan', 'Ibu', 1, 1, 'Sarjana', 0, '', 'listfarm (1) (1)_render.png', 5, 'Belum Di Post'),
 (5, 'Yogo', 'Anggota', 'Anggota Kelompok Tani', 'Petani', 1, 0, 0, 1, 'Laki-Laki', 'Anak', 3, 0, 'Sarjana', 3, '08989914445', 'itemku.PNG', 1, 'Belum Di Post'),
 (6, 'Hendri Irawan', 'Bendahara', 'Anggota Kelompok Tani', 'Penanam', 1, 1, 1, 1, 'Laki-Laki', 'Bapak', 2, 8, 'Sarjana', 0, '0000000002', 'Use_Case_Umum.png', 3, 'Belum Di Post');
@@ -216,7 +218,7 @@ INSERT INTO `petani` (`id`, `nama`, `jabatan`, `status_anggota`, `pekerjaan_utam
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `poktan`
+-- Table structure for table `poktan`
 --
 
 CREATE TABLE `poktan` (
@@ -239,21 +241,19 @@ CREATE TABLE `poktan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `poktan`
+-- Dumping data for table `poktan`
 --
 
 INSERT INTO `poktan` (`id`, `id_gapoktan`, `nama`, `nama_ketua`, `status`, `pengukuhan`, `kecamatan`, `desa`, `dusun`, `rt`, `rw`, `luas_lahan`, `komoditas_unggul`, `geojson`, `warna`, `status_post`) VALUES
-(1, 2, 'Tunas Baru', 'Anna', 'Belum Terdaftar', 'Ada', 'Sambas', 'Tebas', 'Tekarang', '001', '002', 432, 'Padi, Jeruk', 'poktan_pal_9_tunasbaru3.geojson', '#0000FF', 'Sudah Di Post'),
 (2, 2, 'Tunas Mekar', 'Naruto', 'Terdaftar', 'Ada', 'Sambas', 'Polosa', 'Sui Jawi', '002', '002', 552, 'Cabe Hijau', 'poktan_pal_9_tunasmekar2.geojson', '#FF0000', 'Belum Di Post'),
 (3, 1, 'Barsatu Karyatani', 'Alex', 'Terdaftar', 'Ada', 'Karang Anyar', 'Sui Awan', 'Kalton', '004', '001', 331, 'Jagung', 'poktan_pal_9_barsatu_karyatani1.geojson', '#00ff00', 'Sudah Di Post'),
 (4, 2, 'Tunas Muda', 'Arif', 'Belum Terdaftar', 'Tidak Ada', 'Kubu', 'Sukamaju', 'Kebelakang', '002', '003', 523, 'Jagung, Padi, Jeruk Nipis', 'poktan_pal_9_tunasmuda1.geojson', '#ffff00', 'Sudah Di Post'),
-(5, 1, 'Baru Muncul', 'Naruto', 'Belum Terdaftar', 'Tidak Ada', 'Karang Anyar', 'Sui Awan', 'Kalton', '004', '001', 21, 'Jagung, Apel', 'poktan_pal_9_barumuncul.geojson', '#ff00ff', 'Belum Di Post'),
-(6, 1, 'Cafe Mhs', 'Iqbal Fernanda', 'Belum Terdaftar', 'Tidak Ada', 'Pontianak', 'Reformasi', 'Sepakat', '004', '012', 4300, 'Kopi', 'kayong_utara.geojson', '#c15d44', 'Belum Di Post');
+(5, 1, 'Baru Muncul', 'Naruto', 'Belum Terdaftar', 'Tidak Ada', 'Karang Anyar', 'Sui Awan', 'Kalton', '004', '001', 21, 'Jagung, Apel', 'poktan_pal_9_barumuncul.geojson', '#ff00ff', 'Belum Di Post');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `prasarana_petani`
+-- Table structure for table `prasarana_petani`
 --
 
 CREATE TABLE `prasarana_petani` (
@@ -263,7 +263,7 @@ CREATE TABLE `prasarana_petani` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `prasarana_petani`
+-- Dumping data for table `prasarana_petani`
 --
 
 INSERT INTO `prasarana_petani` (`id`, `id_petani`, `status_pemilik`) VALUES
@@ -275,7 +275,7 @@ INSERT INTO `prasarana_petani` (`id`, `id_petani`, `status_pemilik`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `produksi_pertanian`
+-- Table structure for table `produksi_pertanian`
 --
 
 CREATE TABLE `produksi_pertanian` (
@@ -292,7 +292,7 @@ CREATE TABLE `produksi_pertanian` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `produksi_pertanian`
+-- Dumping data for table `produksi_pertanian`
 --
 
 INSERT INTO `produksi_pertanian` (`id`, `id_petani`, `jenis_usaha`, `jenis_lahan`, `sistem_pertanian`, `jenis_komoditas`, `ip`, `jadwal_tanam`, `jadwal_panen`, `sistem_pengairan`) VALUES
@@ -303,7 +303,7 @@ INSERT INTO `produksi_pertanian` (`id`, `id_petani`, `jenis_usaha`, `jenis_lahan
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sarana_pertanian`
+-- Table structure for table `sarana_pertanian`
 --
 
 CREATE TABLE `sarana_pertanian` (
@@ -315,7 +315,7 @@ CREATE TABLE `sarana_pertanian` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `sarana_pertanian`
+-- Dumping data for table `sarana_pertanian`
 --
 
 INSERT INTO `sarana_pertanian` (`id`, `id_petani`, `sarana`, `jumlah`, `satuan`) VALUES
@@ -324,12 +324,17 @@ INSERT INTO `sarana_pertanian` (`id`, `id_petani`, `sarana`, `jumlah`, `satuan`)
 (3, 5, 'Cangkul', 4, 'Unit'),
 (4, 5, 'Handspayer', 6, 'Unit'),
 (5, 5, 'Kendaraan Roda Dua/Empat', 2, 'Unit'),
-(6, 5, 'Pengunaan Pupuk (dalam 1 Musim Tanam)', 7, 'Unit');
+(6, 5, 'Pengunaan Pupuk (dalam 1 Musim Tanam)', 7, 'Unit'),
+(7, 6, 'Cangkul', 1, 'Unit'),
+(8, 6, 'Handspayer', 0, 'Unit'),
+(9, 6, 'Kendaraan Roda Dua/Empat', 2, 'Unit'),
+(10, 6, 'Pengunaan Pupuk (dalam 1 Musim Tanam)', 0, 'Unit'),
+(11, 6, 'Gerobak', 5, 'Unit');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `susun_kelompok`
+-- Table structure for table `susun_kelompok`
 --
 
 CREATE TABLE `susun_kelompok` (
@@ -341,7 +346,7 @@ CREATE TABLE `susun_kelompok` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -356,88 +361,89 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `nama`, `role`, `status`, `gambar`, `tgl_dibuat`) VALUES
 (1, 'admin', '$2y$10$5K7CjCPX12R3vcX2q/LO5OYySO3W4ZUHlusTkM8DzTMnwsV75XhIW', 'Admin WEBGIS', 'Admin', 'Aktif', '100_1.jpg', 0),
-(2, 'superadmin', '$2y$10$5K7CjCPX12R3vcX2q/LO5OYySO3W4ZUHlusTkM8DzTMnwsV75XhIW', 'Super Admin', 'Super Admin', 'Aktif', '100_2.jpg', 0),
-(4, 'iqbal', '$2y$10$afMmjQOPXMwZ8zF0bLc87ePnnxh4klhxpwWzYejxTUKY1b94Ju2B2', 'Iqbal Fernanda', 'Admin', 'Aktif', 'unnamed.jpg', 1633927543);
+(2, 'superadmin', '$2y$10$5K7CjCPX12R3vcX2q/LO5OYySO3W4ZUHlusTkM8DzTMnwsV75XhIW', 'Operator', 'Super Admin', 'Aktif', '100_2.jpg', 0),
+(4, 'iqbal', '$2y$10$afMmjQOPXMwZ8zF0bLc87ePnnxh4klhxpwWzYejxTUKY1b94Ju2B2', 'Iqbal Fernanda', 'Admin', 'Aktif', 'unnamed.jpg', 1633927543),
+(5, 'misbahul', '$2y$10$1EWfJt7zzu830f0H3APqA.U2QYFC0ixoHzx0Hte9jQq1dkOoinz/S', 'Misbahul Munir', 'Admin', 'Aktif', 'graduate-icon-png-28-2.png', 1633943973);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `data_produksi`
+-- Indexes for table `data_produksi`
 --
 ALTER TABLE `data_produksi`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_petani` (`id_petani`);
 
 --
--- Indeks untuk tabel `gapoktan`
+-- Indexes for table `gapoktan`
 --
 ALTER TABLE `gapoktan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `infrastruktur`
+-- Indexes for table `infrastruktur`
 --
 ALTER TABLE `infrastruktur`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_poktan` (`id_poktan`);
 
 --
--- Indeks untuk tabel `keleng_adminis`
+-- Indexes for table `keleng_adminis`
 --
 ALTER TABLE `keleng_adminis`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_poktan` (`id_poktan`);
 
 --
--- Indeks untuk tabel `lokasi_pertanian`
+-- Indexes for table `lokasi_pertanian`
 --
 ALTER TABLE `lokasi_pertanian`
   ADD PRIMARY KEY (`id`),
   ADD KEY `lokasi_pertanian_ibfk_1` (`id_petani`);
 
 --
--- Indeks untuk tabel `petani`
+-- Indexes for table `petani`
 --
 ALTER TABLE `petani`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `poktan`
+-- Indexes for table `poktan`
 --
 ALTER TABLE `poktan`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_gapoktan` (`id_gapoktan`);
 
 --
--- Indeks untuk tabel `prasarana_petani`
+-- Indexes for table `prasarana_petani`
 --
 ALTER TABLE `prasarana_petani`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_petani` (`id_petani`);
 
 --
--- Indeks untuk tabel `produksi_pertanian`
+-- Indexes for table `produksi_pertanian`
 --
 ALTER TABLE `produksi_pertanian`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_petani` (`id_petani`);
 
 --
--- Indeks untuk tabel `sarana_pertanian`
+-- Indexes for table `sarana_pertanian`
 --
 ALTER TABLE `sarana_pertanian`
   ADD PRIMARY KEY (`id`),
   ADD KEY `sarana_pertanian_ibfk_1` (`id_petani`);
 
 --
--- Indeks untuk tabel `susun_kelompok`
+-- Indexes for table `susun_kelompok`
 --
 ALTER TABLE `susun_kelompok`
   ADD PRIMARY KEY (`id`),
@@ -445,141 +451,141 @@ ALTER TABLE `susun_kelompok`
   ADD KEY `id_poktan` (`id_poktan`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `data_produksi`
+-- AUTO_INCREMENT for table `data_produksi`
 --
 ALTER TABLE `data_produksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `gapoktan`
+-- AUTO_INCREMENT for table `gapoktan`
 --
 ALTER TABLE `gapoktan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `infrastruktur`
+-- AUTO_INCREMENT for table `infrastruktur`
 --
 ALTER TABLE `infrastruktur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
--- AUTO_INCREMENT untuk tabel `keleng_adminis`
+-- AUTO_INCREMENT for table `keleng_adminis`
 --
 ALTER TABLE `keleng_adminis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
--- AUTO_INCREMENT untuk tabel `lokasi_pertanian`
+-- AUTO_INCREMENT for table `lokasi_pertanian`
 --
 ALTER TABLE `lokasi_pertanian`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT untuk tabel `petani`
+-- AUTO_INCREMENT for table `petani`
 --
 ALTER TABLE `petani`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `poktan`
+-- AUTO_INCREMENT for table `poktan`
 --
 ALTER TABLE `poktan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `prasarana_petani`
+-- AUTO_INCREMENT for table `prasarana_petani`
 --
 ALTER TABLE `prasarana_petani`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `produksi_pertanian`
+-- AUTO_INCREMENT for table `produksi_pertanian`
 --
 ALTER TABLE `produksi_pertanian`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `sarana_pertanian`
+-- AUTO_INCREMENT for table `sarana_pertanian`
 --
 ALTER TABLE `sarana_pertanian`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT untuk tabel `susun_kelompok`
+-- AUTO_INCREMENT for table `susun_kelompok`
 --
 ALTER TABLE `susun_kelompok`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `data_produksi`
+-- Constraints for table `data_produksi`
 --
 ALTER TABLE `data_produksi`
   ADD CONSTRAINT `data_produksi_ibfk_1` FOREIGN KEY (`id_petani`) REFERENCES `petani` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `infrastruktur`
+-- Constraints for table `infrastruktur`
 --
 ALTER TABLE `infrastruktur`
   ADD CONSTRAINT `infrastruktur_ibfk_1` FOREIGN KEY (`id_poktan`) REFERENCES `poktan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `keleng_adminis`
+-- Constraints for table `keleng_adminis`
 --
 ALTER TABLE `keleng_adminis`
   ADD CONSTRAINT `keleng_adminis_ibfk_1` FOREIGN KEY (`id_poktan`) REFERENCES `poktan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `lokasi_pertanian`
+-- Constraints for table `lokasi_pertanian`
 --
 ALTER TABLE `lokasi_pertanian`
   ADD CONSTRAINT `lokasi_pertanian_ibfk_1` FOREIGN KEY (`id_petani`) REFERENCES `petani` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `poktan`
+-- Constraints for table `poktan`
 --
 ALTER TABLE `poktan`
   ADD CONSTRAINT `poktan_ibfk_1` FOREIGN KEY (`id_gapoktan`) REFERENCES `gapoktan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `prasarana_petani`
+-- Constraints for table `prasarana_petani`
 --
 ALTER TABLE `prasarana_petani`
   ADD CONSTRAINT `prasarana_petani_ibfk_1` FOREIGN KEY (`id_petani`) REFERENCES `petani` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `produksi_pertanian`
+-- Constraints for table `produksi_pertanian`
 --
 ALTER TABLE `produksi_pertanian`
   ADD CONSTRAINT `produksi_pertanian_ibfk_1` FOREIGN KEY (`id_petani`) REFERENCES `petani` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `sarana_pertanian`
+-- Constraints for table `sarana_pertanian`
 --
 ALTER TABLE `sarana_pertanian`
   ADD CONSTRAINT `sarana_pertanian_ibfk_1` FOREIGN KEY (`id_petani`) REFERENCES `petani` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `susun_kelompok`
+-- Constraints for table `susun_kelompok`
 --
 ALTER TABLE `susun_kelompok`
   ADD CONSTRAINT `susun_kelompok_ibfk_1` FOREIGN KEY (`id_petani`) REFERENCES `petani` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,

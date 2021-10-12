@@ -40,10 +40,264 @@
     <?php include 'map.php'; ?>
 <?php endif; ?>
 		
-
+<?php if ($this->uri->segment(2) == 'tambah_lokasi') : ?>
 <script>
-  	
-</script>
+  $(document).ready(function(){ // Ketika halaman sudah diload dan siap
+    $("#btn-tambah-lokasi").click(function(){ // Ketika tombol Tambah Data Form di klik
+      
+      // Kita akan menambahkan form dengan menggunakan append
+      // pada sebuah tag div yg kita beri id insert-form
+      $('#insert-form').append('<table>' +
+        '<tr>' +
+        '<td>Luas Lahan Milik Sendiri + Digarap (Ha)</td>' +
+		'<td> : </td>' +
+        '<td><input type="hidden" name="id[]" value="<?= $petani['id']; ?>">' + 
+		'<input class="form-control" type="text" name="luas_lahan_sendiri[]" value="<?= set_value('luas_lahan_sendiri[]'); ?>" placeholder="Luas Lahan Sendiri"/>' +
+		'</td>' +
+		'</tr>' +
+
+		'<tr>' +
+		'<td>Luas Lahan Sewa + Digarap (Ha)</td>' +
+		'<td> : </td>' +
+        '<td>' + 
+		'<input class="form-control" type="text" name="luas_lahan_sewa[]" value="<?= set_value('luas_lahan_sewa[]'); ?>" placeholder="Luas Lahan Sewa"/>' +
+		'</td>' +
+        '</tr>' +
+
+		'<tr>' +
+		'<td>Keterangan</td>' +
+		'<td> : </td>' +
+        '<td>' + 
+		'<input class="form-control" type="text" name="keterangan[]" value="<?= set_value('keterangan[]'); ?>" placeholder="Keterangan"/>' +
+		'</td>' +
+        '</tr>' +
+
+		'<tr>' +
+		'<td>Latitude</td>' +
+		'<td> : </td>' +
+        '<td>' + 
+		'<input class="form-control" type="text" name="latitude[]" value="<?= set_value('latitude[]'); ?>" placeholder="Latitude"/>' +
+		'</td>' +
+        '</tr>' +
+
+		'<tr>' +
+		'<td>Longitude</td>' +
+		'<td> : </td>' +
+        '<td>' + 
+		'<input class="form-control" type="text" name="longitude[]" value="<?= set_value('longitude[]'); ?>" placeholder="Longitude"/>' +
+		'</td>' +
+        '</tr>' +
+        
+        '</table>' +
+        '<br><br>');
+      
+      $("#jumlah-form").val(nextform); // Ubah value textbox jumlah-form dengan variabel nextform
+    });
+    
+    // Buat fungsi untuk mereset form ke semula
+    $("#btn-reset-lokasi").click(function(){
+      $("#insert-form").html(""); // Kita kosongkan isi dari div insert-form
+      $("#jumlah-form").val("1"); // Ubah kembali value jumlah form menjadi 1
+    });
+  });
+  </script>
+  <?php endif; ?>
+
+  <?php if ($this->uri->segment(2) == 'tambah_sarana') : ?>
+<script>
+  $(document).ready(function(){ // Ketika halaman sudah diload dan siap
+    $("#btn-tambah-sarana").click(function(){ // Ketika tombol Tambah Data Form di klik
+      
+      // Kita akan menambahkan form dengan menggunakan append
+      // pada sebuah tag div yg kita beri id insert-form
+      $('#insert-form').append('<table>' +
+        '<tr>' +
+        '<td>Sarana Pertanian</td>' +
+		'<td> : </td>' +
+        '<td><input type="hidden" name="id[]" value="<?= $petani['id']; ?>">' + 
+		'<input class="form-control" type="text" name="sarana[]" value="<?= set_value('sarana[]'); ?>" placeholder="Sarana"/>' +
+		'</td>' +
+		'</tr>' +
+
+		'<tr>' +
+		'<td>Jumlah</td>' +
+		'<td> : </td>' +
+        '<td>' + 
+		'<input class="form-control" type="text" name="jumlah[]" value="<?= set_value('jumlah[]'); ?>" placeholder="Jumlah"/>' +
+		'</td>' +
+        '</tr>' +
+
+		'<tr>' +
+		'<td>Satuan</td>' +
+		'<td> : </td>' +
+        '<td>' + 
+		'<input class="form-control" type="text" name="satuan[]" value="<?= set_value('satuan[]'); ?>" placeholder="Satuan"/>' +
+		'</td>' +
+        '</tr>' +
+        
+        '</table>' +
+        '<br><br>');
+      
+      $("#jumlah-form").val(nextform); // Ubah value textbox jumlah-form dengan variabel nextform
+    });
+    
+    // Buat fungsi untuk mereset form ke semula
+    $("#btn-reset-sarana").click(function(){
+      $("#insert-form").html(""); // Kita kosongkan isi dari div insert-form
+      $("#jumlah-form").val("1"); // Ubah kembali value jumlah form menjadi 1
+    });
+  });
+  </script>
+  <?php endif; ?>
+
+  <?php if ($this->uri->segment(2) == 'tambah_data_produksi') : ?>
+<script>
+  $(document).ready(function(){ // Ketika halaman sudah diload dan siap
+    $("#btn-tambah-data-produksi").click(function(){ // Ketika tombol Tambah Data Form di klik
+      
+      // Kita akan menambahkan form dengan menggunakan append
+      // pada sebuah tag div yg kita beri id insert-form
+      $('#insert-form').append('<table>' +
+        '<tr>' +
+        '<td>Komoditas</td>' +
+		'<td> : </td>' +
+        '<td><input type="hidden" name="id[]" value="<?= $petani['id']; ?>">' + 
+		'<input class="form-control" type="text" name="komoditas[]" value="<?= set_value('komoditas[]'); ?>" placeholder="Komoditas"/>' +
+		'</td>' +
+		'</tr>' +
+
+		'<tr>' +
+		'<td>Luas (Ha)</td>' +
+		'<td> : </td>' +
+        '<td>' + 
+		'<input class="form-control" type="text" name="luas[]" value="<?= set_value('luas[]'); ?>" placeholder="Luas"/>' +
+		'</td>' +
+        '</tr>' +
+
+		'<tr>' +
+		'<td>Panen(Kg)</td>' +
+		'<td> : </td>' +
+        '<td>' + 
+		'<input class="form-control" type="text" name="panen_kg[]" value="<?= set_value('panen_kg[]'); ?>" placeholder="Panen Per Kg"/>' +
+		'</td>' +
+        '</tr>' +
+
+		'<tr>' +
+		'<td>Harga Per Kg</td>' +
+		'<td> : </td>' +
+        '<td>' + 
+		'<input class="form-control" type="text" name="harga[]" value="<?= set_value('harga[]'); ?>" placeholder="Harga"/>' +
+		'</td>' +
+        '</tr>' +
+        
+        '</table>' +
+        '<br><br>');
+      
+      $("#jumlah-form").val(nextform); // Ubah value textbox jumlah-form dengan variabel nextform
+    });
+    
+    // Buat fungsi untuk mereset form ke semula
+    $("#btn-reset-data-produksi").click(function(){
+      $("#insert-form").html(""); // Kita kosongkan isi dari div insert-form
+      $("#jumlah-form").val("1"); // Ubah kembali value jumlah form menjadi 1
+    });
+  });
+  </script>
+  <?php endif; ?>
+
+  <?php if ($this->uri->segment(2) == 'tambah_adminis') : ?>
+<script>
+  $(document).ready(function(){ // Ketika halaman sudah diload dan siap
+    $("#btn-tambah-adminis").click(function(){ // Ketika tombol Tambah Data Form di klik
+      
+      // Kita akan menambahkan form dengan menggunakan append
+      // pada sebuah tag div yg kita beri id insert-form
+      $('#insert-form').append('<table>' +
+        '<tr>' +
+        '<td>Sarana Pertanian</td>' +
+		'<td> : </td>' +
+        '<td><input type="hidden" name="id[]" value="<?= $poktan['id']; ?>">' + 
+		'<input class="form-control" type="text" name="adminis_kelompok[]" value="<?= set_value('adminis_kelompok[]'); ?>" placeholder="Administrasi Kelompok"/>' +
+		'</td>' +
+		'</tr>' +
+
+		'<tr>' +
+		'<td>Jumlah</td>' +
+		'<td> : </td>' +
+        '<td>' + 
+		'<input class="form-control" type="text" name="jumlah[]" value="<?= set_value('jumlah[]'); ?>" placeholder="Jumlah"/>' +
+		'</td>' +
+        '</tr>' +
+
+		'<tr>' +
+		'<td>Satuan</td>' +
+		'<td> : </td>' +
+        '<td>' + 
+		'<input class="form-control" type="text" name="satuan[]" value="<?= set_value('satuan[]'); ?>" placeholder="Satuan"/>' +
+		'</td>' +
+        '</tr>' +
+        
+        '</table>' +
+        '<br><br>');
+      
+      $("#jumlah-form").val(nextform); // Ubah value textbox jumlah-form dengan variabel nextform
+    });
+    
+    // Buat fungsi untuk mereset form ke semula
+    $("#btn-reset-adminis").click(function(){
+      $("#insert-form").html(""); // Kita kosongkan isi dari div insert-form
+      $("#jumlah-form").val("1"); // Ubah kembali value jumlah form menjadi 1
+    });
+  });
+  </script>
+  <?php endif; ?>
+
+  <?php if ($this->uri->segment(2) == 'tambah_infras') : ?>
+<script>
+  $(document).ready(function(){ // Ketika halaman sudah diload dan siap
+    $("#btn-tambah-infras").click(function(){ // Ketika tombol Tambah Data Form di klik
+      
+      // Kita akan menambahkan form dengan menggunakan append
+      // pada sebuah tag div yg kita beri id insert-form
+      $('#insert-form').append('<table>' +
+        '<tr>' +
+        '<td>Sarana Pertanian</td>' +
+		'<td> : </td>' +
+        '<td><input type="hidden" name="id[]" value="<?= $poktan['id']; ?>">' + 
+		'<input class="form-control" type="text" name="infra_pertanian[]" value="<?= set_value('infra_pertanian[]'); ?>" placeholder="Infrastruktur Pertanian"/>' +
+		'</td>' +
+		'</tr>' +
+
+		'<tr>' +
+		'<td>Jumlah</td>' +
+		'<td> : </td>' +
+        '<td>' + 
+		'<input class="form-control" type="text" name="jumlah[]" value="<?= set_value('jumlah[]'); ?>" placeholder="Jumlah"/>' +
+		'</td>' +
+        '</tr>' +
+
+		'<tr>' +
+		'<td>Satuan</td>' +
+		'<td> : </td>' +
+        '<td>' + 
+		'<input class="form-control" type="text" name="satuan[]" value="<?= set_value('satuan[]'); ?>" placeholder="Satuan"/>' +
+		'</td>' +
+        '</tr>' +
+        
+        '</table>' +
+        '<br><br>');
+      
+      $("#jumlah-form").val(nextform); // Ubah value textbox jumlah-form dengan variabel nextform
+    });
+    
+    // Buat fungsi untuk mereset form ke semula
+    $("#btn-reset-infras").click(function(){
+      $("#insert-form").html(""); // Kita kosongkan isi dari div insert-form
+      $("#jumlah-form").val("1"); // Ubah kembali value jumlah form menjadi 1
+    });
+  });
+  </script>
+  <?php endif; ?>
 
 	</body>
 	<!--end::Body-->

@@ -122,7 +122,7 @@
 
                                                     <div class="d-flex justify-content-between border-top pt-10">
 														<div class="mr-2">
-															<a type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url('petani')?>">Kembali</a>
+															<a type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url('petani/produksi/').$petani['id']?>">Kembali</a>
 														</div>
 														<div>
 															<button type="submit" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4">Simpan Data</button>

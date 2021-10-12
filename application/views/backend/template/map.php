@@ -30,7 +30,15 @@
 	});
 }
 
+<?php
+
+?>
+
 	<?php foreach ($poktan as $pkt) {
+		$id = $pkt['idPoktan'];
+		$site = site_url();
+		$url = "<a href='".$site."poktan/detail/".$id."'><small>Lihat Detail</small></a>";
+
 		$arrayPok[]='{
 			name: "'. $pkt['namaPoktan'] .'",
 			icon: iconByName("'.$pkt['warna'].'"),
@@ -40,7 +48,7 @@
 				"weight": 1,
 				"opcaity": 1
 			},
-			pointToLayer: featureToMarker }).addTo(mymap).bindPopup("<b>Nama Gapoktan :</b> '. $pkt['namaGapoktan'] .'</br><b>Nama Poktan :</b> '. $pkt['namaPoktan'] .'")
+			pointToLayer: featureToMarker }).addTo(mymap).bindPopup("<b>Nama Gapoktan :</b> '. $pkt['namaGapoktan'] .'</br><b>Nama Poktan :</b> '. $pkt['namaPoktan'] .' </br> '.$url.'")
 			}';
 		 } ?>
 

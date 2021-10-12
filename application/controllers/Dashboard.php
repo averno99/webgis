@@ -16,7 +16,7 @@ class Dashboard extends CI_Controller {
 	{
 		$data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 		$data['judul'] = 'Dashboard';
-		$data['poktan'] = $this->M_poktan->getAllPoktan();
+		$data['poktan'] = $this->M_poktan->getPetaPoktan();
 		$data['gapoktan'] = $this->db->get('gapoktan')->result_array();
 
 		$this->load->view('backend/template/head', $data);

@@ -248,10 +248,17 @@
                                                     </td>
                                                 </tr>
 											</tbody>
+                                            <tr>
+                                                    <td colspan="4">
+                                                        <button type="button" id="btn-tambah-infras" class="btn btn-success font-weight-bolder text-uppercase btn-sm">Tambah Infrastruktur Lainnya</button>
+														<button type="button" id="btn-reset-infras" class="btn btn-danger font-weight-bolder text-uppercase btn-sm">Reset Form</button>
+                                                    </td>
+                                                </tr>
 										</table>
+                                        <div id="insert-form"></div>
                                                         <div class="d-flex justify-content-between border-top pt-10">
 															<div class="mr-2">
-																<a type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url('poktan')?>">Kembali</a>
+																<a type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url('poktan/infras/').$poktan['id']?>">Kembali</a>
 															</div>
 															<div>
 																<button type="submit" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4">Simpan Data</button>

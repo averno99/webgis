@@ -79,17 +79,20 @@
                                                         <input class="form-control form-control-sm form-control-solid" type="text" name="longitude[]" value="<?= set_value('longitude[]'); ?>" placeholder="Longitude"/>
                                                     </td>
                                                 </tr>  
-                                                <div id="insert-form"></div>
+                                                
                                                 <tr>
-                                                    <td colspan="6">
-                                                        <button type="button" id="btn-tambah-lokasi" class="btn btn-success font-weight-bolder text-uppercase">Button</button>
+                                                    <td colspan="5">
+                                                        <button type="button" id="btn-tambah-lokasi" class="btn btn-success font-weight-bolder text-uppercase btn-sm">Tambah Lokasi Lainnya</button>
+														<button type="button" id="btn-reset-lokasi" class="btn btn-danger font-weight-bolder text-uppercase btn-sm">Reset Form</button>
                                                     </td>
-                                                </tr>                                             
+                                                </tr>
+												                                             
 											</tbody>
 										</table>
+										<div id="insert-form"></div>
                                                         <div class="d-flex justify-content-between border-top pt-10">
 															<div class="mr-2">
-																<a type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url('petani')?>">Kembali</a>
+																<a type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url('petani/prasarana/').$petani['id']?>">Kembali</a>
 															</div>
 															<div>
 																<button type="submit" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4">Simpan Data</button>

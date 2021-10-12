@@ -75,17 +75,18 @@
                                                         <input class="form-control form-control-sm form-control-solid" type="text" name="harga[]" value="<?= set_value('harga[]'); ?>" placeholder="Harga"/>
                                                     </td>
                                                 </tr>  
-                                                <div id="insert-form"></div>
                                                 <tr>
-                                                    <td colspan="6">
-                                                        <button type="button" id="btn-tambah-data-produksi" class="btn btn-success font-weight-bolder text-uppercase">Button</button>
+                                                    <td colspan="4">
+                                                        <button type="button" id="btn-tambah-data-produksi" class="btn btn-success font-weight-bolder text-uppercase btn-sm">Tambah Data Produksi Lainnya</button>
+														<button type="button" id="btn-reset-data-produksi" class="btn btn-danger font-weight-bolder text-uppercase btn-sm">Reset Form</button>
                                                     </td>
                                                 </tr>                                             
 											</tbody>
 										</table>
+										<div id="insert-form"></div>
                                                         <div class="d-flex justify-content-between border-top pt-10">
 															<div class="mr-2">
-																<a type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url('petani')?>">Kembali</a>
+																<a type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url('petani/produksi/').$petani['id']?>">Kembali</a>
 															</div>
 															<div>
 																<button type="submit" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4">Simpan Data</button>

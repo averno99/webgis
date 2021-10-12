@@ -121,12 +121,19 @@
                                                         <input type="hidden" name="satuan[]" value="Unit">
                                                     </td>
                                                 </tr>
+												<tr>
+                                                    <td colspan="4">
+                                                        <button type="button" id="btn-tambah-sarana" class="btn btn-success font-weight-bolder text-uppercase btn-sm">Tambah Sarana Lainnya</button>
+														<button type="button" id="btn-reset-sarana" class="btn btn-danger font-weight-bolder text-uppercase btn-sm">Reset Form</button>
+                                                    </td>
+                                                </tr>
                                                 
 											</tbody>
 										</table>
+										<div id="insert-form"></div>
                                                         <div class="d-flex justify-content-between border-top pt-10">
 															<div class="mr-2">
-																<a type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url('petani')?>">Kembali</a>
+																<a type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url('petani/prasarana/') . $petani['id']?>">Kembali</a>
 															</div>
 															<div>
 																<button type="submit" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4">Simpan Data</button>

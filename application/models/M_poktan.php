@@ -12,6 +12,15 @@ class M_poktan extends CI_Model {
         return $query;
     }
 
+    public function getPetaPoktan()
+    {
+        $query = $this->db->select('poktan.*, poktan.id as idPoktan, poktan.nama as namaPoktan, gapoktan.nama as namaGapoktan, gapoktan.id as idGapoktan')
+            ->from('poktan')
+            ->join('gapoktan', 'poktan.id_gapoktan = gapoktan.id')
+            ->get()->result_array();
+        return $query;
+    }
+
     public function getAllPoktanUmum()
     {
         $query = $this->db->select('poktan.*, poktan.nama as namaPoktan, gapoktan.nama as namaGapoktan, gapoktan.id as idGapoktan')
