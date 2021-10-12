@@ -17,7 +17,7 @@ class Home extends CI_Controller {
         $this->load->model('M_poktan');
 		// $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 		$data['judul'] = 'Dashboard';
-		$data['poktan'] = $this->M_poktan->getAllPoktan();
+		$data['poktan'] = $this->M_poktan->getPetaPoktan();
 
 		$this->load->view('frontend/template/head', $data);
 		$this->load->view('frontend/template/aside');

@@ -31,6 +31,18 @@ class M_poktan extends CI_Model {
         return $query;
     }
 
+    public function getIdPetaPoktan()
+    {
+        $keyword = $this->input->get('cari');
+
+        $query = $this->db->select('poktan.*, poktan.id as idPoktan, poktan.nama as namaPoktan, gapoktan.nama as namaGapoktan, gapoktan.id as idGapoktan')
+            ->from('poktan')
+            ->join('gapoktan', 'poktan.id_gapoktan = gapoktan.id')
+            ->where('poktan.id_gapoktan', $keyword)
+            ->get()->result_array();
+        return $query;
+    }
+
     public function getIdPoktan($id = NULL)
     {
 
