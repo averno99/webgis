@@ -55,8 +55,8 @@
 													<td><?= $no++; ?></td>
 													<td><?= $gpk['nama']?></td>
 													<td>
-														<a href="<?= site_url(); ?>gapoktan/ubah/<?= $gpk['id'] ?>"><small>Ubah</small></a> | 
-														<a href="<?= site_url(); ?>gapoktan/hapus/<?= $gpk['id'] ?>"><small>Hapus</small></a>
+														<a href="<?= site_url(); ?>gapoktan/ubah/<?= $gpk['id'] ?>" class="btn btn-outline-success btn-sm">Ubah</a> 
+														<a href="<?= site_url(); ?>gapoktan/hapus/<?= $gpk['id'] ?>" class="btn btn-outline-danger btn-sm">Hapus</a>
 													</td>
                                                 </tr>
 											<?php endforeach; ?>

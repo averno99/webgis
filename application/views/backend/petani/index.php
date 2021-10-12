@@ -78,9 +78,9 @@
 															<a href="<?= site_url(); ?>petani/detail/<?= $ptn['id'] ?>"><small>Detail</small></a> |
 															<a href="<?= site_url(); ?>petani/hapus_petani/<?= $ptn['id'] ?>"><small>Hapus</small></a>
 														<?php else : ?>
-															<a href="<?= site_url(); ?>petani/detail/<?= $ptn['id'] ?>"><small>Detail</small></a> | 
-															<a href="<?= site_url(); ?>petani/ubah_petani/<?= $ptn['id'] ?>"><small>Ubah</small></a> |
-															<a href="<?= site_url(); ?>petani/hapus_petani/<?= $ptn['id'] ?>"><small>Hapus</small></a> 
+															<a href="<?= site_url(); ?>petani/detail/<?= $ptn['id'] ?>" class="btn btn-outline-info btn-sm"><small>Detail</small></a>
+															<a href="<?= site_url(); ?>petani/ubah_petani/<?= $ptn['id'] ?>" class="btn btn-outline-success btn-sm"><small>Ubah</small></a>
+															<a href="<?= site_url(); ?>petani/hapus_petani/<?= $ptn['id'] ?>" class="btn btn-outline-danger btn-sm"><small>Hapus</small></a> 
 														<?php endif; ?>
 														
 													</td>

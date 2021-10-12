@@ -52,7 +52,7 @@
 													<th>Total Luas Lahan</th>
 													<th>Komoditas Unggulan</th>
 													<th>Status Post</th>
-													<th>Aksi</th>
+													<th style="min-width: 150px">Aksi</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -80,8 +80,8 @@
 															<a href="<?= site_url(); ?>poktan/detail/<?= $pkt['id'] ?>"><small>Detail</small></a> | 
 															<a href="<?= site_url(); ?>poktan/hapus_poktan/<?= $pkt['id'] ?>"><small>Hapus</small></a>
                                                         <?php else : ?>
-                                                           <a href="<?= site_url(); ?>poktan/detail/<?= $pkt['id'] ?>"><small>Detail</small></a> | 
-														   <a href="<?= site_url(); ?>poktan/hapus_poktan/<?= $pkt['id'] ?>"><small>Hapus</small></a>
+                                                           <a href="<?= site_url(); ?>poktan/detail/<?= $pkt['id'] ?>" class="btn btn-outline-info btn-sm"><small>Detail</small></a> 
+														   <a href="<?= site_url(); ?>poktan/hapus_poktan/<?= $pkt['id'] ?>" class="btn btn-outline-danger btn-sm"><small>Hapus</small></a>
                                                         <?php endif; ?>
 														
 													</td>
