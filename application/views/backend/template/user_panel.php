@@ -20,7 +20,7 @@
 						<a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary"><?= $user['nama']; ?></a>
 						<div class="text-muted mt-1"><?= $user['role']; ?></div>
 						<div class="navi mt-2">
-							<a href="<?= site_url('auth/logout')?>" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Logout</a>
+							<a class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5 tombol-keluar">Logout</a>
 						</div>
 					</div>
 				</div>

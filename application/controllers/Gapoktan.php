@@ -55,6 +55,7 @@ class Gapoktan extends CI_Controller {
             ];
 
             $this->db->insert('gapoktan', $data);
+            $this->session->set_flashdata('flash', 'Ditambah');
             redirect('gapoktan');
         }
     }
@@ -88,6 +89,7 @@ class Gapoktan extends CI_Controller {
 
         $this->db->where('id', $this->input->post('id'));
         $this->db->update('gapoktan', $data);
+        $this->session->set_flashdata('flash', 'Diubah');
             redirect('gapoktan');
         }
     }
@@ -96,6 +98,7 @@ class Gapoktan extends CI_Controller {
     {
         $this->db->where('id', $id);
         $this->db->delete('gapoktan');
+        $this->session->set_flashdata('flash', 'Dihapus');
         redirect('gapoktan');
     }
 }

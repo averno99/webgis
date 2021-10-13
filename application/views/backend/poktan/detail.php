@@ -16,6 +16,9 @@
 						<div class="d-flex flex-column-fluid">
 							<!--begin::Container-->
 							<div class="container">
+							<div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
+							<?php if ($this->session->flashdata('flash')) : ?>
+							<?php endif; ?>
 								<!--begin::Card-->
 								<div class="card card-custom">
 									<!--Begin::Header-->

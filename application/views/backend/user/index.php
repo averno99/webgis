@@ -17,7 +17,9 @@
 						<div class="d-flex flex-column-fluid">
 							<!--begin::Container-->
 							<div class="container">
-								
+							<div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
+							<?php if ($this->session->flashdata('flash')) : ?>
+							<?php endif; ?>
 								<!--begin::Card-->
 								<div class="card card-custom">
 									<div class="card-header flex-wrap py-5">
@@ -68,10 +70,10 @@
                                                             <?php endif; ?>
                                                     </td>
 													<td>
-														<a href="<?= site_url(); ?>user/ubah_user/<?= $usr['id'] ?>"><small>Ubah</small></a> |
-														<a href="<?= site_url(); ?>user/detail_user/<?= $usr['id'] ?>"><small>Detail</small></a> |
-														<a href="<?= site_url(); ?>user/hapus_user/<?= $usr['id'] ?>"><small>Hapus</small></a> | 
-														<a href="<?= site_url(); ?>user/reset_password/<?= $usr['id'] ?>"><small>Reset Password</small></a>
+														<a href="<?= site_url(); ?>user/ubah_user/<?= $usr['id'] ?>" class="btn btn-outline-success btn-sm"><small>Ubah</small></a> 
+														<a href="<?= site_url(); ?>user/detail_user/<?= $usr['id'] ?>" class="btn btn-outline-info btn-sm"><small>Detail</small></a> 
+														<a href="<?= site_url(); ?>user/hapus_user/<?= $usr['id'] ?>" class="btn btn-outline-danger btn-sm tombol-hapus"><small>Hapus</small></a> 
+														<a href="<?= site_url(); ?>user/reset_password/<?= $usr['id'] ?>" class="btn btn-outline-danger btn-sm"><small>Reset Password</small></a>
 													</td>
                                                 </tr>
 											<?php endforeach; ?>

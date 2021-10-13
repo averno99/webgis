@@ -204,7 +204,7 @@ class Poktan extends CI_Controller {
             }
 
             $this->M_poktan->tambahPoktan($upload_geojson);
-            // $this->session->set_flashdata('flash', 'Ditambahkan');
+            $this->session->set_flashdata('flash', 'Ditambahkan');
             redirect('poktan');
         }
     }
@@ -322,7 +322,7 @@ class Poktan extends CI_Controller {
             }
 
             $this->M_poktan->ubahPoktan();
-            // $this->session->set_flashdata('flash', 'Ditambahkan');
+            $this->session->set_flashdata('flash', 'Diubah');
             redirect('poktan/detail/'. $id);
         }
     }
@@ -370,6 +370,7 @@ class Poktan extends CI_Controller {
       			$index++;
     		}    
       		$this->M_poktan->tambahAdminis($data);
+            $this->session->set_flashdata('flash', 'Ditambah');
 			redirect('poktan/adminis/'.$id);
 			
 		}
@@ -418,6 +419,7 @@ class Poktan extends CI_Controller {
       			$index++;
     		}    
       		$this->db->update_batch('keleng_adminis',$data, 'id');
+            $this->session->set_flashdata('flash', 'Diubah');
 			redirect('poktan/adminis/'.$id);
 			
 		}
@@ -465,6 +467,7 @@ class Poktan extends CI_Controller {
       			$index++;
     		}    
       		$this->M_poktan->tambahInfras($data);
+            $this->session->set_flashdata('flash', 'Ditambah');
 			redirect('poktan/infras/'.$id);
 			
 		}
@@ -513,6 +516,7 @@ class Poktan extends CI_Controller {
       			$index++;
     		}    
       		$this->db->update_batch('infrastruktur', $data, 'id');
+            $this->session->set_flashdata('flash', 'Diubah');
 			redirect('poktan/infras/'.$id);
 			
 		}
@@ -552,7 +556,7 @@ class Poktan extends CI_Controller {
         }
 
         $this->M_poktan->hapusPoktan($id);
-        // $this->session->set_flashdata('flash', 'Dihapus');
+        $this->session->set_flashdata('flash', 'Dihapus');
         redirect('poktan');
     }
 }

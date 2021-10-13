@@ -70,7 +70,7 @@ class Auth extends CI_Controller {
         $this->session->unset_userdata('username');
         $this->session->unset_userdata('role');
 
-        $this->session->set_flashdata('logout', 'Kamu Berhasil Logout');
+        $this->session->set_flashdata('message', '<div class="alert alert-success text-center" role="alert">Anda berhasil keluar ! </div>');
         redirect('auth');
     }
 

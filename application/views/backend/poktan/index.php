@@ -17,7 +17,9 @@
 						<div class="d-flex flex-column-fluid">
 							<!--begin::Container-->
 							<div class="container">
-								
+							<div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
+							<?php if ($this->session->flashdata('flash')) : ?>
+							<?php endif; ?>
 								<!--begin::Card-->
 								<div class="card card-custom">
 									<div class="card-header flex-wrap py-5">
@@ -81,7 +83,7 @@
 															<a href="<?= site_url(); ?>poktan/hapus_poktan/<?= $pkt['id'] ?>"><small>Hapus</small></a>
                                                         <?php else : ?>
                                                            <a href="<?= site_url(); ?>poktan/detail/<?= $pkt['id'] ?>" class="btn btn-outline-info btn-sm"><small>Detail</small></a> 
-														   <a href="<?= site_url(); ?>poktan/hapus_poktan/<?= $pkt['id'] ?>" class="btn btn-outline-danger btn-sm"><small>Hapus</small></a>
+														   <a href="<?= site_url(); ?>poktan/hapus_poktan/<?= $pkt['id'] ?>" class="btn btn-outline-danger btn-sm tombol-hapus"><small>Hapus</small></a>
                                                         <?php endif; ?>
 														
 													</td>

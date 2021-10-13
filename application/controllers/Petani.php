@@ -199,7 +199,7 @@ class Petani extends CI_Controller {
             }
 
             $this->M_petani->tambahPetani($upload_foto);
-            // $this->session->set_flashdata('flash', 'Ditambahkan');
+            $this->session->set_flashdata('flash', 'Ditambahkan');
             redirect('petani');
         }
     }
@@ -330,7 +330,7 @@ class Petani extends CI_Controller {
             }
 
             $this->M_petani->ubahPetani();
-            // $this->session->set_flashdata('flash', 'Ditambahkan');
+            $this->session->set_flashdata('flash', 'Diubah');
             redirect('petani/detail/'. $id);
         }
     }
@@ -364,7 +364,7 @@ class Petani extends CI_Controller {
         } else {
 
             $this->M_petani->tambahPrasarana();
-            // $this->session->set_flashdata('flash', 'Ditambahkan');
+            $this->session->set_flashdata('flash', 'Ditambah'); 
             redirect('petani/prasarana/'. $id);
         }
     }
@@ -402,7 +402,8 @@ class Petani extends CI_Controller {
 
         	$this->db->where('id', $this->input->post('id'));
       		$this->db->update('prasarana_petani', $data);
-            // $this->session->set_flashdata('flash', 'Ditambahkan');
+            $this->session->set_flashdata('flash', 'Diubah'); 
+            // $this->session->set_flashdata('message');
             redirect('petani/prasarana/'. $id);
 			
 		}
@@ -450,6 +451,7 @@ class Petani extends CI_Controller {
       			$index++;
     		}    
       		$this->M_petani->tambahSarana($data);
+            $this->session->set_flashdata('flash', 'Ditambah'); 
 			redirect('petani/prasarana/'.$id);
 			
 		}
@@ -498,6 +500,7 @@ class Petani extends CI_Controller {
       			$index++;
     		}    
       		$this->db->update_batch('sarana_pertanian',$data, 'id');
+            $this->session->set_flashdata('flash', 'Diubah'); 
 			redirect('petani/prasarana/'. $id);
 			
 		}
@@ -535,7 +538,7 @@ class Petani extends CI_Controller {
         } else {
 
             $this->M_petani->tambahProduksi();
-            // $this->session->set_flashdata('flash', 'Ditambahkan');
+            $this->session->set_flashdata('flash', 'Ditambahkan');
             redirect('petani/produksi/'.$id);
         }
     }
@@ -573,7 +576,7 @@ class Petani extends CI_Controller {
         } else {
 
             $this->M_petani->ubahProduksi();
-            // $this->session->set_flashdata('flash', 'Ditambahkan');
+            $this->session->set_flashdata('flash', 'Diubah');
             redirect('petani/produksi/'. $id);
         }
     }
@@ -624,6 +627,7 @@ class Petani extends CI_Controller {
       			$index++;
     		} 
       		$this->M_petani->tambahLokasi($data);
+            $this->session->set_flashdata('flash', 'Ditambah'); 
 			redirect('petani/prasarana/'.$id);
 			
 		}
@@ -677,6 +681,7 @@ class Petani extends CI_Controller {
       			$index++;
     		}
       		$this->db->update_batch('lokasi_pertanian',$data, 'id');
+            $this->session->set_flashdata('flash', 'Diubah'); 
 			redirect('petani/prasarana/'. $id);
 			
 		}
@@ -726,6 +731,7 @@ class Petani extends CI_Controller {
       			$index++;
     		} 
       		$this->M_petani->tambahDataProduksi($data);
+            $this->session->set_flashdata('flash', 'Ditambah'); 
 			redirect('petani/produksi/'.$id);
 			
 		}
@@ -776,6 +782,7 @@ class Petani extends CI_Controller {
       			$index++;
     		} 
       		$this->db->update_batch('data_produksi',$data, 'id');
+            $this->session->set_flashdata('flash', 'Diubah'); 
 			redirect('petani/produksi/'.$id);
 			
 		}
@@ -815,7 +822,7 @@ class Petani extends CI_Controller {
         }
 
         $this->M_petani->hapusPetani($id);
-        // $this->session->set_flashdata('flash', 'Dihapus');
+        $this->session->set_flashdata('flash', 'Dihapus');
         redirect('petani');
     }
 }

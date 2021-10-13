@@ -61,6 +61,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								<h3 class="opacity-40 font-weight-normal">Login</h3>
 								<p class="opacity-40">Masukkan data akun anda untuk melakukan login:</p>
 							</div>
+							<?= $this->session->flashdata('message'); ?>
 							<form class="form" method="POST" action="<?= site_url('auth') ?>">
 								<div class="form-group">
 									<input class="form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8" type="text" placeholder="Username" name="username" autocomplete="off" />

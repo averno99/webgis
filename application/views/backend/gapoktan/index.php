@@ -17,7 +17,9 @@
 						<div class="d-flex flex-column-fluid">
 							<!--begin::Container-->
 							<div class="container">
-								
+							<div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
+							<?php if ($this->session->flashdata('flash')) : ?>
+							<?php endif; ?>
 								<!--begin::Card-->
 								<div class="card card-custom">
 									<div class="card-header flex-wrap py-5">
@@ -56,7 +58,7 @@
 													<td><?= $gpk['nama']?></td>
 													<td>
 														<a href="<?= site_url(); ?>gapoktan/ubah/<?= $gpk['id'] ?>" class="btn btn-outline-success btn-sm">Ubah</a> 
-														<a href="<?= site_url(); ?>gapoktan/hapus/<?= $gpk['id'] ?>" class="btn btn-outline-danger btn-sm">Hapus</a>
+														<a href="<?= site_url(); ?>gapoktan/hapus/<?= $gpk['id'] ?>" class="btn btn-outline-danger btn-sm tombol-hapus">Hapus</a>
 													</td>
                                                 </tr>
 											<?php endforeach; ?>

@@ -104,7 +104,7 @@ class User extends CI_Controller {
             }
 
             $this->M_user->tambahUser($upload_gambar);
-            // $this->session->set_flashdata('flash', 'Ditambahkan');
+            $this->session->set_flashdata('flash', 'Ditambahkan');
             redirect('user');
         }
         
@@ -161,7 +161,7 @@ class User extends CI_Controller {
             }
 
             $this->M_user->ubahUser();
-            // $this->session->set_flashdata('flash', 'Ditambahkan');
+            $this->session->set_flashdata('flash', 'Diubah');
             redirect('user');
         }
         
@@ -239,7 +239,7 @@ class User extends CI_Controller {
         }
 
         $this->M_user->hapusUser($id);
-        // $this->session->set_flashdata('flash', 'Dihapus');
+        $this->session->set_flashdata('flash', 'Dihapus');
         redirect('user');
     }
 
