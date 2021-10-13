@@ -130,11 +130,12 @@
 											<thead>
 												<tr>
 													<th>No</th>
-													<th>Luas Lahan Milik Sendiri + Digarap (Ha)</th>
-													<th>Luas Lahan Sewa + Digarap (Ha)</th>
+													<th>Luas Lahan Milik Sendiri (Ha)</th>
+													<th>Luas Lahan Sewa (Ha)</th>
 													<th>Keterangan</th>
                                                     <th>Latitude</th>
                                                     <th>Longitude</th>
+													<th>Aksi</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -148,6 +149,9 @@
 													<td><?= $lks['keterangan']?></td>
                                                     <td><?= $lks['latitude']?></td>
                                                     <td><?= $lks['longitude']?></td>
+													<td>
+														<a href="<?= site_url(); ?>sawah/detail/<?= $lks['idLokasi'] ?>" class="btn btn-outline-info btn-sm">Lihat Lokasi</a> 
+													</td>
 												</tr>
 											<?php endforeach; ?>
 											</tbody>
