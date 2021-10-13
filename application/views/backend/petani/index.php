@@ -75,10 +75,10 @@
 													</td>
 													<td>
 														<?php if ($user['role'] == 'Super Admin') : ?>
-															<a href="<?= site_url(); ?>petani/updatesudah/<?= $ptn['id'] ?>"><small>Setuju</small></a> |
-															<a href="<?= site_url(); ?>petani/updatebelum/<?= $ptn['id'] ?>"><small>Batal</small></a> |
-															<a href="<?= site_url(); ?>petani/detail/<?= $ptn['id'] ?>"><small>Detail</small></a> |
-															<a href="<?= site_url(); ?>petani/hapus_petani/<?= $ptn['id'] ?>"><small>Hapus</small></a>
+															<a href="<?= site_url(); ?>petani/updatesudah/<?= $ptn['id'] ?>"  data-container="body" data-toggle="tooltip" data-placement="top" title="Setuju"><i class="flaticon-interface-5 icon-lg text-primary mr-1"></i></a> 
+															<a href="<?= site_url(); ?>petani/updatebelum/<?= $ptn['id'] ?>" data-container="body" data-toggle="tooltip" data-placement="top" title="Batal"><i class="flaticon-circle icon-lg text-danger mr-3"></i></a> 
+															<a href="<?= site_url(); ?>petani/detail/<?= $ptn['id'] ?>" class="btn btn-outline-info btn-sm"><small>Detail</small></a> 
+															<a href="<?= site_url(); ?>petani/hapus_petani/<?= $ptn['id'] ?>" class="btn btn-outline-danger btn-sm tombol-hapus"><small>Hapus</small></a>
 														<?php else : ?>
 															<a href="<?= site_url(); ?>petani/detail/<?= $ptn['id'] ?>" class="btn btn-outline-info btn-sm"><small>Detail</small></a>
 															<a href="<?= site_url(); ?>petani/ubah_petani/<?= $ptn['id'] ?>" class="btn btn-outline-success btn-sm"><small>Ubah</small></a>

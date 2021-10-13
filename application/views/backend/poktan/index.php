@@ -54,7 +54,7 @@
 													<th>Total Luas Lahan</th>
 													<th>Komoditas Unggulan</th>
 													<th>Status Post</th>
-													<th style="min-width: 150px">Aksi</th>
+													<th style="min-width: 200px">Aksi</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -77,10 +77,10 @@
 													</td>
 													<td>
 														<?php if ($user['role'] == 'Super Admin') : ?>
-                                                            <a href="<?= site_url(); ?>poktan/updatesudah/<?= $pkt['id'] ?>"><small>Setuju</small></a> |
-															<a href="<?= site_url(); ?>poktan/updatebelum/<?= $pkt['id'] ?>"><small>Batal</small></a> |
-															<a href="<?= site_url(); ?>poktan/detail/<?= $pkt['id'] ?>"><small>Detail</small></a> | 
-															<a href="<?= site_url(); ?>poktan/hapus_poktan/<?= $pkt['id'] ?>"><small>Hapus</small></a>
+                                                            <a href="<?= site_url(); ?>poktan/updatesudah/<?= $pkt['id'] ?>" data-container="body" data-toggle="tooltip" data-placement="top" title="Setuju"><i class="flaticon-interface-5 icon-lg text-primary mr-1"></i></a>
+															<a href="<?= site_url(); ?>poktan/updatebelum/<?= $pkt['id'] ?>" data-container="body" data-toggle="tooltip" data-placement="top" title="Batal"><i class="flaticon-circle icon-lg text-danger mr-3"></i></a>
+															<a href="<?= site_url(); ?>poktan/detail/<?= $pkt['id'] ?>"  class="btn btn-outline-info btn-sm"><small>Detail</small></a>
+															<a href="<?= site_url(); ?>poktan/hapus_poktan/<?= $pkt['id'] ?>" class="btn btn-outline-danger btn-sm tombol-hapus"><small>Hapus</small></a>
                                                         <?php else : ?>
                                                            <a href="<?= site_url(); ?>poktan/detail/<?= $pkt['id'] ?>" class="btn btn-outline-info btn-sm"><small>Detail</small></a> 
 														   <a href="<?= site_url(); ?>poktan/hapus_poktan/<?= $pkt['id'] ?>" class="btn btn-outline-danger btn-sm tombol-hapus"><small>Hapus</small></a>
