@@ -89,7 +89,7 @@
 											<!--begin::Tab Content-->
 											<div class="tab-pane active" role="tabpanel">
 												<?php if (empty($produksi)) : ?>
-											<a type="button" href="<?= site_url(); ?>petani/tambah_produksi/<?= $petani['id'] ?>">Tambah Data</a>
+											<a type="button" class="btn btn-primary btn-block font-weight-bolder text-uppercase" href="<?= site_url(); ?>petani/tambah_produksi/<?= $petani['id'] ?>">Tambah Data</a>
 										<?php else :?>
 												<form class="form">
 													<div class="form-group row">
@@ -143,6 +143,7 @@
 												</form>
 												<?php if ($user['role'] == 'Admin') : ?>
 											<div class="d-flex justify-content-between border-top pt-10">
+												<div class="mr-2"></div>
 												<div>
 													<a type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url(); ?>petani/ubah_produksi/<?= $petani['id'] ?>">Ubah Data</a>
 												</div>
@@ -164,7 +165,7 @@
 									</div>
 									<div class="card-body">
                                         <?php if (empty($data_produksi)) : ?>
-													<a type="button" href="<?= site_url(); ?>petani/tambah_data_produksi/<?= $petani['id'] ?>">Tambah Data</a>
+													<a type="button" class="btn btn-primary btn-block font-weight-bolder text-uppercase" href="<?= site_url(); ?>petani/tambah_data_produksi/<?= $petani['id'] ?>">Tambah Data</a>
 												<?php else :?>
 										<table class="table table-separate table-head-custom collapsed" id="kt_datatable">
 											<thead>
@@ -174,6 +175,7 @@
 													<th>Luas (Ha)</th>
 													<th>Panen (Kg)</th>
                                                     <th>Harga Per Kg</th>
+													<th>Aksi</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -186,6 +188,9 @@
 													<td><?= $dp['luas']?></td>
 													<td><?= $dp['panen_kg']?></td>
                                                     <td><?= $dp['harga']?></td>
+													<td>
+														<a href="<?= site_url(); ?>petani/hapus_data_produksi/<?= $petani['id'] ?>/<?= $dp['idDataProduksi'] ?>" class="btn btn-outline-danger btn-sm tombol-hapus"><small>Hapus</small></a>
+													</td>
 												</tr>
 											<?php endforeach; ?>
 											</tbody>
@@ -196,6 +201,7 @@
 													<a type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url('petani')?>">Kembali</a>
 												</div>
 												<div>
+													<a type="button" class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url(); ?>petani/tambah_data_produksi/<?= $petani['id'] ?>">Tambah Data Lainnya</a>
 													<a type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url(); ?>petani/ubah_data_produksi/<?= $petani['id'] ?>">Ubah Data</a>
 												</div>
 											</div>

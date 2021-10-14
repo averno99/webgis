@@ -112,7 +112,7 @@
   </script>
   <?php endif; ?>
 
-  <?php if ($this->uri->segment(2) == 'tambah_sarana') : ?>
+  <?php if ($this->uri->segment(2) == 'tambah_sarana' || $this->uri->segment(2) == 'tambah_sarana_lainnya') : ?>
 <script>
   $(document).ready(function(){ // Ketika halaman sudah diload dan siap
     $("#btn-tambah-sarana").click(function(){ // Ketika tombol Tambah Data Form di klik

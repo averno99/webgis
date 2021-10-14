@@ -459,6 +459,54 @@ class Petani extends CI_Controller {
 		}
 	}
 
+    public function tambah_sarana_lainnya($id = NULL)
+    {
+		if ($this->session->userdata('role') !== 'Admin') {
+            redirect('blokir');
+        }
+
+        $data['judul'] = 'Tambah Data Sarana Pertanian';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+		$data['petani'] = $this->M_petani->getIdPetani($id);
+		
+        $this->form_validation->set_rules(
+            'jumlah[]',
+            'Jumlah',
+            'numeric|trim'
+        );
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('backend/template/head', $data);
+			$this->load->view('backend/template/aside');
+			$this->load->view('backend/template/topbar', $data);
+			$this->load->view('backend/petani/tambah_sarana_lainnya', $data);
+			$this->load->view('backend/template/footer');
+			$this->load->view('backend/template/user_panel', $data);
+			$this->load->view('backend/template/js');
+        } else {
+			$idd = $_POST['id']; // Ambil data nis dan masukkan ke variabel nis
+    		$sarana = $_POST['sarana']; // Ambil data nama dan masukkan ke variabel nama
+    		$jumlah = $_POST['jumlah']; // Ambil data telp dan masukkan ke variabel telp
+    		$satuan = $_POST['satuan']; // Ambil data alamat dan masukkan ke variabel alamat
+    		$data = array();
+    
+    		$index = 0; // Set index array awal dengan 0
+    		foreach($idd as $dataid){ // Kita buat perulangan berdasarkan nis sampai data terakhir
+      			array_push($data, array(
+        			'id_petani'=>$dataid,
+        			'sarana'=>$sarana[$index],  // Ambil dan set data nama sesuai index array dari $index
+        			'jumlah'=>$jumlah[$index],  // Ambil dan set data telepon sesuai index array dari $index
+        			'satuan'=>$satuan[$index],  // Ambil dan set data alamat sesuai index array dari $index
+      			));
+      			$index++;
+    		}    
+      		$this->M_petani->tambahSarana($data);
+            $this->session->set_flashdata('flash', 'Ditambah'); 
+			redirect('petani/prasarana/'.$id);
+			
+		}
+	}
+
     public function ubah_sarana($id = NULL)
     {
 		if ($this->session->userdata('role') !== 'Admin') {
@@ -834,5 +882,21 @@ class Petani extends CI_Controller {
         $this->db->delete('lokasi_pertanian');
         $this->session->set_flashdata('flash', 'Dihapus');
         redirect('petani/prasarana/'.$id);
+    }
+
+    public function hapus_sarana($id = NULL, $idd = NULL)
+    {
+        $this->db->where('id', $idd);
+        $this->db->delete('sarana_pertanian');
+        $this->session->set_flashdata('flash', 'Dihapus');
+        redirect('petani/prasarana/'.$id);
+    }
+
+    public function hapus_data_produksi($id = NULL, $idd = NULL)
+    {
+        $this->db->where('id', $idd);
+        $this->db->delete('data_produksi');
+        $this->session->set_flashdata('flash', 'Dihapus');
+        redirect('petani/produksi/'.$id);
     }
 }

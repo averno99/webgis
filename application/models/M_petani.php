@@ -72,7 +72,7 @@ class M_petani extends CI_Model {
     public function getSarana($id = NULL)
     {
 
-        $query = $this->db->select('*')
+        $query = $this->db->select('*, sarana_pertanian.id as idSarana')
             ->from('sarana_pertanian')
             ->join('petani', 'sarana_pertanian.id_petani = petani.id')
             ->where('id_petani', $id)
@@ -94,7 +94,7 @@ class M_petani extends CI_Model {
     public function getDataProduksi($id = NULL)
     {
 
-        $query = $this->db->select('*')
+        $query = $this->db->select('*, data_produksi.id as idDataProduksi')
             ->from('data_produksi')
             ->join('petani', 'data_produksi.id_petani = petani.id')
             ->where('id_petani', $id)
