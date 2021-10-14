@@ -156,6 +156,13 @@
 															<input class="form-control form-control-lg form-control-solid" type="text" value="<?= $poktan['komoditas_unggul']?>" disabled/>
 														</div>
 													</div>
+													<div class="row mt-5">
+														<label class="col-xl-6 col-lg-6">Dibuat Oleh <strong><?= $poktan['poktan_dibuat']?></strong></label>
+														
+													</div>
+													<div class="row">
+														<label class="col-xl-6 col-lg-6">Diubah Terakhir Kali Oleh <strong><?= $poktan['poktan_diubah']?></strong></label>
+													</div>
 													<?php if ($user['role'] == 'Admin') : ?>
 													<div class="d-flex justify-content-between border-top pt-10">
 														<div class="mr-2">

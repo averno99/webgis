@@ -20,7 +20,7 @@
     var datasawah = [<?= implode(',', $arraySaw);?>];
 
 	// var mymap = L.map('mapsawahnya').setView([-0.043402, 109.241779], 13);
-    var mymap = new L.Map('mapsawah', {zoom: 13, center: new L.latLng(datasawah[0].loc) });
+    var mymap = new L.Map('mapsawah', {zoom: 11, center: new L.latLng(-0.043402, 109.241779) });
 
 	var Layer = (L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
 		maxZoom: 18,
@@ -31,11 +31,7 @@
 		zoomOffset: -1
 	}));
 
-    mymap.addLayer(Layer);
-
-    var markersLayer = new L.LayerGroup();
-
-    mymap.addLayer(markersLayer);
+    mymap.addLayer(Layer);   
 
 
 	function iconByName(name) {
@@ -108,15 +104,21 @@ var panelLayers = new L.Control.PanelLayers(baseLayers);
 
 // mymap.addControl(panelLayers);
 
-var controlSearch = new L.Control.Search({
-		position:'topright',		
-		layer: markersLayer,
-		initial: false,
-		zoom: 16,
-		marker: false
-	});
+var markersLayer = new L.LayerGroup();
 
-	mymap.addControl( controlSearch );
+var controlSearch = new L.Control.Search({
+        position: 'topleft',
+        layer: markersLayer,
+        initial: false,
+        zoom: 17,
+        marker: false
+    });
+    mymap.addControl(new L.Control.Search({
+        layer: markersLayer,
+        initial: false,
+        collapsed: true,
+        zoom: 17,
+    }));
 
 let clickMarker = null;
 for(i in datasawah) {

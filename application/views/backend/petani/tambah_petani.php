@@ -50,6 +50,7 @@
 											<!--begin::Tab Content-->
 											<div class="tab-pane active" role="tabpanel">
 							<?= form_open_multipart('petani/tambah_petani'); ?>
+													<input type="hidden" name="dibuat" value="<?= $user['nama']; ?>"/>
 													<div class="form-group row">
 														<label class="col-form-label col-3 text-lg-right text-left">Status Anggota</label>
 														<div class="col-lg-9 col-xl-6">
@@ -141,6 +142,18 @@
                                                                 <input type="file" class="custom-file-input" id="foto" name="foto">
                                                                 <label class="custom-file-label" for="foto">Upload Foto</label>
                                                             </div>
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-form-label col-3 text-lg-right text-left">Periode</label>
+														<div class="col-lg-9 col-xl-6">
+															<select class="form-control form-control-lg form-control-solid" name="periode">
+                                                        		<option selected disabled>Pilih Tahun</option>
+                                                        		<?php for ($y = date('Y'); $y >= 2020; $y--) : ?>
+                                                            		<option value="<?= $y; ?>" <?= set_value('periode') == $y ? "selected" : NULL ?>><?= $y; ?></option>
+                                                        		<?php endfor; ?>
+                                                    		</select>
+                                                    		<?= form_error('periode', ' <small class="text-danger">', '</small>'); ?>
 														</div>
 													</div>
 													<div class="form-group row">

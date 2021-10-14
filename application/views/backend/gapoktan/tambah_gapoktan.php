@@ -50,6 +50,7 @@
 											<!--begin::Tab Content-->
 											<div class="tab-pane active" role="tabpanel">
                                                 <form action="" method="POST">
+													<input type="hidden" name="dibuat" value="<?= $user['nama']; ?>"/>
                                                     
 													<div class="form-group row">
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Nama Gapoktan</label>

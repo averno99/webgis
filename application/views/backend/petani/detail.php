@@ -243,6 +243,13 @@
                                         					<img src="<?= base_url('assets/gambar/petani/') . $petani['foto']; ?>" class="img-thumbnail" width="200">
                                     					</div>
                               						</div>
+													<div class="row mt-5">
+														<label class="col-xl-6 col-lg-6">Dibuat Oleh <strong><?= $petani['petani_dibuat']?></strong></label>
+														
+													</div>
+													<div class="row">
+														<label class="col-xl-6 col-lg-6">Diubah Terakhir Kali Oleh <strong><?= $petani['petani_diubah']?></strong></label>
+													</div>
 												
 												<?php if ($user['role'] == 'Admin') : ?>
 													<div class="d-flex justify-content-between border-top pt-10">

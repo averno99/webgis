@@ -89,7 +89,7 @@
 											<!--begin::Tab Content-->
 											<div class="tab-pane active" role="tabpanel">
 												<?php if (empty($prasarana)) : ?>
-											<a type="button" href="<?= site_url(); ?>petani/tambah_prasarana/<?= $petani['id'] ?>">Tambah Data</a>
+											<a type="button" class="btn btn-primary btn-block font-weight-bolder text-uppercase" href="<?= site_url(); ?>petani/tambah_prasarana/<?= $petani['id'] ?>">Tambah Data</a>
 										<?php else :?>
 										<form class="form">
 													<div class="form-group row">
@@ -101,7 +101,8 @@
 												</form>
 												<?php if ($user['role'] == 'Admin') : ?>
 											<div class="d-flex justify-content-between border-top pt-10">
-												<div>
+											<div class="mr-2"></div>	
+											<div>
 													<a type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url(); ?>petani/ubah_prasarana/<?= $petani['id'] ?>">Ubah Data</a>
 												</div>
 											</div>
@@ -124,7 +125,7 @@
 									</div>
 									<div class="card-body">
                                         <?php if (empty($lokasi)) : ?>
-													<a type="button" href="<?= site_url(); ?>petani/tambah_lokasi/<?= $petani['id'] ?>">Tambah Data</a>
+													<a type="button" class="btn btn-primary btn-block font-weight-bolder text-uppercase" href="<?= site_url(); ?>petani/tambah_lokasi/<?= $petani['id'] ?>">Tambah Data</a>
 												<?php else :?>
 										<table class="table table-separate table-head-custom collapsed" id="kt_datatable">
 											<thead>
@@ -150,7 +151,8 @@
                                                     <td><?= $lks['latitude']?></td>
                                                     <td><?= $lks['longitude']?></td>
 													<td>
-														<a href="<?= site_url(); ?>sawah/detail/<?= $lks['idLokasi'] ?>" class="btn btn-outline-info btn-sm">Lihat Lokasi</a> 
+														<a href="<?= site_url(); ?>sawah/detail/<?= $lks['idLokasi'] ?>" class="btn btn-outline-info btn-sm">Lihat Lokasi</a>
+														<a href="<?= site_url(); ?>petani/hapus_lokasi/<?= $petani['id'] ?>/<?= $lks['idLokasi'] ?>" class="btn btn-outline-danger btn-sm tombol-hapus"><small>Hapus</small></a>
 													</td>
 												</tr>
 											<?php endforeach; ?>
@@ -181,7 +183,7 @@
 									</div>
 									<div class="card-body">
                                         <?php if (empty($sarana)) : ?>
-											<a type="button" href="<?= site_url(); ?>petani/tambah_sarana/<?= $petani['id'] ?>">Tambah Data</a>
+											<a type="button" class="btn btn-primary btn-block font-weight-bolder text-uppercase" href="<?= site_url(); ?>petani/tambah_sarana/<?= $petani['id'] ?>">Tambah Data</a>
 										<?php else :?>
 										<table class="table table-separate table-head-custom collapsed" id="kt_datatable">
 											<thead>

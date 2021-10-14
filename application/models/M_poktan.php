@@ -89,7 +89,7 @@ class M_poktan extends CI_Model {
     public function getAdminis($id = NULL)
     {
 
-        $query = $this->db->select('*')
+        $query = $this->db->select('*, keleng_adminis.id as idAdminis')
             ->from('keleng_adminis')
             ->join('poktan', 'keleng_adminis.id_poktan = poktan.id')
             ->where('id_poktan', $id)
@@ -100,7 +100,7 @@ class M_poktan extends CI_Model {
     public function getInfras($id = NULL)
     {
 
-        $query = $this->db->select('*')
+        $query = $this->db->select('*, infrastruktur.id as idInfras')
             ->from('infrastruktur')
             ->join('poktan', 'infrastruktur.id_poktan = poktan.id')
             ->where('id_poktan', $id)
@@ -112,6 +112,7 @@ class M_poktan extends CI_Model {
     {
         $data = [
             "id_gapoktan" => htmlspecialchars($this->input->post('gapoktan', true)),
+            "poktan_dibuat" => htmlspecialchars($this->input->post('dibuat', true)),
             "nama" => htmlspecialchars($this->input->post('poktan', true)),
             "nama_ketua" => htmlspecialchars($this->input->post('ketua', true)),
             "status" => htmlspecialchars($this->input->post('status', true)),
@@ -135,6 +136,7 @@ class M_poktan extends CI_Model {
     {
         $data = [
             "id_gapoktan" => htmlspecialchars($this->input->post('gapoktan', true)),
+            "poktan_diubah" => htmlspecialchars($this->input->post('diubah', true)),
             "nama" => htmlspecialchars($this->input->post('poktan', true)),
             "nama_ketua" => htmlspecialchars($this->input->post('ketua', true)),
             "status" => htmlspecialchars($this->input->post('status', true)),

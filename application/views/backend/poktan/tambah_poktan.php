@@ -50,13 +50,14 @@
 											<!--begin::Tab Content-->
 											<div class="tab-pane active" role="tabpanel">
                                                 <?= form_open_multipart('poktan/tambah_poktan'); ?>
+												<input type="hidden" name="dibuat" value="<?= $user['nama']; ?>"/>
                                                     <div class="form-group row">
 														<label class="col-form-label col-3 text-lg-right text-left">Nama Gapoktan</label>
 														<div class="col-lg-9 col-xl-6">
 															<select class="form-control form-control-lg form-control-solid" name="gapoktan">
 																<option selected disabled>Pilih Gapoktan...</option>
                                                                 <?php foreach ($gapoktan as $gpt) : ?>
-                                                                    <option value="<?= $gpt['id']; ?>"><?= $gpt['nama']; ?></option>
+                                                                    <option value="<?= $gpt['id']; ?>" <?= set_value('gapoktan') == $gpt['id'] ? "selected" : NULL ?>><?= $gpt['nama']; ?></option>
                                                                 <?php endforeach; ?>
 															</select>
 														</div>
@@ -81,7 +82,7 @@
 															<select class="form-control form-control-lg form-control-solid" name="status">
 																<option selected disabled>Pilih Status Kelompok...</option>
                                                                 <?php foreach ($status as $sts) : ?>
-                                                                    <option value="<?= $sts; ?>"><?= $sts; ?></option>
+                                                                    <option value="<?= $sts; ?>" <?= set_value('status') == $sts ? "selected" : NULL ?>><?= $sts; ?></option>
                                                                 <?php endforeach; ?>
 															</select>
 														</div>
@@ -92,7 +93,7 @@
 															<select class="form-control form-control-lg form-control-solid" name="pengukuhan">
 																<option selected disabled>Pilih Susunan Pengukuhan...</option>
                                                                 <?php foreach ($pengukuhan as $pgh) : ?>
-                                                                    <option value="<?= $pgh; ?>"><?= $pgh; ?></option>
+                                                                    <option value="<?= $pgh; ?>" <?= set_value('pengukuhan') == $pgh ? "selected" : NULL ?>><?= $pgh; ?></option>
                                                                 <?php endforeach; ?>
 															</select>
 														</div>

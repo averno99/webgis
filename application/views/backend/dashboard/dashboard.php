@@ -14,12 +14,12 @@
 						</div>
 						<!--end::Subheader-->
 						<!--begin::Entry-->
-						<div class="mx-auto mb-3">
+						<div class="ml-auto mb-3">
                                             <form action="" method="GET">
                                                 <div class="col-md-12">
                                                     <div class="input-group mt-2">
                                                         <select class="custom-select" name="cari" id="cari">
-                                                            <option selected disabled>--Pilih Gapoktan--</option>
+                                                            <option value="">Tampilkan Semua</option>
                                                             <?php foreach ($gapoktan as $gpt) : ?>
                                                                 <?php if ($gpt['id'] == $this->input->get('cari')) : ?>
                                                                     <option value="<?= $gpt['id']; ?>" selected><?= $gpt['nama']; ?></option>

@@ -134,6 +134,13 @@ class Petani extends CI_Controller {
             'required|trim',
             array('required' => 'Nama tidak boleh kosong')
         );
+
+        $this->form_validation->set_rules(
+            'periode',
+            'Periode',
+            'required|trim',
+            array('required' => 'Periode tidak boleh kosong')
+        );
 		// $this->form_validation->set_rules(
         //     'status_keluarga',
         //     'Status Keluarga',
@@ -152,18 +159,18 @@ class Petani extends CI_Controller {
             'numeric|trim',
             array('numeric' => 'Data harus angka')
         );
-		// $this->form_validation->set_rules(
-        //     'riwayat_pelatihan',
-        //     'Pelatihan',
-        //     'required|trim',
-        //     array('required' => 'Riwayat Pelatihan tidak boleh kosong')
-        // );
-		// $this->form_validation->set_rules(
-        //     'no_hp',
-        //     'No hp',
-        //     'required|trim',
-        //     array('required' => 'Nomor Hp tidak boleh kosong')
-        // );
+		$this->form_validation->set_rules(
+            'riwayat_pelatihan',
+            'Pelatihan',
+            'numeric|trim',
+            array('numeric' => 'Data harus angka')
+        );
+		$this->form_validation->set_rules(
+            'no_hp',
+            'No hp',
+            'numeric|trim',
+            array('numeric' => 'Data harus angka')
+        );
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('backend/template/head', $data);
@@ -254,6 +261,12 @@ class Petani extends CI_Controller {
             'required|trim',
             array('required' => 'Nama tidak boleh kosong')
         );
+        $this->form_validation->set_rules(
+            'periode',
+            'Periode',
+            'required|trim',
+            array('required' => 'Periode tidak boleh kosong')
+        );
 		// $this->form_validation->set_rules(
         //     'status_keluarga',
         //     'Status Keluarga',
@@ -272,18 +285,18 @@ class Petani extends CI_Controller {
             'numeric|trim',
             array('numeric' => 'Data harus angka')
         );
-		// $this->form_validation->set_rules(
-        //     'riwayat_pelatihan',
-        //     'Pelatihan',
-        //     'required|trim',
-        //     array('required' => 'Riwayat Pelatihan tidak boleh kosong')
-        // );
-		// $this->form_validation->set_rules(
-        //     'no_hp',
-        //     'No hp',
-        //     'required|trim',
-        //     array('required' => 'Nomor Hp tidak boleh kosong')
-        // );
+		$this->form_validation->set_rules(
+            'riwayat_pelatihan',
+            'Pelatihan',
+            'numeric|trim',
+            array('numeric' => 'Data harus angka')
+        );
+		$this->form_validation->set_rules(
+            'no_hp',
+            'No hp',
+            'numeric|trim',
+            array('numeric' => 'Data harus angka')
+        );
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('backend/template/head', $data);
@@ -813,5 +826,13 @@ class Petani extends CI_Controller {
         $this->M_petani->hapusPetani($id);
         $this->session->set_flashdata('flash', 'Dihapus');
         redirect('petani');
+    }
+
+    public function hapus_lokasi($id = NULL, $idd = NULL)
+    {
+        $this->db->where('id', $idd);
+        $this->db->delete('lokasi_pertanian');
+        $this->session->set_flashdata('flash', 'Dihapus');
+        redirect('petani/prasarana/'.$id);
     }
 }

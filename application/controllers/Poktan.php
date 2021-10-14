@@ -161,7 +161,7 @@ class Poktan extends CI_Controller {
             'luas_lahan',
             'Luas_lahan',
             'numeric|trim',
-            array('')
+            array('numeric' => 'Data harus berupa angka')
         );
 		$this->form_validation->set_rules(
             'komoditas_unggul',
@@ -340,8 +340,7 @@ class Poktan extends CI_Controller {
         $this->form_validation->set_rules(
             'jumlah[]',
             'Jumlah',
-            'numeric|trim',
-			array('required' => 'Jumlah tidak boleh kosong')
+            'trim'
         );
 
         if ($this->form_validation->run() == FALSE) {
@@ -349,6 +348,54 @@ class Poktan extends CI_Controller {
 			$this->load->view('backend/template/aside');
 			$this->load->view('backend/template/topbar', $data);
 			$this->load->view('backend/poktan/tambah_adminis', $data);
+			$this->load->view('backend/template/footer');
+			$this->load->view('backend/template/user_panel', $data);
+			$this->load->view('backend/template/js');
+        } else {
+			$idd = $_POST['id']; // Ambil data nis dan masukkan ke variabel nis
+    		$adminis_kelompok = $_POST['adminis_kelompok']; // Ambil data nama dan masukkan ke variabel nama
+    		$jumlah = $_POST['jumlah']; // Ambil data telp dan masukkan ke variabel telp
+    		$satuan = $_POST['satuan']; // Ambil data alamat dan masukkan ke variabel alamat
+    		$data = array();
+    
+    		$index = 0; // Set index array awal dengan 0
+    		foreach($idd as $dataid){ // Kita buat perulangan berdasarkan nis sampai data terakhir
+      			array_push($data, array(
+        			'id_poktan'=>$dataid,
+        			'adminis_kelompok'=>$adminis_kelompok[$index],  // Ambil dan set data nama sesuai index array dari $index
+        			'jumlah'=>$jumlah[$index],  // Ambil dan set data telepon sesuai index array dari $index
+        			'satuan'=>$satuan[$index],  // Ambil dan set data alamat sesuai index array dari $index
+      			));
+      			$index++;
+    		}    
+      		$this->M_poktan->tambahAdminis($data);
+            $this->session->set_flashdata('flash', 'Ditambah');
+			redirect('poktan/adminis/'.$id);
+			
+		}
+	}
+
+    public function tambah_adminis_lainnya($id = NULL)
+    {
+		if ($this->session->userdata('role') !== 'Admin') {
+            redirect('poktan/blokir');
+        }
+
+        $data['judul'] = 'Tambah Data Administrasi';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+		$data['poktan'] = $this->M_poktan->getIdPoktan($id);
+		
+        $this->form_validation->set_rules(
+            'jumlah[]',
+            'Jumlah',
+            'trim'
+        );
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('backend/template/head', $data);
+			$this->load->view('backend/template/aside');
+			$this->load->view('backend/template/topbar', $data);
+			$this->load->view('backend/poktan/tambah_adminis_lainnya', $data);
 			$this->load->view('backend/template/footer');
 			$this->load->view('backend/template/user_panel', $data);
 			$this->load->view('backend/template/js');
@@ -473,6 +520,54 @@ class Poktan extends CI_Controller {
 		}
 	}
 
+    public function tambah_infras_lainnya($id = NULL)
+    {
+		if ($this->session->userdata('role') !== 'Admin') {
+            redirect('blokir');
+        }
+
+        $data['judul'] = 'Tambah Data Infrastruktur';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+		$data['poktan'] = $this->M_poktan->getIdPoktan($id);
+		
+        $this->form_validation->set_rules(
+            'jumlah[]',
+            'Jumlah',
+            'numeric|trim'
+        );
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('backend/template/head', $data);
+			$this->load->view('backend/template/aside');
+			$this->load->view('backend/template/topbar', $data);
+			$this->load->view('backend/poktan/tambah_infras_lainnya', $data);
+			$this->load->view('backend/template/footer');
+			$this->load->view('backend/template/user_panel', $data);
+			$this->load->view('backend/template/js');
+        } else {
+			$idd = $_POST['id']; // Ambil data nis dan masukkan ke variabel nis
+    		$infra_pertanian = $_POST['infra_pertanian']; // Ambil data nama dan masukkan ke variabel nama
+    		$jumlah = $_POST['jumlah']; // Ambil data telp dan masukkan ke variabel telp
+    		$satuan = $_POST['satuan']; // Ambil data alamat dan masukkan ke variabel alamat
+    		$data = array();
+    
+    		$index = 0; // Set index array awal dengan 0
+    		foreach($idd as $dataid){ // Kita buat perulangan berdasarkan nis sampai data terakhir
+      			array_push($data, array(
+        			'id_poktan'=>$dataid,
+        			'infra_pertanian'=>$infra_pertanian[$index],  // Ambil dan set data nama sesuai index array dari $index
+        			'jumlah'=>$jumlah[$index],  // Ambil dan set data telepon sesuai index array dari $index
+        			'satuan'=>$satuan[$index],  // Ambil dan set data alamat sesuai index array dari $index
+      			));
+      			$index++;
+    		}    
+      		$this->M_poktan->tambahInfras($data);
+            $this->session->set_flashdata('flash', 'Ditambah');
+			redirect('poktan/infras/'.$id);
+			
+		}
+	}
+
 	public function ubah_infras($id = NULL)
     {
 		if ($this->session->userdata('role') !== 'Admin') {
@@ -558,5 +653,21 @@ class Poktan extends CI_Controller {
         $this->M_poktan->hapusPoktan($id);
         $this->session->set_flashdata('flash', 'Dihapus');
         redirect('poktan');
+    }
+
+    public function hapus_adminis($id = NULL, $idd = NULL)
+    {
+        $this->db->where('id', $idd);
+        $this->db->delete('keleng_adminis');
+        $this->session->set_flashdata('flash', 'Dihapus');
+        redirect('poktan/adminis/'.$id);
+    }
+
+        public function hapus_infras($id = NULL, $idd = NULL)
+    {
+        $this->db->where('id', $idd);
+        $this->db->delete('infrastruktur');
+        $this->session->set_flashdata('flash', 'Dihapus');
+        redirect('poktan/infras/'.$id);
     }
 }

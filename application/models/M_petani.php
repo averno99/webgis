@@ -122,7 +122,9 @@ class M_petani extends CI_Model {
             "riwayat_pelatihan" => htmlspecialchars($this->input->post('riwayat_pelatihan', true)),
             "no_hp" => htmlspecialchars($this->input->post('no_hp', true)),
             "foto" => htmlspecialchars($upload_foto),
-            "status_post" => "Belum Di Post"
+            "status_post" => "Belum Di Post",
+            "periode" => htmlspecialchars($this->input->post('periode', true)),
+            "petani_dibuat" => htmlspecialchars($this->input->post('dibuat', true))
         ];
 
         $this->db->insert('petani', $data);
@@ -147,7 +149,9 @@ class M_petani extends CI_Model {
             "pendidikan" => htmlspecialchars($this->input->post('pendidikan', true)),
             "riwayat_pelatihan" => htmlspecialchars($this->input->post('riwayat_pelatihan', true)),
             "no_hp" => htmlspecialchars($this->input->post('no_hp', true)),
-            "status_post" => "Belum Di Post"
+            "status_post" => "Belum Di Post",
+            "periode" => htmlspecialchars($this->input->post('periode', true)),
+            "petani_diubah" => htmlspecialchars($this->input->post('diubah', true))
         ];
 
         $this->db->where('id', $this->input->post('id'));

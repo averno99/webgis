@@ -51,6 +51,7 @@
 											<div class="tab-pane active" role="tabpanel">
 							<?= form_open_multipart(''); ?>
                             <input type="hidden" name="id" value="<?= $petani['id']; ?>">
+							<input type="hidden" name="diubah" value="<?= $user['nama']; ?>"/>
 													<div class="form-group row">
 														<label class="col-form-label col-3 text-lg-right text-left">Status Anggota</label>
 														<div class="col-lg-9 col-xl-6">
@@ -157,6 +158,21 @@
                                                                 </div>
                                                                 </div>
 															</div>
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-form-label col-3 text-lg-right text-left">Periode</label>
+														<div class="col-lg-9 col-xl-6">
+															<select class="form-control form-control-lg form-control-solid" name="periode">
+																<?php for ($y = date('Y'); $y >= 2020; $y--) : ?>
+                                                            		<option value="<?= $y; ?>" <?= set_value('tahun') == $y ? "selected" : NULL ?>><?= $y; ?></option>
+																	<?php if ($y == $petani['periode']) : ?>
+                                                						<option value="<?= $y; ?>" selected><?= $y; ?></option>
+                                            						<?php else : ?>
+                                                						<option value="<?= $y; ?>"><?= $y; ?></option>
+                                            						<?php endif; ?>
+																<?php endfor; ?>
+															</select>
 														</div>
 													</div>
 													<div class="form-group row">

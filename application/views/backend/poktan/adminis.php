@@ -108,7 +108,7 @@
 											<div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
 												<!--begin: Datatable-->
 												<?php if (empty($adminis)) : ?>
-													<a type="button" href="<?= site_url(); ?>poktan/tambah_adminis/<?= $poktan['id'] ?>">Tambah Data</a>
+													<a type="button" class="btn btn-primary btn-block font-weight-bolder text-uppercase" href="<?= site_url(); ?>poktan/tambah_adminis/<?= $poktan['id'] ?>">Tambah Data</a>
 												<?php else :?>
 										<table class="table table-separate table-head-custom collapsed" id="kt_datatable">
 											<thead>
@@ -117,6 +117,7 @@
 													<th>Administrasi Kelompok</th>
 													<th>Jumlah</th>
 													<th>Satuan</th>
+													<th>Aksi</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -128,6 +129,9 @@
 													<td><?= $adm['adminis_kelompok']?></td>
 													<td><?= $adm['jumlah']?></td>
 													<td><?= $adm['satuan']?></td>
+													<td>
+														<a href="<?= site_url(); ?>poktan/hapus_adminis/<?= $poktan['id'] ?>/<?= $adm['idAdminis'] ?>" class="btn btn-outline-danger btn-sm tombol-hapus"><small>Hapus</small></a>
+													</td>
 												</tr>
 											<?php endforeach; ?>
 											</tbody>
@@ -140,6 +144,7 @@
 															<a type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url('poktan')?>">Kembali</a>
 														</div>
 														<div>
+															<a type="button" class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url(); ?>poktan/tambah_adminis_lainnya/<?= $poktan['id'] ?>">Tambah Data Lainnya</a>
 															<a type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url(); ?>poktan/ubah_adminis/<?= $poktan['id'] ?>">Ubah Data</a>
 														</div>
 													</div>

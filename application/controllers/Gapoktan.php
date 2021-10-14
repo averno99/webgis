@@ -51,7 +51,8 @@ class Gapoktan extends CI_Controller {
         } else {
 
             $data = [
-                "nama" => htmlspecialchars($this->input->post('gapoktan', true))
+                "nama" => htmlspecialchars($this->input->post('gapoktan', true)),
+                "gapoktan_dibuat" => htmlspecialchars($this->input->post('dibuat', true))
             ];
 
             $this->db->insert('gapoktan', $data);
@@ -84,7 +85,8 @@ class Gapoktan extends CI_Controller {
         } else {
 
             $data = [
-            "nama" => htmlspecialchars($this->input->post('gapoktan', true))
+            "nama" => htmlspecialchars($this->input->post('gapoktan', true)),
+            "gapoktan_diubah" => htmlspecialchars($this->input->post('diubah', true))
         ];
 
         $this->db->where('id', $this->input->post('id'));

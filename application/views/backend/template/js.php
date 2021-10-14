@@ -214,7 +214,7 @@
   </script>
   <?php endif; ?>
 
-  <?php if ($this->uri->segment(2) == 'tambah_adminis') : ?>
+  <?php if ($this->uri->segment(2) == 'tambah_adminis' || $this->uri->segment(2) == 'tambah_adminis_lainnya') : ?>
 <script>
   $(document).ready(function(){ // Ketika halaman sudah diload dan siap
     $("#btn-tambah-adminis").click(function(){ // Ketika tombol Tambah Data Form di klik
@@ -223,7 +223,7 @@
       // pada sebuah tag div yg kita beri id insert-form
       $('#insert-form').append('<table>' +
         '<tr>' +
-        '<td>Sarana Pertanian</td>' +
+        '<td>Administrasi Kelompok</td>' +
 		'<td> : </td>' +
         '<td><input type="hidden" name="id[]" value="<?= $poktan['id']; ?>">' + 
 		'<input class="form-control" type="text" name="adminis_kelompok[]" value="<?= set_value('adminis_kelompok[]'); ?>" placeholder="Administrasi Kelompok"/>' +
@@ -261,7 +261,7 @@
   </script>
   <?php endif; ?>
 
-  <?php if ($this->uri->segment(2) == 'tambah_infras') : ?>
+  <?php if ($this->uri->segment(2) == 'tambah_infras' || $this->uri->segment(2) == 'tambah_infras_lainnya') : ?>
 <script>
   $(document).ready(function(){ // Ketika halaman sudah diload dan siap
     $("#btn-tambah-infras").click(function(){ // Ketika tombol Tambah Data Form di klik
@@ -270,7 +270,7 @@
       // pada sebuah tag div yg kita beri id insert-form
       $('#insert-form').append('<table>' +
         '<tr>' +
-        '<td>Sarana Pertanian</td>' +
+        '<td>Infrastruktur Pertanian</td>' +
 		'<td> : </td>' +
         '<td><input type="hidden" name="id[]" value="<?= $poktan['id']; ?>">' + 
 		'<input class="form-control" type="text" name="infra_pertanian[]" value="<?= set_value('infra_pertanian[]'); ?>" placeholder="Infrastruktur Pertanian"/>' +

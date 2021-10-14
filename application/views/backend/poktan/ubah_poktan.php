@@ -50,6 +50,7 @@
 											<!--begin::Tab Content-->
 											<div class="tab-pane active" role="tabpanel">
                                                 <?= form_open_multipart(''); ?>
+												<input type="hidden" name="diubah" value="<?= $user['nama']; ?>"/>
                                                 <input type="hidden" name="id" value="<?= $poktan['id']; ?>">
                                                     <div class="form-group row">
 														<label class="col-form-label col-3 text-lg-right text-left">Nama Gapoktan</label>

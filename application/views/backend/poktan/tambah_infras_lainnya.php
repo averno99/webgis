@@ -37,7 +37,7 @@
 																<!--end::Svg Icon-->
 															</span>
 														</span>
-														<span class="nav-text font-weight-bold">Ubah Data</span>
+														<span class="nav-text font-weight-bold">Tambah Data</span>
 													</a>
 												</li>
 											</ul>
@@ -49,20 +49,42 @@
 										<div class="tab-content pt-5">
 											<!--begin::Tab Content-->
 											<div class="tab-pane active" role="tabpanel">
-                                                <form action="" method="POST">
-													<input type="hidden" name="diubah" value="<?= $user['nama']; ?>"/>
-                                                    <input type="hidden" name="id" value="<?= $gapoktan['id']; ?>">
-                                                    
-													<div class="form-group row">
-														<label class="col-xl-3 col-lg-3 text-right col-form-label">Nama Gapoktan</label>
-														<div class="col-lg-9 col-xl-6">
-															<input class="form-control form-control-lg form-control-solid" type="text" name="gapoktan" value="<?= $gapoktan['nama']?>" placeholder="Nama Gabungan Kelompok Tani"/>
-                                                            <?= form_error('gapoktan', ' <small class="text-danger">', '</small>'); ?>
-                                                        </div>
-													</div>
-													<div class="d-flex justify-content-between border-top pt-10">
+                                                <?= form_open_multipart(''); ?>
+                                                <table class="table table-bordered table-head-custom collapsed" id="kt_datatable">
+											<thead>
+												<tr>
+													<th>Infrastruktur & Sarpras Pertanian</th>
+													<th>Jumlah</th>
+													<th>Satuan</th>
+												</tr>
+											</thead>
+											<tbody>
+                                                <tr>
+                                                    <td>
+                                                        <input type="hidden" name="id[]" value="<?= $poktan['id']; ?>">
+                                                        <input class="form-control form-control-sm form-control-solid" type="text" name="infra_pertanian[]" value="<?= set_value('infra_pertanian[]'); ?>" placeholder="Infrastruktur" />
+
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control form-control-sm form-control-solid" type="text" name="jumlah[]" value="<?= set_value('jumlah[]'); ?>" placeholder="Jumlah"/>
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control form-control-sm form-control-solid" type="text" name="satuan[]" value="<?= set_value('satuan[]'); ?>" placeholder="Satuan" />
+                                                    </td>
+                                                </tr>
+                                                
+											</tbody>
+                                            <tr>
+                                                    <td colspan="4">
+                                                        <button type="button" id="btn-tambah-infras" class="btn btn-success font-weight-bolder text-uppercase btn-sm">Tambah Infrastruktur Lainnya</button>
+														<button type="button" id="btn-reset-infras" class="btn btn-danger font-weight-bolder text-uppercase btn-sm">Reset Form</button>
+                                                    </td>
+                                                </tr>
+										</table>
+                                        <div id="insert-form"></div>
+                                                        <div class="d-flex justify-content-between border-top pt-10">
 															<div class="mr-2">
-																<a type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url('gapoktan')?>">Kembali</a>
+																<a type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" href="<?= site_url('poktan/infras/').$poktan['id']?>">Kembali</a>
 															</div>
 															<div>
 																<button type="submit" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4">Simpan Data</button>
