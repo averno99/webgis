@@ -133,35 +133,35 @@ class Poktan extends CI_Controller {
             'required|trim',
             array('required' => 'Nama Kecamatan tidak boleh kosong')
         );
-		$this->form_validation->set_rules(
-            'desa',
-            'Desa',
-            'required|trim',
-            array('required' => 'Nama Desa tidak boleh kosong')
-        );
-		$this->form_validation->set_rules(
-            'dusun',
-            'Dusun',
-            'required|trim',
-            array('required' => 'Nama Dusun tidak boleh kosong')
-        );
-		$this->form_validation->set_rules(
-            'rt',
-            'Rt',
-            'required|trim',
-            array('required' => 'Nama Rt tidak boleh kosong')
-        );
-		$this->form_validation->set_rules(
-            'rw',
-            'Rw',
-            'required|trim',
-            array('required' => 'Nama Rw tidak boleh kosong')
-        );
+		// $this->form_validation->set_rules(
+        //     'desa',
+        //     'Desa',
+        //     'required|trim',
+        //     array('required' => 'Nama Desa tidak boleh kosong')
+        // );
+		// $this->form_validation->set_rules(
+        //     'dusun',
+        //     'Dusun',
+        //     'required|trim',
+        //     array('required' => 'Nama Dusun tidak boleh kosong')
+        // );
+		// $this->form_validation->set_rules(
+        //     'rt',
+        //     'Rt',
+        //     'required|trim',
+        //     array('required' => 'Nama Rt tidak boleh kosong')
+        // );
+		// $this->form_validation->set_rules(
+        //     'rw',
+        //     'Rw',
+        //     'required|trim',
+        //     array('required' => 'Nama Rw tidak boleh kosong')
+        // );
 		$this->form_validation->set_rules(
             'luas_lahan',
             'Luas_lahan',
-            'required|trim',
-            array('required' => 'Data Luas Lahan tidak boleh kosong')
+            'numeric|trim',
+            array('')
         );
 		$this->form_validation->set_rules(
             'komoditas_unggul',
@@ -169,12 +169,12 @@ class Poktan extends CI_Controller {
             'required|trim',
             array('required' => 'Data Komoditas Unggulan tidak boleh kosong')
         );
-		$this->form_validation->set_rules(
-            'warna',
-            'Warna',
-            'required|trim',
-            array('required' => 'Data Warna tidak boleh kosong')
-        );
+		// $this->form_validation->set_rules(
+        //     'warna',
+        //     'Warna',
+        //     'required|trim',
+        //     array('required' => 'Data Warna tidak boleh kosong')
+        // );
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('backend/template/head', $data);
@@ -246,35 +246,35 @@ class Poktan extends CI_Controller {
             'required|trim',
             array('required' => 'Nama Kecamatan tidak boleh kosong')
         );
-		$this->form_validation->set_rules(
-            'desa',
-            'Desa',
-            'required|trim',
-            array('required' => 'Nama Desa tidak boleh kosong')
-        );
-		$this->form_validation->set_rules(
-            'dusun',
-            'Dusun',
-            'required|trim',
-            array('required' => 'Nama Dusun tidak boleh kosong')
-        );
-		$this->form_validation->set_rules(
-            'rt',
-            'Rt',
-            'required|trim',
-            array('required' => 'Nomor Rt tidak boleh kosong')
-        );
-		$this->form_validation->set_rules(
-            'rw',
-            'Rw',
-            'required|trim',
-            array('required' => 'Nomor Rw tidak boleh kosong')
-        );
+		// $this->form_validation->set_rules(
+        //     'desa',
+        //     'Desa',
+        //     'required|trim',
+        //     array('required' => 'Nama Desa tidak boleh kosong')
+        // );
+		// $this->form_validation->set_rules(
+        //     'dusun',
+        //     'Dusun',
+        //     'required|trim',
+        //     array('required' => 'Nama Dusun tidak boleh kosong')
+        // );
+		// $this->form_validation->set_rules(
+        //     'rt',
+        //     'Rt',
+        //     'required|trim',
+        //     array('required' => 'Nomor Rt tidak boleh kosong')
+        // );
+		// $this->form_validation->set_rules(
+        //     'rw',
+        //     'Rw',
+        //     'required|trim',
+        //     array('required' => 'Nomor Rw tidak boleh kosong')
+        // );
 		$this->form_validation->set_rules(
             'luas_lahan',
             'Luas_lahan',
-            'required|trim',
-            array('required' => 'Luas Lahan tidak boleh kosong')
+            'numeric|trim',
+            array('')
         );
 		$this->form_validation->set_rules(
             'komoditas_unggul',
@@ -282,12 +282,12 @@ class Poktan extends CI_Controller {
             'required|trim',
             array('required' => 'Komoditas Unggulan tidak boleh kosong')
         );
-		$this->form_validation->set_rules(
-            'warna',
-            'Warna',
-            'required|trim',
-            array('required' => 'Data Warna tidak boleh kosong')
-        );
+		// $this->form_validation->set_rules(
+        //     'warna',
+        //     'Warna',
+        //     'required|trim',
+        //     array('required' => 'Data Warna tidak boleh kosong')
+        // );
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('backend/template/head', $data);

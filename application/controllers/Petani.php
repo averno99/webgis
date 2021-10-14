@@ -92,47 +92,41 @@ class Petani extends CI_Controller {
 		$data['pendidikan'] = ['Sarjana', 'SMU/SMK', 'SLTP', 'SD', 'Tidak Tamat SD', 'Tidak Sekolah'];
 		
 
-        $this->form_validation->set_rules(
-            'jabatan',
-            'Jabatan',
-            'required|trim',
-            array('required' => 'Jabatan tidak boleh kosong')
-        );
-		$this->form_validation->set_rules(
-            'pekerjaan_utama',
-            'Pekerjaan_Utama',
-            'required|trim',
-            array('required' => 'Pekerjaan tidak boleh kosong')
-        );
+        // $this->form_validation->set_rules(
+        //     'jabatan',
+        //     'Jabatan',
+        //     'required|trim',
+        //     array('required' => 'Jabatan tidak boleh kosong')
+        // );
+		// $this->form_validation->set_rules(
+        //     'pekerjaan_utama',
+        //     'Pekerjaan_Utama',
+        //     'required|trim',
+        //     array('required' => 'Pekerjaan tidak boleh kosong')
+        // );
 		$this->form_validation->set_rules(
             'pengolah_lahan',
             'Pengolah_Lahan',
-            'required|trim',
-            array('required' => 'Pengolahan Lahan tidak boleh kosong')
-        );
-		$this->form_validation->set_rules(
-            'pekerjaan_utama',
-            'Pekerjaan_Utama',
-            'required|trim',
-            array('required' => 'Pekerjaan tidak boleh kosong')
+            'numeric|trim',
+            array('numeric' => 'Data harus angka')
         );
 		$this->form_validation->set_rules(
             'tanam',
             'Tanam',
-            'required|trim',
-            array('required' => 'Data Tanam tidak boleh kosong')
+            'numeric|trim',
+            array('numeric' => 'Data harus angka')
         );
 		$this->form_validation->set_rules(
             'pemeliharaan',
             'Pemeliharaan',
-            'required|trim',
-            array('required' => 'Data Pemeliharaan tidak boleh kosong')
+            'numeric|trim',
+            array('numeric' => 'Data harus angka')
         );
 		$this->form_validation->set_rules(
             'panen',
             'Panen',
-            'required|trim',
-            array('required' => 'Data Panen tidak boleh kosong')
+            'numeric|trim',
+            array('numeric' => 'Data harus angka')
         );
 		$this->form_validation->set_rules(
             'nama',
@@ -140,36 +134,36 @@ class Petani extends CI_Controller {
             'required|trim',
             array('required' => 'Nama tidak boleh kosong')
         );
-		$this->form_validation->set_rules(
-            'status_keluarga',
-            'Status Keluarga',
-            'required|trim',
-            array('required' => 'Status Keluarga tidak boleh kosong')
-        );
+		// $this->form_validation->set_rules(
+        //     'status_keluarga',
+        //     'Status Keluarga',
+        //     'required|trim',
+        //     array('required' => 'Status Keluarga tidak boleh kosong')
+        // );
 		$this->form_validation->set_rules(
             'jml_anggota_keluarga',
             'Jumlah',
-            'required|trim',
-            array('required' => 'Jumlah Anggota Keluarga tidak boleh kosong')
+            'numeric|trim',
+            array('numeric' => 'Data harus angka')
         );
 		$this->form_validation->set_rules(
             'jml_tanggungan',
             'Tanggungan',
-            'required|trim',
-            array('required' => 'Jumlah Tanggungan tidak boleh kosong')
+            'numeric|trim',
+            array('numeric' => 'Data harus angka')
         );
-		$this->form_validation->set_rules(
-            'riwayat_pelatihan',
-            'Pelatihan',
-            'required|trim',
-            array('required' => 'Riwayat Pelatihan tidak boleh kosong')
-        );
-		$this->form_validation->set_rules(
-            'no_hp',
-            'No hp',
-            'required|trim',
-            array('required' => 'Nomor Hp tidak boleh kosong')
-        );
+		// $this->form_validation->set_rules(
+        //     'riwayat_pelatihan',
+        //     'Pelatihan',
+        //     'required|trim',
+        //     array('required' => 'Riwayat Pelatihan tidak boleh kosong')
+        // );
+		// $this->form_validation->set_rules(
+        //     'no_hp',
+        //     'No hp',
+        //     'required|trim',
+        //     array('required' => 'Nomor Hp tidak boleh kosong')
+        // );
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('backend/template/head', $data);
@@ -218,47 +212,41 @@ class Petani extends CI_Controller {
 		$data['jenis_kelamin'] = ['Laki-Laki', 'Perempuan'];
 		$data['pendidikan'] = ['Sarjana', 'SMU/SMK', 'SLTP', 'SD', 'Tidak Tamat SD', 'Tidak Sekolah'];
 		
-		$this->form_validation->set_rules(
-            'jabatan',
-            'Jabatan',
-            'required|trim',
-            array('required' => 'Jabatan tidak boleh kosong')
-        );
-		$this->form_validation->set_rules(
-            'pekerjaan_utama',
-            'Pekerjaan_Utama',
-            'required|trim',
-            array('required' => 'Pekerjaan tidak boleh kosong')
-        );
+		// $this->form_validation->set_rules(
+        //     'jabatan',
+        //     'Jabatan',
+        //     'required|trim',
+        //     array('required' => 'Jabatan tidak boleh kosong')
+        // );
+		// $this->form_validation->set_rules(
+        //     'pekerjaan_utama',
+        //     'Pekerjaan_Utama',
+        //     'required|trim',
+        //     array('required' => 'Pekerjaan tidak boleh kosong')
+        // );
 		$this->form_validation->set_rules(
             'pengolah_lahan',
             'Pengolah_Lahan',
-            'required|trim',
-            array('required' => 'Pengolahan Lahan tidak boleh kosong')
-        );
-		$this->form_validation->set_rules(
-            'pekerjaan_utama',
-            'Pekerjaan_Utama',
-            'required|trim',
-            array('required' => 'Pekerjaan tidak boleh kosong')
+            'numeric|trim',
+            array('numeric' => 'Data harus angka')
         );
 		$this->form_validation->set_rules(
             'tanam',
             'Tanam',
-            'required|trim',
-            array('required' => 'Data Tanam tidak boleh kosong')
+            'numeric|trim',
+            array('numeric' => 'Data harus angka')
         );
 		$this->form_validation->set_rules(
             'pemeliharaan',
             'Pemeliharaan',
-            'required|trim',
-            array('required' => 'Data Pemeliharaan tidak boleh kosong')
+            'numeric|trim',
+            array('numeric' => 'Data harus angka')
         );
 		$this->form_validation->set_rules(
             'panen',
             'Panen',
-            'required|trim',
-            array('required' => 'Data Panen tidak boleh kosong')
+            'numeric|trim',
+            array('numeric' => 'Data harus angka')
         );
 		$this->form_validation->set_rules(
             'nama',
@@ -266,36 +254,36 @@ class Petani extends CI_Controller {
             'required|trim',
             array('required' => 'Nama tidak boleh kosong')
         );
-		$this->form_validation->set_rules(
-            'status_keluarga',
-            'Status Keluarga',
-            'required|trim',
-            array('required' => 'Status Keluarga tidak boleh kosong')
-        );
+		// $this->form_validation->set_rules(
+        //     'status_keluarga',
+        //     'Status Keluarga',
+        //     'required|trim',
+        //     array('required' => 'Status Keluarga tidak boleh kosong')
+        // );
 		$this->form_validation->set_rules(
             'jml_anggota_keluarga',
             'Jumlah',
-            'required|trim',
-            array('required' => 'Jumlah Anggota Keluarga tidak boleh kosong')
+            'numeric|trim',
+            array('numeric' => 'Data harus angka')
         );
 		$this->form_validation->set_rules(
             'jml_tanggungan',
             'Tanggungan',
-            'required|trim',
-            array('required' => 'Jumlah Tanggungan tidak boleh kosong')
+            'numeric|trim',
+            array('numeric' => 'Data harus angka')
         );
-		$this->form_validation->set_rules(
-            'riwayat_pelatihan',
-            'Pelatihan',
-            'required|trim',
-            array('required' => 'Riwayat Pelatihan tidak boleh kosong')
-        );
-        $this->form_validation->set_rules(
-            'no_hp',
-            'Nama',
-            'required|trim',
-            array('required' => 'Nama Gapoktan tidak boleh kosong')
-        );
+		// $this->form_validation->set_rules(
+        //     'riwayat_pelatihan',
+        //     'Pelatihan',
+        //     'required|trim',
+        //     array('required' => 'Riwayat Pelatihan tidak boleh kosong')
+        // );
+		// $this->form_validation->set_rules(
+        //     'no_hp',
+        //     'No hp',
+        //     'required|trim',
+        //     array('required' => 'Nomor Hp tidak boleh kosong')
+        // );
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('backend/template/head', $data);
@@ -350,7 +338,7 @@ class Petani extends CI_Controller {
             'status_pemilik',
             'Status Pemilik',
             'required|trim',
-            array('required' => 'Nama Gapoktan tidak boleh kosong')
+            array('required' => 'Status pemilik tidak boleh kosong')
         );
 
         if ($this->form_validation->run() == FALSE) {
@@ -383,8 +371,9 @@ class Petani extends CI_Controller {
 		
         $this->form_validation->set_rules(
             'status_pemilik',
-            'Jumlah',
-            'required|trim'
+            'Status Pemilik',
+            'required|trim',
+            array('required' => 'Status pemilik tidak boleh kosong')
         );
 
         if ($this->form_validation->run() == FALSE) {
