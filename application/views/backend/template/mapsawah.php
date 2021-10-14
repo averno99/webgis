@@ -1,6 +1,6 @@
 <script>
 
-    let idLihatMarker = "<?= $lokasiId['idLokasi']?>"
+    let idLihatMarker = "<?= $lokasiId['idLokasi'] ?? NULL ?>"
 
     <?php foreach ($lokasi as $lks) {
 		$arraySaw[]='{
