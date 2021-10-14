@@ -54,6 +54,7 @@ License: You must have a valid license purchased only from themeforest(the above
       			background-color: #ccc;
       		}
 			#mapsawah { height: 450px; width: 1200px}
+			#mapsawahnya { height: 450px; width: 1200px}
       		.icon-bar {
         		background: url('assets/js/leaflet-panel-layers-master/examples/images/icons/bar.png') center center no-repeat;
     		}
