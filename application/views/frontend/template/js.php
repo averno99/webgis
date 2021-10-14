@@ -16,6 +16,7 @@
 		<!-- Make sure you put this AFTER Leaflet's CSS -->
  		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 		<script src="<?= base_url()?>assets/frontend/js/leaflet.ajax.js"></script>
+		<script src="<?= base_url()?>assets/js/leaflet-search.min.js"></script>
 		<script src="<?= base_url()?>assets/frontend/js/leaflet-panel-layers-master/src/leaflet-panel-layers.js"></script>
 		<script src="<?= base_url()?>assets/frontend/js/Leaflet.GoogleMutant.js"></script>
 		<!--begin::Page Scripts(used by this page)-->
@@ -35,7 +36,15 @@
 <!-- End File Input -->
 		
 
+ 
+	
+	<?php if ($this->uri->segment(1) == 'home') : ?>
     <?php include 'map.php'; ?>
+	<?php endif; ?>
+
+	<?php if ($this->uri->segment(1) == 'FrontSawah') : ?>
+		<?php include 'mapsawah.php'; ?>
+	<?php endif; ?>
 
 	</body>
 	<!--end::Body-->
