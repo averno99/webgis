@@ -159,7 +159,9 @@
 													<div class="form-group row">
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Nama</label>
 														<div class="col-lg-9 col-xl-6">
-															<input class="form-control form-control-lg form-control-solid" type="text" name="nama" value="<?= set_value('nama')?>" placeholder="Nama Petani"/>
+															<?php $nama = $this->uri->segment(3) ?>
+															<input class="form-control form-control-lg form-control-solid" type="text" name="nama" value="<?= urldecode($nama) ?>" disabled/>
+															<input type="hidden" name="nama" value="<?= urldecode($nama)?>"/>
 															<?= form_error('nama', ' <small class="text-danger">', '</small>'); ?>
 														</div>
 													</div>

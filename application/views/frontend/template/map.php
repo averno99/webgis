@@ -42,7 +42,7 @@ function style(feature) {
         color: 'white',
         dashArray: '3',
         fillOpacity: 0.7,
-        fillColor: getColor(feature.properties.KECAMATAN)
+        fillColor: getColor(feature.properties.Poktan)
     };
 }
 

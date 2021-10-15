@@ -12,6 +12,15 @@ class M_petani extends CI_Model {
         return $query;
     }
 
+    public function getPetaPetani()
+    {
+        $query = $this->db->select('petani.*, petani.id as idPetani, petani.nama as namaPetani, poktan.nama as namaPoktan, poktan.id as idPoktan')
+            ->from('petani')
+            ->join('poktan', 'petani.id_poktan = poktan.id')
+            ->get()->result_array();
+        return $query;
+    }
+
      public function getIdPetani($id = NULL)
     {
 

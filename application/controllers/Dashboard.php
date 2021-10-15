@@ -10,6 +10,7 @@ class Dashboard extends CI_Controller {
             redirect('auth');
         }
 		$this->load->model('M_poktan');
+		$this->load->model('M_petani');
     }
 
 	public function index()
@@ -17,6 +18,7 @@ class Dashboard extends CI_Controller {
 		$data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 		$data['judul'] = 'Dashboard';
 		$data['poktan'] = $this->M_poktan->getPetaPoktan();
+		$data['petani'] = $this->M_petani->getPetaPetani();
 		$data['gapoktan'] = $this->db->get('gapoktan')->result_array();
 
 		if ($this->input->get('cari') != NULL ) {
