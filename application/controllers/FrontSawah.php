@@ -15,6 +15,12 @@ class FrontSawah extends CI_Controller {
 		$data['lokasiId'] = $this->M_petani->getIdPetaLokasi($id);
 		$data['gapoktan'] = $this->db->get('gapoktan')->result_array();
 
+		if ($this->input->get('cari') != NULL ) {
+            $data['lokasi'] = $this->M_petani->getIdUmumLokasi();
+        } else {
+			$data['lokasi'] = $this->M_petani->getPetaLokasi();
+		}
+
 		$this->load->view('frontend/template/head', $data);
 		$this->load->view('frontend/template/aside');
 		$this->load->view('frontend/template/topbar', $data);

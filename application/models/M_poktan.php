@@ -64,6 +64,18 @@ class M_poktan extends CI_Model {
         return $query;
     }
 
+    public function getIdUmumPoktan($id = NULL)
+    {
+
+        $query = $this->db->select('poktan.*, poktan.nama as namaPoktan, gapoktan.nama as namaGapoktan, gapoktan.id as idGapoktan')
+            ->from('poktan')
+            ->join('gapoktan', 'poktan.id_gapoktan = gapoktan.id')
+            ->where('poktan.id', $id)
+            ->where('poktan.status_post', 'Sudah di Post')
+            ->get()->row_array();
+        return $query;
+    }
+
     public function getPengurus($id = NULL)
     {
 

@@ -49,9 +49,10 @@
 												<tr>
 													<th>No</th>
 													<th>Nama</th>
-                                                    <th>Jabatan Dalam Kelompok</th>
+                                                    <th>Jabatan</th>
                                                     <th>Kelompok Tani</th>
                                                     <th>Status Anggota</th>
+													<th>Periode</th>
 													<th>Status Post</th>
 													<th>Aksi</th>
 												</tr>
@@ -65,6 +66,7 @@
 													<td><?= $ptn['nama']?></td>
                                                     <td><?= $ptn['jabatan']?></td>
                                                     <td><?= $ptn['namaPoktan']?></td>
+													<td><?= $ptn['periode']?></td>
                                                     <td><?= $ptn['status_anggota']?></td>
 													<td>
 														<?php if ($ptn['status_post'] == 'Sudah Di Post') : ?>

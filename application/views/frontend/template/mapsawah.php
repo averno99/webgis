@@ -20,7 +20,7 @@
     var datasawah = [<?= implode(',', $arraySaw);?>];
 
 	// var mymap = L.map('mapsawahnya').setView([-0.043402, 109.241779], 13);
-    var mymap = new L.Map('mapsawah', {zoom: 11, center: new L.latLng(-0.043402, 109.241779) });
+    var mymap = new L.Map('mapsawah', {zoom: 13, center: new L.latLng(-0.043402, 109.241779) });
 
 	var Layer = (L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
 		maxZoom: 18,

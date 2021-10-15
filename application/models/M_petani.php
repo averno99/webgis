@@ -57,6 +57,20 @@ class M_petani extends CI_Model {
         return $query;
     }
 
+    public function getIdUmumLokasi()
+    {
+        $keyword = $this->input->get('cari');
+
+        $query = $this->db->select('*, lokasi_pertanian.id as idLokasi, petani.nama as namaPetani, poktan.nama as namaPoktan, gapoktan.nama as namaGapoktan, lokasi_pertanian.id_petani as idPetani')
+            ->from('lokasi_pertanian')
+            ->join('petani', 'lokasi_pertanian.id_petani = petani.id')
+            ->join('poktan', 'petani.id_poktan = poktan.id')
+            ->join('gapoktan', 'poktan.id_gapoktan = gapoktan.id')
+            ->where('petani.periode', $keyword)
+            ->get()->result_array();
+        return $query;
+    }
+
     public function getIdPetaLokasi($id = NULL)
     {
         $query = $this->db->select('*, lokasi_pertanian.id as idLokasi, petani.nama as namaPetani, poktan.nama as namaPoktan, gapoktan.nama as namaGapoktan, lokasi_pertanian.id_petani as idPetani')

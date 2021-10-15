@@ -14,6 +14,27 @@
 						</div>
 						<!--end::Subheader-->
 						<!--begin::Entry-->
+						<div class="ml-auto mb-3">
+                                            <form action="" method="GET">
+                                                <div class="col-md-12">
+                                                    <div class="input-group mt-2">
+                                                        <select class="custom-select" name="cari" id="cari">
+                                                            <option value="">Tampilkan Semua Periode</option>
+                                                            <?php for ($y = date('Y'); $y >= 2020; $y--) : ?>
+                                                                <?php if ($y == $this->input->get('cari')) : ?>
+                                                                    <option value="<?= $y; ?>" selected>Periode <?= $y; ?></option>
+                                                                <?php else : ?>
+                                                                    <option value="<?= $y; ?>">Periode <?= $y; ?></option>
+                                                                <?php endif; ?>
+                                                            <?php endfor; ?>
+                                                        </select>
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-success" type="submit">Pilih</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                        </div>
 						<div class="d-flex flex-column-fluid">
 						
 							<!--begin::Container-->

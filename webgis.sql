@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Okt 2021 pada 14.23
+-- Waktu pembuatan: 15 Okt 2021 pada 07.43
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 7.3.28
 
@@ -43,7 +43,9 @@ CREATE TABLE `data_produksi` (
 INSERT INTO `data_produksi` (`id`, `id_petani`, `komoditas`, `luas`, `panen_kg`, `harga`) VALUES
 (1, 1, 'Padi', '4.1', '200', '4.233'),
 (2, 1, 'Jeruk', '1.1', '62', '2.500'),
-(3, 6, 'Mangga', '4', '210', '213000');
+(3, 6, 'Mangga', '4', '210', '213000'),
+(4, 8, 'Mangga', '45', '21', '45000'),
+(5, 8, 'Durian', '4', '210', '213000');
 
 -- --------------------------------------------------------
 
@@ -236,12 +238,12 @@ CREATE TABLE `petani` (
 --
 
 INSERT INTO `petani` (`id`, `nama`, `jabatan`, `status_anggota`, `pekerjaan_utama`, `pengolah_lahan`, `tanam`, `pemeliharaan`, `panen`, `jenis_kelamin`, `status_keluarga`, `jml_anggota_keluarga`, `jml_tanggungan`, `pendidikan`, `riwayat_pelatihan`, `no_hp`, `foto`, `id_poktan`, `status_post`, `periode`, `petani_dibuat`, `petani_diubah`) VALUES
-(1, 'Alex Nada', 'Ketua', 'Anggota Kelompok Tani', 'Petani', 3, 2, 1, 0, 'Laki-Laki', 'Kepala Keluarga', 1, 1, 'Sarjana', '1', '01233444444', 'jane_doe.png', 1, 'Sudah Di Post', '', '', ''),
-(2, 'Mikael', 'Ketua', 'Anggota Kelompok Tani', 'Penggarap', 1, 2, 3, 4, 'Laki-Laki', 'Bapak', 3, 1, 'Sarjana', '4', '111111111111111111111', 'tes.jpg', 5, 'Sudah Di Post', '', '', ''),
-(3, 'Muanjir', 'Anggota', 'Non Anggota', 'Penanam', 11, 2, 33, 4, 'Perempuan', '', 5, 6, 'SMU/SMK', '1', '', 'dadsadsa.PNG', 3, 'Belum Di Post', '', '', ''),
-(4, 'Misbahul', 'Bendahara', 'Anggota Kelompok Tani', 'BKD', 9, 8, 7, 6, 'Perempuan', 'Ibu', 1, 1, 'Sarjana', '0', '', 'listfarm (1) (1)_render.png', 5, 'Belum Di Post', '', '', ''),
-(5, 'Yogo', 'Anggota', 'Anggota Kelompok Tani', 'Petani', 1, 0, 0, 1, 'Laki-Laki', 'Anak', 3, 0, 'Sarjana', '3', '08989914445', 'itemku.PNG', 1, 'Belum Di Post', '', '', ''),
-(6, 'Hendri Irawan', 'Bendahara', 'Anggota Kelompok Tani', 'Penanam', 1, 1, 1, 1, 'Laki-Laki', 'Bapak', 2, 8, 'Sarjana', '0', '0000000002', 'Use_Case_Umum.png', 3, 'Belum Di Post', '', '', ''),
+(1, 'Alex Nada', 'Ketua', 'Anggota Kelompok Tani', 'Petani', 3, 2, 1, 0, 'Laki-Laki', 'Kepala Keluarga', 1, 1, 'Sarjana', '1', '01233444444', 'jane_doe.png', 1, 'Sudah Di Post', '2020', '', ''),
+(2, 'Mikael', 'Ketua', 'Anggota Kelompok Tani', 'Penggarap', 1, 2, 3, 4, 'Laki-Laki', 'Bapak', 3, 1, 'Sarjana', '4', '111111111111111111111', 'tes.jpg', 5, 'Sudah Di Post', '2020', '', ''),
+(3, 'Muanjir', 'Anggota', 'Non Anggota', 'Penanam', 11, 2, 33, 4, 'Perempuan', '', 5, 6, 'SMU/SMK', '1', '', 'dadsadsa.PNG', 3, 'Belum Di Post', '2020', '', ''),
+(4, 'Misbahul', 'Bendahara', 'Anggota Kelompok Tani', 'BKD', 9, 8, 7, 6, 'Perempuan', 'Ibu', 1, 1, 'Sarjana', '0', '', 'listfarm (1) (1)_render.png', 5, 'Belum Di Post', '2020', '', ''),
+(5, 'Yogo', 'Anggota', 'Anggota Kelompok Tani', 'Petani', 1, 0, 0, 1, 'Laki-Laki', 'Anak', 3, 0, 'Sarjana', '3', '08989914445', 'itemku.PNG', 1, 'Belum Di Post', '2020', '', ''),
+(6, 'Hendri Irawan', 'Bendahara', 'Anggota Kelompok Tani', 'Penanam', 1, 1, 1, 1, 'Laki-Laki', 'Bapak', 2, 8, 'Sarjana', '0', '0000000002', 'Use_Case_Umum.png', 3, 'Belum Di Post', '2020', '', ''),
 (8, 'Sakura', 'Bendahara', 'Anggota Kelompok Tani', 'BKD', 3, 3, 3, 3, 'Perempuan', '', 0, 0, 'SMU/SMK', '2', '08989914445', 'WhatsApp_Image_2021-10-01_at_14_36_461.jpeg', 8, 'Belum Di Post', '2021', 'Admin WEBGIS', 'Admin WEBGIS');
 
 -- --------------------------------------------------------
@@ -332,7 +334,8 @@ CREATE TABLE `produksi_pertanian` (
 INSERT INTO `produksi_pertanian` (`id`, `id_petani`, `jenis_usaha`, `jenis_lahan`, `sistem_pertanian`, `jenis_komoditas`, `ip`, `jadwal_tanam`, `jadwal_panen`, `sistem_pengairan`) VALUES
 (1, 1, 'Tanaman Pangan', 'Sawah', 'Monokultur', 'Palawijaya, Pekebunan', '1 Kali (IP 100%)', 'Januari, Februari', 'Maret', 'Tadah Hujan'),
 (2, 5, 'Tanaman Perkebunan', 'Non Sawah', 'Multikultur', 'Padi', '3 Kali (IP 300%)', 'Januari, Februari', 'Maret, Desember', 'Air Hujan'),
-(3, 6, 'Tanaman Perkebunan', 'Non Sawah', 'Multikultur', 'Padi, Sawah', '3 Kali (IP 300%)', 'Maret', 'April', 'Hujan');
+(3, 6, 'Tanaman Perkebunan', 'Non Sawah', 'Multikultur', 'Padi, Sawah', '3 Kali (IP 300%)', 'Maret', 'April', 'Hujan'),
+(5, 8, 'Tanaman Perkebunan', 'Non Sawah', 'Monokultur', 'Padi, Kopi', '1 Kali (IP 100%)', '', '', 'Air Hujan');
 
 -- --------------------------------------------------------
 
@@ -358,7 +361,11 @@ INSERT INTO `sarana_pertanian` (`id`, `id_petani`, `sarana`, `jumlah`, `satuan`)
 (3, 5, 'Cangkul', 4, 'Unit'),
 (4, 5, 'Handspayer', 6, 'Unit'),
 (5, 5, 'Kendaraan Roda Dua/Empat', 2, 'Unit'),
-(6, 5, 'Pengunaan Pupuk (dalam 1 Musim Tanam)', 7, 'Unit');
+(6, 5, 'Pengunaan Pupuk (dalam 1 Musim Tanam)', 7, 'Unit'),
+(7, 8, 'Cangkul', 3, 'Unit'),
+(8, 8, 'Handspayer', 0, 'Unit'),
+(9, 8, 'Kendaraan Roda Dua/Empat', 2, 'Unit'),
+(10, 8, 'Pengunaan Pupuk (dalam 1 Musim Tanam)', 0, 'Unit');
 
 -- --------------------------------------------------------
 
@@ -394,8 +401,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `nama`, `role`, `status`, `gambar`, `tgl_dibuat`) VALUES
-(1, 'admin', '$2y$10$5K7CjCPX12R3vcX2q/LO5OYySO3W4ZUHlusTkM8DzTMnwsV75XhIW', 'Admin WEBGIS', 'Admin', 'Aktif', '100_1.jpg', 0),
-(2, 'superadmin', '$2y$10$5K7CjCPX12R3vcX2q/LO5OYySO3W4ZUHlusTkM8DzTMnwsV75XhIW', 'Super Admin', 'Super Admin', 'Aktif', '100_2.jpg', 0),
+(1, 'admin', '$2y$10$5K7CjCPX12R3vcX2q/LO5OYySO3W4ZUHlusTkM8DzTMnwsV75XhIW', 'Admin WEBGIS', 'Admin', 'Aktif', '100_1.jpg', 1633927543),
+(2, 'superadmin', '$2y$10$5K7CjCPX12R3vcX2q/LO5OYySO3W4ZUHlusTkM8DzTMnwsV75XhIW', 'Fernanda', 'Super Admin', 'Aktif', '3171051495.jpg', 1633927543),
 (4, 'iqbal', '$2y$10$odrd6fSQ4V2k1udruKdY9uGnyCH567UgWAilDxgNCN8zEac0.8ugm', 'Iqbal Fernanda', 'Admin', 'Aktif', 'unnamed.jpg', 1633927543);
 
 --
@@ -492,7 +499,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `data_produksi`
 --
 ALTER TABLE `data_produksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `gapoktan`
@@ -540,13 +547,13 @@ ALTER TABLE `prasarana_petani`
 -- AUTO_INCREMENT untuk tabel `produksi_pertanian`
 --
 ALTER TABLE `produksi_pertanian`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `sarana_pertanian`
 --
 ALTER TABLE `sarana_pertanian`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `susun_kelompok`

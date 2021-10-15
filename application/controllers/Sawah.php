@@ -21,6 +21,12 @@ class Sawah extends CI_Controller {
         $data['lokasi'] = $this->M_petani->getPetaLokasi();
 		$data['lokasiId'] = $this->M_petani->getIdPetaLokasi($id);
 		$data['gapoktan'] = $this->db->get('gapoktan')->result_array();
+		
+		if ($this->input->get('cari') != NULL ) {
+            $data['lokasi'] = $this->M_petani->getIdUmumLokasi();
+        } else {
+			$data['lokasi'] = $this->M_petani->getPetaLokasi();
+		}
 
 		$this->load->view('backend/template/head', $data);
 		$this->load->view('backend/template/aside');

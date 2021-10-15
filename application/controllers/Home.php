@@ -18,6 +18,13 @@ class Home extends CI_Controller {
 		// $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 		$data['judul'] = 'Dashboard';
 		$data['poktan'] = $this->M_poktan->getPetaPoktan();
+		$data['gapoktan'] = $this->db->get('gapoktan')->result_array();
+
+		if ($this->input->get('cari') != NULL ) {
+            $data['poktan'] = $this->M_poktan->getIdPetaPoktan();
+        } else {
+			$data['poktan'] = $this->M_poktan->getPetaPoktan();
+		}
 
 		$this->load->view('frontend/template/head', $data);
 		$this->load->view('frontend/template/aside');
