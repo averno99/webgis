@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"name": "01 Titik Poktan Parit Keladi",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Id": 0, "Poktan": "Usaha Bersama", "Desa": "Parit Keladi", "Gapoktan": "Madiun Bersatu", "Luas": 16.01 }, "geometry": { "type": "Point", "coordinates": [ 109.235463847463265, -0.041428091959757 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Poktan": "Karya Bersama", "Desa": "Parit Keladi", "Gapoktan": "Madiun Bersatu", "Luas": 19.99 }, "geometry": { "type": "Point", "coordinates": [ 109.2357151975839, -0.045296660929112 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Poktan": "Sidoharjo", "Desa": "Parit Keladi", "Gapoktan": "Madiun Bersatu", "Luas": 22.16 }, "geometry": { "type": "Point", "coordinates": [ 109.230100640668695, -0.042492045468218 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Poktan": "Sidodadi", "Desa": "Parit Keladi", "Gapoktan": "Madiun Bersatu", "Luas": 25.61 }, "geometry": { "type": "Point", "coordinates": [ 109.230822588802369, -0.045789627127577 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Poktan": "Sinar Maju 1", "Desa": "Parit Keladi", "Gapoktan": "Madiun Bersatu", "Luas": 25.52 }, "geometry": { "type": "Point", "coordinates": [ 109.225193040410829, -0.046635254300193 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Poktan": "Sinar Maju 2", "Desa": "Parit Keladi", "Gapoktan": "Madiun Bersatu", "Luas": 23.18 }, "geometry": { "type": "Point", "coordinates": [ 109.220957591308562, -0.047794637766968 ] } }
+]
+}

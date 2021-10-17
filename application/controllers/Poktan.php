@@ -118,21 +118,23 @@ class Poktan extends CI_Controller {
         $this->form_validation->set_rules(
             'poktan',
             'Poktan',
-            'required|trim',
-            array('required' => 'Nama Poktan tidak boleh kosong')
+            'required|is_unique[poktan.nama]|trim',
+            array(
+				'is_unique' => 'Data telah ada',
+				'required' => 'Nama Poktan tidak boleh kosong')
         );
-		$this->form_validation->set_rules(
-            'ketua',
-            'Ketua',
-            'required|trim',
-            array('required' => 'Nama Ketua tidak boleh kosong')
-        );
-		$this->form_validation->set_rules(
-            'kecamatan',
-            'Kecamatan',
-            'required|trim',
-            array('required' => 'Nama Kecamatan tidak boleh kosong')
-        );
+		// $this->form_validation->set_rules(
+        //     'ketua',
+        //     'Ketua',
+        //     'required|trim',
+        //     array('required' => 'Nama Ketua tidak boleh kosong')
+        // );
+		// $this->form_validation->set_rules(
+        //     'kecamatan',
+        //     'Kecamatan',
+        //     'required|trim',
+        //     array('required' => 'Nama Kecamatan tidak boleh kosong')
+        // );
 		// $this->form_validation->set_rules(
         //     'desa',
         //     'Desa',
@@ -157,18 +159,6 @@ class Poktan extends CI_Controller {
         //     'required|trim',
         //     array('required' => 'Nama Rw tidak boleh kosong')
         // );
-		$this->form_validation->set_rules(
-            'luas_lahan',
-            'Luas_lahan',
-            'numeric|trim',
-            array('numeric' => 'Data harus berupa angka')
-        );
-		$this->form_validation->set_rules(
-            'komoditas_unggul',
-            'Komoditas_Unggul',
-            'required|trim',
-            array('required' => 'Data Komoditas Unggulan tidak boleh kosong')
-        );
 		// $this->form_validation->set_rules(
         //     'warna',
         //     'Warna',
@@ -270,18 +260,18 @@ class Poktan extends CI_Controller {
         //     'required|trim',
         //     array('required' => 'Nomor Rw tidak boleh kosong')
         // );
-		$this->form_validation->set_rules(
-            'luas_lahan',
-            'Luas_lahan',
-            'numeric|trim',
-            array('')
-        );
-		$this->form_validation->set_rules(
-            'komoditas_unggul',
-            'Komoditas_Unggul',
-            'required|trim',
-            array('required' => 'Komoditas Unggulan tidak boleh kosong')
-        );
+		// $this->form_validation->set_rules(
+        //     'luas_lahan',
+        //     'Luas_lahan',
+        //     'numeric|trim',
+        //     array('')
+        // );
+		// $this->form_validation->set_rules(
+        //     'komoditas_unggul',
+        //     'Komoditas_Unggul',
+        //     'required|trim',
+        //     array('required' => 'Komoditas Unggulan tidak boleh kosong')
+        // );
 		// $this->form_validation->set_rules(
         //     'warna',
         //     'Warna',

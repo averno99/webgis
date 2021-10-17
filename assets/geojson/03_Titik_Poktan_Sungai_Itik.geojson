@@ -1,0 +1,15 @@
+{
+"type": "FeatureCollection",
+"name": "03 Titik Poktan Sungai Itik",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Id": 0, "Poktan": "Abdi Tani", "Desa": "Sungai Itik", "Gapoktan": "Cahaya Rezeki", "Luas": 27.82 }, "geometry": { "type": "Point", "coordinates": [ 109.225064866815146, -0.033450987142567 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Poktan": "Bina Tani", "Desa": "Sungai Itik", "Gapoktan": "Cahaya Rezeki", "Luas": 30.69 }, "geometry": { "type": "Point", "coordinates": [ 109.229786800447158, -0.03024536153919 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Poktan": "Maju Bersama", "Desa": "Sungai Itik", "Gapoktan": "Cahaya Rezeki", "Luas": 14.6 }, "geometry": { "type": "Point", "coordinates": [ 109.227806928316099, -0.034746361235535 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Poktan": "Cempaka", "Desa": "Sungai Itik", "Gapoktan": "Cahaya Rezeki", "Luas": 13.86 }, "geometry": { "type": "Point", "coordinates": [ 109.225083613803719, -0.037882703064278 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Poktan": "Usaha Tani 1", "Desa": "Sungai Itik", "Gapoktan": "Cahaya Rezeki", "Luas": 18.26 }, "geometry": { "type": "Point", "coordinates": [ 109.228855759437479, -0.040037427749984 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Poktan": "Sri Kencana", "Desa": "Sungai Itik", "Gapoktan": "Cahaya Rezeki", "Luas": 27.08 }, "geometry": { "type": "Point", "coordinates": [ 109.230837889525773, -0.036164803868136 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Poktan": "Usaha Tani 2", "Desa": "Sungai Itik", "Gapoktan": "Cahaya Rezeki", "Luas": 9.32 }, "geometry": { "type": "Point", "coordinates": [ 109.223358821536095, -0.040997346606836 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Poktan": "Usaha Tani 3", "Desa": "Sungai Itik", "Gapoktan": "Cahaya Rezeki", "Luas": 17.67 }, "geometry": { "type": "Point", "coordinates": [ 109.220500009772252, -0.039330677346296 ] } }
+]
+}

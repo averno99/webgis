@@ -49,7 +49,7 @@
 										<div class="tab-content pt-5">
 											<!--begin::Tab Content-->
 											<div class="tab-pane active" role="tabpanel">
-                                                <form action="" method="POST">
+												<?= form_open_multipart('gapoktan/tambah_gapoktan'); ?>
 													<input type="hidden" name="dibuat" value="<?= $user['nama']; ?>"/>
                                                     
 													<div class="form-group row">
@@ -58,6 +58,15 @@
 															<input class="form-control form-control-lg form-control-solid" type="text" name="gapoktan" value="<?= set_value('gapoktan'); ?>" placeholder="Nama Gabungan Kelompok Tani"/>
                                                             <?= form_error('gapoktan', ' <small class="text-danger">', '</small>'); ?>
                                                         </div>
+													</div>
+													<div class="form-group row">
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">GeoJSON Point Poktan</label>
+														<div class="col-lg-9 col-xl-6">
+															<div class="custom-file">
+                                                                <input type="file" class="custom-file-input" id="geojson" name="geojson">
+                                                                <label class="custom-file-label" for="geojson">Upload GeoJSON</label>
+                                                            </div>
+														</div>
 													</div>
 													<div class="d-flex justify-content-between border-top pt-10">
 															<div class="mr-2">

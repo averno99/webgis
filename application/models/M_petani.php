@@ -147,6 +147,7 @@ class M_petani extends CI_Model {
             "foto" => htmlspecialchars($upload_foto),
             "status_post" => "Belum Di Post",
             "periode" => htmlspecialchars($this->input->post('periode', true)),
+            "kode" => htmlspecialchars($this->input->post('kode', true)),
             "petani_dibuat" => htmlspecialchars($this->input->post('dibuat', true))
         ];
 

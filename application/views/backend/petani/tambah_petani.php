@@ -60,15 +60,20 @@
                                                                     <option value="<?= $sts; ?>"><?= $sts; ?></option>
                                                                 <?php endforeach; ?>
 															</select>
+															
 														</div>
 													</div>
                                                     <div class="form-group row">
 														<label class="col-form-label col-3 text-lg-right text-left">Nama Poktan</label>
 														<div class="col-lg-9 col-xl-6">
+															<?php $getPoktan = urldecode($this->uri->segment(3))?>
 															<select class="form-control form-control-lg form-control-solid" name="poktan">
-																<option selected disabled>Pilih Poktan...</option>
                                                                 <?php foreach ($poktan as $pkt) : ?>
-                                                                    <option value="<?= $pkt['id']; ?>"><?= $pkt['nama']; ?></option>
+                                                                    <?php if ($pkt['nama'] == $getPoktan) : ?>
+                                                                        <option value="<?= $pkt['id']; ?>" selected><?= $pkt['nama']; ?></option>
+                                                                    <?php else : ?>
+                                                                        <option value="<?= $pkt['id']; ?>"><?= $pkt['nama']; ?></option>
+                                                                    <?php endif; ?>
                                                                 <?php endforeach; ?>
 															</select>
 														</div>
@@ -159,9 +164,11 @@
 													<div class="form-group row">
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Nama</label>
 														<div class="col-lg-9 col-xl-6">
-															<?php $nama = $this->uri->segment(3) ?>
-															<input class="form-control form-control-lg form-control-solid" type="text" name="nama" value="<?= urldecode($nama) ?>" disabled/>
-															<input type="hidden" name="nama" value="<?= urldecode($nama)?>"/>
+															<?php $nama = $this->uri->segment(5);
+															$kode = $this->uri->segment(4)
+															 ?>
+															<input class="form-control form-control-lg form-control-solid" type="text" name="nama" value="<?= urldecode($nama) ?>"/>
+															<input type="hidden" name="kode" value="<?= urldecode($kode)?>"/>
 															<?= form_error('nama', ' <small class="text-danger">', '</small>'); ?>
 														</div>
 													</div>

@@ -20,11 +20,14 @@ class Dashboard extends CI_Controller {
 		$data['poktan'] = $this->M_poktan->getPetaPoktan();
 		$data['petani'] = $this->M_petani->getPetaPetani();
 		$data['gapoktan'] = $this->db->get('gapoktan')->result_array();
+		$data['gapoktanTani'] = $this->db->get('gapoktan')->result_array();
 
 		if ($this->input->get('cari') != NULL ) {
             $data['poktan'] = $this->M_poktan->getIdPetaPoktan();
+			$data['gapoktanTani'] = $this->db->get_where('gapoktan', ['id' => $this->input->get('cari')])->result_array();
         } else {
 			$data['poktan'] = $this->M_poktan->getPetaPoktan();
+			$data['gapoktanTani'] = $this->db->get('gapoktan')->result_array();
 		}
 
 		$this->load->view('backend/template/head', $data);

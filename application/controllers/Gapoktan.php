@@ -29,7 +29,7 @@ class Gapoktan extends CI_Controller {
 
     public function tambah_gapoktan()
     {
-        $data['judul'] = 'Tambah Data Gaoktan';
+        $data['judul'] = 'Tambah Data Gapoktan';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 		$data['gapoktan'] = $this->db->get('gapoktan')->result_array();
 
@@ -50,9 +50,27 @@ class Gapoktan extends CI_Controller {
 			$this->load->view('backend/template/js');
         } else {
 
+            $upload_geojson = $_FILES['geojson']['name'];
+
+            if ($upload_geojson) {
+                $config['allowed_types']    = 'geojson';
+                $config['max_size']         = 10240;
+                $config['upload_path']      = './assets/geojson/';
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('geojson')) {
+                    $geojson_baru = $this->upload->data('file_name');
+                    $this->db->set('geojson', $geojson_baru);
+                } else {
+                    echo $this->upload->display_errors();
+                }
+            }
+
             $data = [
                 "nama" => htmlspecialchars($this->input->post('gapoktan', true)),
-                "gapoktan_dibuat" => htmlspecialchars($this->input->post('dibuat', true))
+                "gapoktan_dibuat" => htmlspecialchars($this->input->post('dibuat', true)),
+                "geojson" => $upload_geojson
             ];
 
             $this->db->insert('gapoktan', $data);
@@ -63,7 +81,7 @@ class Gapoktan extends CI_Controller {
 
     public function ubah($id = NULL)
     {
-        $data['judul'] = 'TUbah Data Gaoktan';
+        $data['judul'] = 'Ubah Data Gaoktan';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 		$data['gapoktan'] = $this->db->get_where('gapoktan', ['id' => $id])->row_array();
 
@@ -84,6 +102,28 @@ class Gapoktan extends CI_Controller {
 			$this->load->view('backend/template/js');
         } else {
 
+            $upload_geojson = $_FILES['geojson']['name'];
+
+            if ($upload_geojson) {
+                $config['allowed_types']    = 'geojson';
+                $config['max_size']         = 10240;
+                $config['upload_path']      = './assets/geojson/';
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('geojson')) {
+                    $geojson_lama = $data['gapoktan']['geojson'];
+                    if ($geojson_lama != 'default.geojson') {
+                        unlink(FCPATH . 'assets/geojson/' . $geojson_lama);
+                    }
+
+                    $geojson_baru = $this->upload->data('file_name');
+                    $this->db->set('geojson', $geojson_baru);
+                } else {
+                    echo $this->upload->display_errors();
+                }
+            }
+
             $data = [
             "nama" => htmlspecialchars($this->input->post('gapoktan', true)),
             "gapoktan_diubah" => htmlspecialchars($this->input->post('diubah', true))
@@ -98,6 +138,14 @@ class Gapoktan extends CI_Controller {
 
     public function hapus($id = NULL)
     {
+        
+
+        $geojson_lama = $data['gapoktan']['geojson'];
+        if ($geojson_lama != 'default.geojson') {
+            unlink(FCPATH . 'assets/geojson/' . $geojson_lama);
+        }
+
+        
         $this->db->where('id', $id);
         $this->db->delete('gapoktan');
         $this->session->set_flashdata('flash', 'Dihapus');

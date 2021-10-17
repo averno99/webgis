@@ -104,73 +104,73 @@ class Petani extends CI_Controller {
         //     'required|trim',
         //     array('required' => 'Pekerjaan tidak boleh kosong')
         // );
-		$this->form_validation->set_rules(
-            'pengolah_lahan',
-            'Pengolah_Lahan',
-            'numeric|trim',
-            array('numeric' => 'Data harus angka')
-        );
-		$this->form_validation->set_rules(
-            'tanam',
-            'Tanam',
-            'numeric|trim',
-            array('numeric' => 'Data harus angka')
-        );
-		$this->form_validation->set_rules(
-            'pemeliharaan',
-            'Pemeliharaan',
-            'numeric|trim',
-            array('numeric' => 'Data harus angka')
-        );
-		$this->form_validation->set_rules(
-            'panen',
-            'Panen',
-            'numeric|trim',
-            array('numeric' => 'Data harus angka')
-        );
+		// $this->form_validation->set_rules(
+        //     'pengolah_lahan',
+        //     'Pengolah_Lahan',
+        //     'numeric|trim',
+        //     array('numeric' => 'Data harus angka')
+        // );
+		// $this->form_validation->set_rules(
+        //     'tanam',
+        //     'Tanam',
+        //     'numeric|trim',
+        //     array('numeric' => 'Data harus angka')
+        // );
+		// $this->form_validation->set_rules(
+        //     'pemeliharaan',
+        //     'Pemeliharaan',
+        //     'numeric|trim',
+        //     array('numeric' => 'Data harus angka')
+        // );
+		// $this->form_validation->set_rules(
+        //     'panen',
+        //     'Panen',
+        //     'numeric|trim',
+        //     array('numeric' => 'Data harus angka')
+        // );
 		$this->form_validation->set_rules(
             'nama',
             'Nama',
-            'required|trim',
+            'required|trim|callback_petani_check',
             array('required' => 'Nama tidak boleh kosong')
         );
 
-        $this->form_validation->set_rules(
-            'periode',
-            'Periode',
-            'required|trim',
-            array('required' => 'Periode tidak boleh kosong')
-        );
+        // $this->form_validation->set_rules(
+        //     'periode',
+        //     'Periode',
+        //     'required|trim',
+        //     array('required' => 'Periode tidak boleh kosong')
+        // );
 		// $this->form_validation->set_rules(
         //     'status_keluarga',
         //     'Status Keluarga',
         //     'required|trim',
         //     array('required' => 'Status Keluarga tidak boleh kosong')
         // );
-		$this->form_validation->set_rules(
-            'jml_anggota_keluarga',
-            'Jumlah',
-            'numeric|trim',
-            array('numeric' => 'Data harus angka')
-        );
-		$this->form_validation->set_rules(
-            'jml_tanggungan',
-            'Tanggungan',
-            'numeric|trim',
-            array('numeric' => 'Data harus angka')
-        );
-		$this->form_validation->set_rules(
-            'riwayat_pelatihan',
-            'Pelatihan',
-            'numeric|trim',
-            array('numeric' => 'Data harus angka')
-        );
-		$this->form_validation->set_rules(
-            'no_hp',
-            'No hp',
-            'numeric|trim',
-            array('numeric' => 'Data harus angka')
-        );
+		// $this->form_validation->set_rules(
+        //     'jml_anggota_keluarga',
+        //     'Jumlah',
+        //     'numeric|trim',
+        //     array('numeric' => 'Data harus angka')
+        // );
+		// $this->form_validation->set_rules(
+        //     'jml_tanggungan',
+        //     'Tanggungan',
+        //     'numeric|trim',
+        //     array('numeric' => 'Data harus angka')
+        // );
+		// $this->form_validation->set_rules(
+        //     'riwayat_pelatihan',
+        //     'Pelatihan',
+        //     'numeric|trim',
+        //     array('numeric' => 'Data harus angka')
+        // );
+		// $this->form_validation->set_rules(
+        //     'no_hp',
+        //     'No hp',
+        //     'numeric|trim',
+        //     array('numeric' => 'Data harus angka')
+        // );
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('backend/template/head', $data);
@@ -202,6 +202,18 @@ class Petani extends CI_Controller {
             $this->M_petani->tambahPetani($upload_foto);
             $this->session->set_flashdata('flash', 'Ditambahkan');
             redirect('petani');
+        }
+    }
+
+    function petani_check()
+    {
+        $post = $this->input->post(NULL, TRUE);
+        $query = $this->db->query("SELECT * FROM petani WHERE nama = '$post[nama]' AND kode = '$post[kode]'");
+        if ($query->num_rows() > 0) {
+            $this->form_validation->set_message('petani_check', 'Data sudah ada');
+            return FALSE;
+        } else {
+            return TRUE;
         }
     }
 

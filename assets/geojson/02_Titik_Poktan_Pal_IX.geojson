@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"name": "02 Titik Poktan Pal IX",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Id": 0, "Poktan": "Tunas Baru 4", "Desa": "Pal IX", "Gapoktan": "Mekar Jaya", "Luas": 16.16 }, "geometry": { "type": "Point", "coordinates": [ 109.237929140735048, -0.053873808754345 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Poktan": "Tunas Mekar 2", "Desa": "Pal IX", "Gapoktan": "Mekar Jaya", "Luas": 15.53 }, "geometry": { "type": "Point", "coordinates": [ 109.239713301212149, -0.048898840374912 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Poktan": "Baru Muncul", "Desa": "Pal IX", "Gapoktan": "Mekar Jaya", "Luas": 18.16 }, "geometry": { "type": "Point", "coordinates": [ 109.238372255676964, -0.041742046415129 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Poktan": "Tunas Baru 3", "Desa": "Pal IX", "Gapoktan": "Mekar Jaya", "Luas": 20.77 }, "geometry": { "type": "Point", "coordinates": [ 109.244674119839175, -0.044507886246792 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Poktan": "Bersatu Karya Tani 1", "Desa": "Pal IX", "Gapoktan": "Mekar Jaya", "Luas": 7.32 }, "geometry": { "type": "Point", "coordinates": [ 109.240541483907734, -0.042398118132664 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Poktan": "Tunas Muda 1", "Desa": "Pal IX", "Gapoktan": "Mekar Jaya", "Luas": 13.4 }, "geometry": { "type": "Point", "coordinates": [ 109.242796869264325, -0.044546002998214 ] } }
+]
+}

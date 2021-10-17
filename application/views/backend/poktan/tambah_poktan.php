@@ -54,10 +54,14 @@
                                                     <div class="form-group row">
 														<label class="col-form-label col-3 text-lg-right text-left">Nama Gapoktan</label>
 														<div class="col-lg-9 col-xl-6">
+															<?php $getGapoktan = urldecode($this->uri->segment(5))?>
 															<select class="form-control form-control-lg form-control-solid" name="gapoktan">
-																<option selected disabled>Pilih Gapoktan...</option>
                                                                 <?php foreach ($gapoktan as $gpt) : ?>
-                                                                    <option value="<?= $gpt['id']; ?>" <?= set_value('gapoktan') == $gpt['id'] ? "selected" : NULL ?>><?= $gpt['nama']; ?></option>
+                                                                    <?php if ($gpt['nama'] == $getGapoktan) : ?>
+                                                                        <option value="<?= $gpt['id']; ?>" selected><?= $gpt['nama']; ?></option>
+                                                                    <?php else : ?>
+                                                                        <option value="<?= $gpt['id']; ?>"><?= $gpt['nama']; ?></option>
+                                                                    <?php endif; ?>
                                                                 <?php endforeach; ?>
 															</select>
 														</div>
@@ -65,7 +69,8 @@
 													<div class="form-group row">
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Nama Poktan</label>
 														<div class="col-lg-9 col-xl-6">
-															<input class="form-control form-control-lg form-control-solid" type="text" name="poktan" value="<?= set_value('poktan'); ?>" placeholder="Nama Kelompok Tani"/>
+														<?php $nama = $this->uri->segment(3); ?>
+															<input class="form-control form-control-lg form-control-solid" type="text" name="poktan" value="<?= urldecode($nama) ?>" placeholder="Nama Kelompok Tani"/>
                                                             <?= form_error('poktan', ' <small class="text-danger">', '</small>'); ?>
                                                         </div>
 													</div>
@@ -108,7 +113,8 @@
                                                     <div class="form-group row">
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">Desa</label>
 														<div class="col-lg-9 col-xl-6">
-															<input class="form-control form-control-lg form-control-solid" type="text" name="desa" value="<?= set_value('desa'); ?>" placeholder="Desa"/>
+															<?php $desa = $this->uri->segment(4); ?>
+															<input class="form-control form-control-lg form-control-solid" type="text" name="desa" value="<?= urldecode($desa) ?>" placeholder="Desa"/>
                                                             <?= form_error('desa', ' <small class="text-danger">', '</small>'); ?>
                                                         </div>
 													</div>
