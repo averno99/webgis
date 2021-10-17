@@ -37,7 +37,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<link href="<?= base_url()?>assets/css/themes/layout/brand/dark.css" rel="stylesheet" type="text/css" />
 		<link href="<?= base_url()?>assets/css/themes/layout/aside/dark.css" rel="stylesheet" type="text/css" />
 		<!--end::Layout Themes-->
-		<link rel="shortcut icon" href="<?= base_url()?>assets/media/logos/favicon.ico" />
+		<link rel="shortcut icon" href="<?= base_url()?>assets/frontend/media/logos/logo_2.png" width="10px" />
 	</head>
 	<!--end::Head-->
 	<!--begin::Body-->
@@ -51,7 +51,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						<!--begin::Login Header-->
 						<div class="d-flex flex-center mb-15">
 							<a href="#">
-								<img src="<?= base_url()?>assets/media/logos/logo-letter-13.png" class="max-h-75px" alt="" />
+								<img src="<?= base_url()?>assets/frontend/media/logos/logo_2.png" class="max-h-120px" alt="" />
 							</a>
 						</div>
 						<!--end::Login Header-->

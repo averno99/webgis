@@ -91,6 +91,11 @@ function popUp(f,l){
 	    var html='';
 	    if (f.properties){
 	    	html+='<table>';
+			html+='<tr>';
+		    	html+='<td>Nama Desa</td>';
+		    	html+='<td>:</td>';
+		    	html+='<td>'+f.properties['Desa']+'</td>';
+	    	html+='</tr>';
 	    	html+='<tr>';
 		    	html+='<td>Nama Gapoktan</td>';
 		    	html+='<td>:</td>';

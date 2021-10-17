@@ -2,8 +2,8 @@
 		<div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
 			<!--begin::Logo-->
 			<a href="index.html">
-				<img alt="Logo" src="<?= base_url()?>assets/frontend/media/logos/logo-dark.png" />
-				<h4>WEBGIS</h4>
+			<img alt="Logo" src="<?= base_url()?>assets/frontend/media/logos/logo_dkkp.png" width="100px" />
+				<!-- <h4>Dinas Pertanian</h4> -->
 			</a>
 			<!--end::Logo-->
 			<!--begin::Toolbar-->
@@ -45,9 +45,9 @@
 					<!--begin::Brand-->
 					<div class="brand flex-column-auto" id="kt_brand">
 						<!--begin::Logo-->
-						<a href="#" class="brand-logo">
-							<!-- <img alt="Logo" src="<?= base_url()?>assets/frontend/media/logos/logo-dark.png" /> -->
-							<h4>WEBGIS</h4>
+						<a href="#" class="brand-logo pt-7">
+							<img alt="Logo" src="<?= base_url()?>assets/frontend/media/logos/logo_dkkp.png" width="180px" />
+							<!-- <h6>Dinas Ketahanan Pangan dan Pertanian</h6> -->
 						</a>
 						<!--end::Logo-->
 						<!--begin::Toggle-->

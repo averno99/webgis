@@ -42,8 +42,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<link rel="stylesheet" href="<?=base_url()?>assets/css/leaflet-search.min.css" />
 		<link rel="stylesheet" href="<?=base_url()?>assets/js/leaflet-panel-layers-master/src/leaflet-panel-layers.css" />
     
-		<link rel="shortcut icon" href="<?= base_url()?>assets/media/logos/favicon.ico" />
-
+		<link rel="shortcut icon" href="<?= base_url()?>assets/frontend/media/logos/logo_2.png" width="10px" />
 		<style type="text/css">
         	#mapid { height: 450px; width: 1200px}
 			.icon {

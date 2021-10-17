@@ -17,7 +17,10 @@
 							<!--begin::Container-->
 							<div class="container">
 								<!--begin::Card-->
-								<div class="card card-custom">
+							<?php if(empty ($poktan)): ?>	
+								<div>maaf data belum di post silahkan hubungi admin</div>
+								<?php else : ?>
+							<div class="card card-custom">
 									<!--Begin::Header-->
 									<div class="card-header card-header-tabs-line">
 										<div class="card-toolbar">
@@ -171,6 +174,7 @@
 								<!--end::Card-->
 					
 							</div>
+							<?php endif; ?>
 						</div>
 					</div>
 					<!--end::Content-->

@@ -146,6 +146,8 @@ class M_poktan extends CI_Model {
             "rw" => htmlspecialchars($this->input->post('rw', true)),
             "luas_lahan" => htmlspecialchars($this->input->post('luas_lahan', true)),
             "komoditas_unggul" => htmlspecialchars($this->input->post('komoditas_unggul', true)),
+            "lat" => htmlspecialchars($this->input->post('lat', true)),
+            "lng" => htmlspecialchars($this->input->post('lng', true)),
             "geojson" => $upload_geojson,
             "status_post" => "Belum Di Post",
             "warna" => htmlspecialchars($this->input->post('warna', true))

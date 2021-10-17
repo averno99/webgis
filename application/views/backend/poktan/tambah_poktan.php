@@ -153,6 +153,20 @@
                                                             <?= form_error('komoditas_unggul', ' <small class="text-danger">', '</small>'); ?>
 														</div>
 													</div>
+													<div class="form-group row">
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">Latitude</label>
+														<div class="col-lg-9 col-xl-6">
+															<input class="form-control form-control-lg form-control-solid" type="text" name="lat" value="<?= set_value('lat'); ?>" placeholder="Latitude"/>
+                                                            <?= form_error('lat', ' <small class="text-danger">', '</small>'); ?>
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-xl-3 col-lg-3 text-right col-form-label">Longitude</label>
+														<div class="col-lg-9 col-xl-6">
+															<input class="form-control form-control-lg form-control-solid" type="text" name="lng" value="<?= set_value('lng'); ?>" placeholder="Longitude"/>
+                                                            <?= form_error('lng', ' <small class="text-danger">', '</small>'); ?>
+														</div>
+													</div>
                                                     <div class="form-group row">
 														<label class="col-xl-3 col-lg-3 text-right col-form-label">GeoJSON</label>
 														<div class="col-lg-9 col-xl-6">

@@ -1,8 +1,8 @@
 		<!--begin::Header Mobile-->
 		<div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
 			<!--begin::Logo-->
-			<a href="index.html">
-				<h4>WEBGIS</h4>
+			<a href="#">
+			<img alt="Logo" src="<?= base_url()?>assets/frontend/media/logos/logo_dkkp.png" width="100px" />
 			</a>
 			<!--end::Logo-->
 			<!--begin::Toolbar-->
@@ -44,8 +44,8 @@
 					<!--begin::Brand-->
 					<div class="brand flex-column-auto" id="kt_brand">
 						<!--begin::Logo-->
-						<a href="#" class="brand-logo">
-							<h4>WEBGIS</h4>
+						<a href="#" class="brand-logo pt-7">
+						<img alt="Logo" src="<?= base_url()?>assets/frontend/media/logos/logo_dkkp.png" width="180px" />
 						</a>
 						<!--end::Logo-->
 						<!--begin::Toggle-->

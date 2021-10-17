@@ -23,6 +23,7 @@ class FrontPoktan extends CI_Controller {
 	public function detail($id = NULL) 
 	{
         $this->load->model('M_poktan');
+		$this->load->model('M_petani');
 		// $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 		$data['judul'] = 'Detail Poktan';
 		$data['poktan'] = $this->M_poktan->getIdUmumPoktan($id);

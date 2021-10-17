@@ -5,6 +5,7 @@
 						<!--begin::Container-->
 						<div class="container-fluid d-flex align-items-stretch justify-content-between">
 							<!--begin::Header Menu Wrapper-->
+							<h4 class="text-dark font-weight-bold mt-8 mb-2 mr-5">Sistem Informasi Kegiatan Pertanian</h4>
 							<div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper"></div>
 							<!--end::Header Menu Wrapper-->
 
