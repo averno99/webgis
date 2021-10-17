@@ -10,18 +10,25 @@ class Sawahnya extends CI_Controller {
             redirect('auth');
         }
 		$this->load->model('M_poktan');
-        $this->load->model('M_petani');
+		$this->load->model('M_petani');
     }
 
 	public function index($id = NULL)
 	{
 		$data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-		$data['judul'] = 'Sawah';
+		$data['judul'] = 'Sawahnya';
 		$data['poktan'] = $this->M_poktan->getPetaPoktan();
-		$data['poktanId'] = $this->M_poktan->getPetaPoktanId($id);
-        $data['lokasi'] = $this->M_petani->getPetaLokasi();
-		$data['lokasiId'] = $this->M_petani->getIdPetaLokasi($id);
+		$data['petani'] = $this->M_petani->getPetaPetani();
 		$data['gapoktan'] = $this->db->get('gapoktan')->result_array();
+		$data['gapoktanTani'] = $this->db->get('gapoktan')->result_array();
+
+		if ($this->input->get('cari') != NULL ) {
+            $data['poktan'] = $this->M_poktan->getIdPetaPoktan();
+			$data['gapoktanTani'] = $this->db->get_where('gapoktan', ['id' => $this->input->get('cari')])->result_array();
+        } else {
+			$data['poktan'] = $this->M_poktan->getPetaPoktan();
+			$data['gapoktanTani'] = $this->db->get('gapoktan')->result_array();
+		}
 
 		$this->load->view('backend/template/head', $data);
 		$this->load->view('backend/template/aside');
@@ -35,16 +42,16 @@ class Sawahnya extends CI_Controller {
 	public function detail($id = NULL)
 	{
 		$data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-		$data['judul'] = 'Sawah';
+		$data['judul'] = 'Sawahnya';
 		$data['poktan'] = $this->M_poktan->getPetaPoktan();
-        $data['lokasi'] = $this->M_petani->getPetaLokasi();
-        $data['lokasiId'] = $this->M_petani->getIdPetaLokasi($id);
+		$data['poktanId'] = $this->M_poktan->getPetaIdPoktan($id);
+		$data['petani'] = $this->M_petani->getPetaPetani();
 		$data['gapoktan'] = $this->db->get('gapoktan')->result_array();
 
 		$this->load->view('backend/template/head', $data);
 		$this->load->view('backend/template/aside');
 		$this->load->view('backend/template/topbar', $data);
-		$this->load->view('backend/sawah/sawahnya', $data);
+		$this->load->view('backend/sawah/sawahnya');
 		$this->load->view('backend/template/footer');
 		$this->load->view('backend/template/user_panel', $data);
 		$this->load->view('backend/template/js');

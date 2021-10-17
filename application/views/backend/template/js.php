@@ -46,7 +46,7 @@
 <?php endif; ?>
 
 <?php if ($this->uri->segment(1) == 'sawahnya') : ?>
-    <?php include 'mapsawahnya.php'; ?>
+    <?php include 'mapss.php'; ?>
 <?php endif; ?>
 		
 <?php if ($this->uri->segment(2) == 'tambah_lokasi') : ?>

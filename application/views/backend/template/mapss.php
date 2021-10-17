@@ -1,0 +1,145 @@
+<script>
+
+    let idLihatMarker = "<?= $poktanId['idPoktan'] ?? NULL ?>"
+
+    <?php foreach ($poktan as $lks) {
+		$arrayPok[]='{
+			"loc":['.$lks['lat'].','.$lks['lng'].'],
+            "id_poktan":"'.$lks['idPoktan'].'",
+            "nama_gapoktan":"'.$lks['namaGapoktan'].'",
+            "nama_poktan":"'.$lks['namaPoktan'].'"
+			}';
+		 } ?>
+
+    var datapoktan = [<?= implode(',', $arrayPok);?>];
+
+	// var mymap = L.map('mapsawahnya').setView([-0.043402, 109.241779], 13);
+    var mymap = new L.Map('mapsawahnya', {zoom: 12, center: new L.latLng(-0.043402, 109.241779) });
+
+	var Layer = (L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+		maxZoom: 18,
+		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		id: 'mapbox/streets-v11',
+		tileSize: 512,
+		zoomOffset: -1
+	}));
+
+    mymap.addLayer(Layer);   
+
+
+	function iconByName(name) {
+		return '<i class="icon" style="background-color:'+name+';border-radius:50%"></i>';
+	}
+	
+	function featureToMarker(feature, latlng) {
+	return L.marker(latlng, {
+		icon: L.divIcon({
+			className: 'marker-'+feature.properties.amenity,
+			html: iconByName(feature.properties.amenity),
+			iconUrl: '../images/markers/'+feature.properties.amenity+'.png',
+			iconSize: [25, 41],
+			iconAnchor: [12, 41],
+			popupAnchor: [1, -34],
+			shadowSize: [41, 41]
+		})
+	});
+}
+
+<?php foreach ($poktan as $pkt) : ?>
+		var myStyle<?= $pkt['id']?> = {
+            "color": "<?= $pkt['warna']?>",
+            "weight": 1,
+            "opacity": 1
+        };
+<?php endforeach;?>
+
+var baseLayers = [
+	{
+		group: "Map Layers",
+		collapsed: true,
+		layers: [
+			{
+				name: "Open Cycle Map",
+				layer: Layer
+			},{
+				name: "Google Satelite",
+				layer: L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
+    					maxZoom: 20,
+    					subdomains:['mt0','mt1','mt2','mt3']
+				})
+			}
+		]
+	}
+];
+
+	<?php foreach ($poktan as $pkt) {
+		$id = $pkt['idPoktan'];
+		$site = site_url();
+		$url = "<a href='".$site."poktan/detail/".$id."'>Lihat Detail</a>";
+
+		$arrayPok[]='{
+			name: "'. $pkt['namaPoktan'] .'",
+			icon: iconByName("'.$pkt['warna'].'"),
+			layer: new L.GeoJSON.AJAX(["'. base_url() . 'assets/geojson/' . $pkt['geojson'] . '"], 
+			{style: myStyle' . $pkt['id'] . ',
+			pointToLayer: featureToMarker }).addTo(mymap).bindPopup("<b>Nama Gapoktan : </b> '. $pkt['namaGapoktan'] .'</br><b>Nama Poktan : </b> '. $pkt['namaPoktan'] .' </br><b>Luas Lahan : </b> '. $pkt['luas_lahan'] .' Ha</br></br> '.$url.'")
+			}';
+		 } ?>
+
+	var overLayers = [{
+		group: "Layer Poktan",
+		layers: [
+		<?= implode(',', $arrayPok);?>
+		]
+	}];
+
+var panelLayers = new L.Control.PanelLayers(baseLayers);
+
+// mymap.addControl(panelLayers);
+
+var markersLayer = new L.LayerGroup();
+
+var controlSearch = new L.Control.Search({
+        position: 'topleft',
+        layer: markersLayer,
+        initial: false,
+        zoom: 17,
+        marker: false
+    });
+    mymap.addControl(new L.Control.Search({
+        layer: markersLayer,
+        initial: false,
+        collapsed: true,
+        zoom: 17,
+    }));
+
+let clickMarker = null;
+for(i in datapoktan) {
+		var	loc = datapoktan[i].loc;
+        var id_poktan = datapoktan[i].id_poktan;
+        var nama_gapoktan = datapoktan[i].nama_gapoktan;
+		var	nama_poktan = datapoktan[i].nama_poktan;
+
+        var marker = new L.Marker(new L.latLng(loc), {title: nama_poktan}); //se property searched
+        marker.bindPopup('<b>Nama Pemilik : '+ nama_poktan +'</b><br>Nama Gapoktan : '+ nama_gapoktan + "<br><br>" + '<a href="<?=site_url()?>poktan/detail/' + id_poktan +'">Lihat Detail</a>' );
+
+        
+        if(id_poktan == idLihatMarker){
+            clickMarker = marker;
+            marker.openPopup();
+        } 
+
+        markersLayer.addLayer(marker);
+         }
+
+    mymap.addLayer(markersLayer);
+
+    if(clickMarker != null){
+        mymap.setZoom(17);
+        mymap.panTo(clickMarker.getLatLng());
+        clickMarker.openPopup();
+    }
+
+
+</script>
