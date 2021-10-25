@@ -147,7 +147,7 @@ for(i in datasawah) {
     mymap.addLayer(markersLayer);
 
     if(clickMarker != null){
-        mymap.setZoom(17);
+        mymap.setZoom(13);
         mymap.panTo(clickMarker.getLatLng());
         clickMarker.openPopup();
     }

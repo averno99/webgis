@@ -28,6 +28,7 @@ var dataGapoktan = [<?= implode(',', $arrayGapoktan);?>];
 <?php foreach ($petani as $ptn) {
 	$arrayPetani[]='{
             "nama_petani":"'.$ptn['namaPetani'].'",
+			"nama_pro":"'.$ptn['nama_pro'].'",
 			"kode_petani":"'.$ptn['kode'].'",
             "id_petani":"'.$ptn['idPetani'].'"
 		
@@ -122,10 +123,11 @@ function popUp(f,l){
 		for (i in dataPetani) {
 			var nama_apa = 'Tidak';
 			var nama_petani = dataPetani[i].nama_petani;
+			var nama_pro = dataPetani[i].nama_pro;
 			var kode_petani = dataPetani[i].kode_petani;
 			var id_petani = dataPetani[i].id_petani;
 
-			var cobaNama = nama_petani==f.properties['Nama'];
+			var cobaNama = nama_pro==f.properties['Nama'];
 			var cobaKode = kode_petani==f.properties['Kode'];
 			if (cobaNama && cobaKode) {
 	    	html+='<a href="<?=site_url('petani/detail/')?>'+id_petani+'" target="_BLANK">'

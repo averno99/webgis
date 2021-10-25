@@ -208,7 +208,7 @@ class Petani extends CI_Controller {
     function petani_check()
     {
         $post = $this->input->post(NULL, TRUE);
-        $query = $this->db->query("SELECT * FROM petani WHERE nama = '$post[nama]' AND kode = '$post[kode]'");
+        $query = $this->db->query("SELECT * FROM petani WHERE nama_pro = '$post[nama_pro]' AND kode = '$post[kode]'");
         if ($query->num_rows() > 0) {
             $this->form_validation->set_message('petani_check', 'Data sudah ada');
             return FALSE;

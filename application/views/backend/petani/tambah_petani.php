@@ -169,7 +169,9 @@
 															 ?>
 															<input class="form-control form-control-lg form-control-solid" type="text" name="nama" value="<?= urldecode($nama) ?>"/>
 															<input type="hidden" name="kode" value="<?= urldecode($kode)?>"/>
+															<input type="hidden" name="nama_pro" value="<?= urldecode($nama)?>"/>
 															<?= form_error('nama', ' <small class="text-danger">', '</small>'); ?>
+
 														</div>
 													</div>
                                                     <div class="form-group row">
